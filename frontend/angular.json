@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "etalon": {
+    "scs": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/etalon",
+            "outputPath": "dist/scs",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,19 +50,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "etalon:build",
+            "browserTarget": "scs:build",
             "port": 4301
           },
           "configurations": {
             "production": {
-              "browserTarget": "etalon:build:production"
+              "browserTarget": "scs:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "etalon:build"
+            "browserTarget": "scs:build"
           }
         },
         "test": {
@@ -96,7 +96,7 @@
         }
       }
     },
-    "etalon-e2e": {
+    "scs-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -104,11 +104,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "etalon:serve"
+            "devServerTarget": "scs:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "etalon:serve:production"
+              "devServerTarget": "scs:serve:production"
             }
           }
         },
@@ -124,5 +124,5 @@
       }
     }
   },
-  "defaultProject": "etalon"
+  "defaultProject": "scs"
 }
