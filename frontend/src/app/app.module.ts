@@ -12,6 +12,8 @@ import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
 import {RouterModule, Routes} from "@angular/router";
 import { NavComponent } from "./nav/nav.component";
 import {HomeComponent} from "./home/home.component";
+import { CarouselComponent } from "./carousel/carousel.component";
+import {CarouselModule} from "ngx-bootstrap";
 
 
 // const appRoutes: Routes = [
@@ -25,7 +27,8 @@ import {HomeComponent} from "./home/home.component";
   declarations: [
     AppComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import {HomeComponent} from "./home/home.component";
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    routing
+    routing,
+    CarouselModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
