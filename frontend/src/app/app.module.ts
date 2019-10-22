@@ -4,11 +4,14 @@ import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { TooltipModule } from "ngx-bootstrap/tooltip";
 import { ModalModule } from "ngx-bootstrap/modal";
 import { FormsModule } from "@angular/forms";
+import { routing } from './app.routing';
 
 import { AppComponent } from "./app.component";
 import {HttpClientModule} from "@angular/common/http";
 import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
 import {RouterModule, Routes} from "@angular/router";
+import { NavComponent } from "./nav/nav.component";
+import {HomeComponent} from "./home/home.component";
 
 
 // const appRoutes: Routes = [
@@ -20,7 +23,9 @@ import {RouterModule, Routes} from "@angular/router";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +35,7 @@ import {RouterModule, Routes} from "@angular/router";
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]
