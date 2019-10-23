@@ -2,7 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { TooltipModule } from "ngx-bootstrap/tooltip";
-import { ModalModule } from "ngx-bootstrap/modal";
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule } from "@angular/forms";
 import { routing } from './app.routing';
 
@@ -14,6 +14,7 @@ import { NavComponent } from "./nav/nav.component";
 import {HomeComponent} from "./home/home.component";
 import { CarouselComponent } from "./carousel/carousel.component";
 import {CarouselModule} from "ngx-bootstrap";
+import { ModalComponent } from "./modal/modal.component";
 
 
 // const appRoutes: Routes = [
@@ -28,7 +29,8 @@ import {CarouselModule} from "ngx-bootstrap";
     AppComponent,
     NavComponent,
     HomeComponent,
-    CarouselComponent
+    CarouselComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import {CarouselModule} from "ngx-bootstrap";
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     routing,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
