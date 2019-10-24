@@ -14,7 +14,7 @@ import { NavComponent } from "./nav/nav.component";
 import {HomeComponent} from "./home/home.component";
 import { CarouselComponent } from "./carousel/carousel.component";
 import {CarouselModule} from "ngx-bootstrap";
-import { ModalComponent } from "./modal/modal.component";
+//import { ModalComponent } from "./modal/modal.component";
 
 
 // const appRoutes: Routes = [
@@ -30,7 +30,7 @@ import { ModalComponent } from "./modal/modal.component";
     NavComponent,
     HomeComponent,
     CarouselComponent,
-    ModalComponent
+    //ModalComponent
   ],
   imports: [
     BrowserModule,
