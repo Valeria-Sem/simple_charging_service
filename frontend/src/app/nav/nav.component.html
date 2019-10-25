@@ -22,18 +22,36 @@
       <form class="form-inline my-2 my-lg-0">
         <input class="p-1" type="text" name="form-control mr-sm-2" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 20px;">Search</button>
-        <button class="btn btn-outline-primary my-2 my-sn-0" data-toggle="modal" data-target="#exampleModal" (click)="openModal(template)">Log in</button>
+        <button class="btn btn-outline-primary my-2 my-sn-0" (click)="openModal(template)">Log in</button>
 
         <ng-template #template>
+<!--          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">-->
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title pull-left">Modal</h4>
+            <h4 class="modal-title pull-left">Authorization</h4>
             <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            This is a modal.
+            <div class="container-fluid">
+              <form>
+                <div class="form-froup m-3">
+                  <label for="exampleInputEmail">E-mail addres*</label>
+                  <input type="E-mail" name="form-control" id="exampleInputEmail" aria-describdby="emailHelp" placeholder="test@gmail.com" class="p-2">
+                </div>
+                <div class="form-froup m-3" >
+                  <label for="exampleInputPass">Password*</label>
+                  <input type="Password" name="form-control" id="exampleInputPass" placeholder="Password" class="p-2">
+                  <small id="passwordHelp" class="form-text text-muted">Password must be at least 8 characters</small>
+                </div>
+              </form>
+            </div>
           </div>
+            </div>
+          </div>
+<!--          </div>-->
         </ng-template>
 
       </form>
