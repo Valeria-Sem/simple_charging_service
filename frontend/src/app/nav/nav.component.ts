@@ -30,7 +30,6 @@ export class NavComponent implements OnInit {
 
   constructor(private modalService: BsModalService) {
   }
-  //constructor() { }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
