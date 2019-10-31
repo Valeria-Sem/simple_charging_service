@@ -1,4 +1,4 @@
-package models;
+package com.netcracker.edu.fapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -53,8 +53,8 @@ public class Users {
     }
 
     @Override
-    public String toString() {
-        return "User{" +
+    public String toString(){
+        return "Users{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
@@ -62,4 +62,3 @@ public class Users {
                 '}';
     }
 }
-
