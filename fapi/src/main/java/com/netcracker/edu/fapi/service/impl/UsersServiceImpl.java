@@ -47,13 +47,12 @@ public class UsersServiceImpl implements UserDetailsService, UsersSevice {
 
     //возможно определение на дублирование логина
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Users users = findByLogin(login);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Users users = findByLogin(username);
         if (users == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
         return new org.springframework.security.core.userdetails.User(users.getLogin(), users.getPassword(), getAuthority(users));
-        //return null;
     }
 
     private Set<SimpleGrantedAuthority> getAuthority(Users users) {
