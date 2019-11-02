@@ -9,9 +9,9 @@ import java.util.Objects;
 public class WalletEntity {
     private int idWallet;
     private int balance;
-    private Object walletStatus;
-    private Collection<CustomerEntity> customersByIdWallet;
-    private Collection<OrganisationEntity> organisationsByIdWallet;
+
+    @Enumerated(EnumType.STRING)
+    private WalletStatus walletStatus;
 
     @Id
     @Column(name = "id_wallet")
@@ -35,11 +35,11 @@ public class WalletEntity {
 
     @Basic
     @Column(name = "wallet_status")
-    public Object getWalletStatus() {
+    public WalletStatus getWalletStatus() {
         return walletStatus;
     }
 
-    public void setWalletStatus(Object walletStatus) {
+    public void setWalletStatus(WalletStatus walletStatus) {
         this.walletStatus = walletStatus;
     }
 
@@ -58,21 +58,9 @@ public class WalletEntity {
         return Objects.hash(idWallet, balance, walletStatus);
     }
 
-    @OneToMany(mappedBy = "walletByIdWallet")
-    public Collection<CustomerEntity> getCustomersByIdWallet() {
-        return customersByIdWallet;
-    }
-
-    public void setCustomersByIdWallet(Collection<CustomerEntity> customersByIdWallet) {
-        this.customersByIdWallet = customersByIdWallet;
-    }
-
-    @OneToMany(mappedBy = "walletByIdWallet")
-    public Collection<OrganisationEntity> getOrganisationsByIdWallet() {
-        return organisationsByIdWallet;
-    }
-
-    public void setOrganisationsByIdWallet(Collection<OrganisationEntity> organisationsByIdWallet) {
-        this.organisationsByIdWallet = organisationsByIdWallet;
+    public enum WalletStatus {
+        ACTIVE,
+        FROZEN,
+        BLOCKED
     }
 }

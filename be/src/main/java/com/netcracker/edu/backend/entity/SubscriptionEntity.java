@@ -8,7 +8,9 @@ import java.util.Objects;
 @Table(name = "subscription", schema = "charging_service", catalog = "")
 public class SubscriptionEntity {
     private int idSubscription;
-    private Object subscriptionStatus;
+
+    @Enumerated(EnumType.STRING)
+    private SubscriptionStatus subscriptionStatus;
     private Date dateOfSubscription;
     private CustomerEntity customerByIdCustomers;
     private ProductEntity productByIdProduct;
@@ -25,11 +27,11 @@ public class SubscriptionEntity {
 
     @Basic
     @Column(name = "subscription_status")
-    public Object getSubscriptionStatus() {
+    public SubscriptionStatus getSubscriptionStatus() {
         return subscriptionStatus;
     }
 
-    public void setSubscriptionStatus(Object subscriptionStatus) {
+    public void setSubscriptionStatus(SubscriptionStatus subscriptionStatus) {
         this.subscriptionStatus = subscriptionStatus;
     }
 
@@ -76,5 +78,11 @@ public class SubscriptionEntity {
 
     public void setProductByIdProduct(ProductEntity productByIdProduct) {
         this.productByIdProduct = productByIdProduct;
+    }
+
+    public enum SubscriptionStatus{
+        ACTIVE,
+        FROZEN,
+        BLOCKED
     }
 }

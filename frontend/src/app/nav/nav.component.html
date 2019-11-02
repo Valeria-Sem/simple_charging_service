@@ -25,8 +25,6 @@
         <button class="btn btn-outline-primary my-2 my-sn-0" (click)="openModal(template)">Log in</button>
 
         <ng-template #template>
-<!--          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">-->
-          <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title pull-left">Authorization</h4>
@@ -46,12 +44,11 @@
                   <input type="Password" name="form-control"  placeholder="Password" class="p-2">
                   <small id="passwordHelp" class="form-text text-muted">Password must be at least 8 characters</small>
                 </div>
+                <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 20px;">Login</button>
               </form>
             </div>
           </div>
             </div>
-          </div>
-<!--          </div>-->
         </ng-template>
 
       </form>

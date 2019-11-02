@@ -13,11 +13,8 @@ public class CustomerEntity {
     private String surname;
     private String eMail;
     private Date lastVisitDate;
-    private int idWallet;
-    private int idUsers;
     private WalletEntity walletByIdWallet;
     private UsersEntity usersByIdUsers;
-    private Collection<SubscriptionEntity> subscriptionsByIdCustomer;
 
     @Id
     @Column(name = "id_customer")
@@ -69,25 +66,6 @@ public class CustomerEntity {
         this.lastVisitDate = lastVisitDate;
     }
 
-    @Basic
-    @Column(name = "id_wallet")
-    public int getIdWallet() {
-        return idWallet;
-    }
-
-    public void setIdWallet(int idWallet) {
-        this.idWallet = idWallet;
-    }
-
-    @Basic
-    @Column(name = "id_users")
-    public int getIdUsers() {
-        return idUsers;
-    }
-
-    public void setIdUsers(int idUsers) {
-        this.idUsers = idUsers;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -95,8 +73,6 @@ public class CustomerEntity {
         if (o == null || getClass() != o.getClass()) return false;
         CustomerEntity that = (CustomerEntity) o;
         return idCustomer == that.idCustomer &&
-                idWallet == that.idWallet &&
-                idUsers == that.idUsers &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(surname, that.surname) &&
                 Objects.equals(eMail, that.eMail) &&
@@ -105,7 +81,7 @@ public class CustomerEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(idCustomer, name, surname, eMail, lastVisitDate, idWallet, idUsers);
+        return Objects.hash(idCustomer, name, surname, eMail, lastVisitDate);
     }
 
     @ManyToOne
@@ -128,12 +104,4 @@ public class CustomerEntity {
         this.usersByIdUsers = usersByIdUsers;
     }
 
-    @OneToMany(mappedBy = "customerByIdCustomers")
-    public Collection<SubscriptionEntity> getSubscriptionsByIdCustomer() {
-        return subscriptionsByIdCustomer;
-    }
-
-    public void setSubscriptionsByIdCustomer(Collection<SubscriptionEntity> subscriptionsByIdCustomer) {
-        this.subscriptionsByIdCustomer = subscriptionsByIdCustomer;
-    }
 }

@@ -9,7 +9,7 @@ import java.util.Objects;
 public class CategoryEntity {
     private int idCategory;
     private String name;
- //   private Collection<ProductEntity> productsByIdCategory;
+
 
     @Id
     @Column(name = "id_category")
@@ -44,13 +44,4 @@ public class CategoryEntity {
     public int hashCode() {
         return Objects.hash(idCategory, name);
     }
-
-//    @OneToMany(mappedBy = "categoryByIdCategory")
-//    public Collection<ProductEntity> getProductsByIdCategory() {
-//        return productsByIdCategory;
-//    }
-
-//    public void setProductsByIdCategory(Collection<ProductEntity> productsByIdCategory) {
-//        this.productsByIdCategory = productsByIdCategory;
-//    }
 }

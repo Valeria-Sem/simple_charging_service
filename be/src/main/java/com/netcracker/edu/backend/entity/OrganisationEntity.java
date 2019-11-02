@@ -8,15 +8,12 @@ import java.util.Objects;
 @Table(name = "organisation", schema = "charging_service", catalog = "")
 public class OrganisationEntity {
     private int idOrganisation;
-    private int idUsers;
-    private int idWallet;
     private String name;
     private String eMail;
     private String linkOfSite;
     private String phone;
     private UsersEntity usersByIdUsers;
     private WalletEntity walletByIdWallet;
-    private Collection<ProductEntity> productsByIdOrganisation;
 
     @Id
     @Column(name = "id_organisation")
@@ -26,26 +23,6 @@ public class OrganisationEntity {
 
     public void setIdOrganisation(int idOrganisation) {
         this.idOrganisation = idOrganisation;
-    }
-
-    @Basic
-    @Column(name = "id_users")
-    public int getIdUsers() {
-        return idUsers;
-    }
-
-    public void setIdUsers(int idUsers) {
-        this.idUsers = idUsers;
-    }
-
-    @Basic
-    @Column(name = "id_wallet")
-    public int getIdWallet() {
-        return idWallet;
-    }
-
-    public void setIdWallet(int idWallet) {
-        this.idWallet = idWallet;
     }
 
     @Basic
@@ -94,8 +71,6 @@ public class OrganisationEntity {
         if (o == null || getClass() != o.getClass()) return false;
         OrganisationEntity that = (OrganisationEntity) o;
         return idOrganisation == that.idOrganisation &&
-                idUsers == that.idUsers &&
-                idWallet == that.idWallet &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(eMail, that.eMail) &&
                 Objects.equals(linkOfSite, that.linkOfSite) &&
@@ -104,7 +79,7 @@ public class OrganisationEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(idOrganisation, idUsers, idWallet, name, eMail, linkOfSite, phone);
+        return Objects.hash(idOrganisation, name, eMail, linkOfSite, phone);
     }
 
     @ManyToOne
@@ -125,14 +100,5 @@ public class OrganisationEntity {
 
     public void setWalletByIdWallet(WalletEntity walletByIdWallet) {
         this.walletByIdWallet = walletByIdWallet;
-    }
-
-    @OneToMany(mappedBy = "organisationByIdOrganisation")
-    public Collection<ProductEntity> getProductsByIdOrganisation() {
-        return productsByIdOrganisation;
-    }
-
-    public void setProductsByIdOrganisation(Collection<ProductEntity> productsByIdOrganisation) {
-        this.productsByIdOrganisation = productsByIdOrganisation;
     }
 }
