@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.netcracker.edu</groupId>
-    <artifactId>edu-parent</artifactId>
+    <artifactId>charging_service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <dependencies>
         <dependency>
@@ -30,7 +30,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>be</module>
+        <module>backend</module>
         <module>fapi</module>
     </modules>
 </project>

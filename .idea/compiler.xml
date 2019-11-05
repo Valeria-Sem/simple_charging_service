@@ -12,7 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="backend" target="1.8" />
-      <module name="edu-parent" target="1.5" />
+      <module name="charging_service" target="1.5" />
       <module name="fapi" target="1.8" />
     </bytecodeTargetLevel>
   </component>
