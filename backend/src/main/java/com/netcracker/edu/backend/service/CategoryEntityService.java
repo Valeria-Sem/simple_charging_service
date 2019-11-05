@@ -4,9 +4,10 @@ import com.netcracker.edu.backend.entity.CategoryEntity;
 
 import java.util.Optional;
 
-public interface CaregoryEntitySevice {
+public interface CategoryEntityService {
 
     CategoryEntity saveCategory(CategoryEntity category);
-    Optional<CategoryEntity> getCategoryById(Long id);
-   // Interable<CategoryEntity> getAll
+    Optional<CategoryEntity> getCategoryById(Integer id);
+    Iterable<CategoryEntity> getAllCategory();
+    void deleteCategory(Integer id);
 }
