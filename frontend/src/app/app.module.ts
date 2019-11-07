@@ -14,6 +14,7 @@ import { NavComponent } from "./nav/nav.component";
 import {HomeComponent} from "./home/home.component";
 import { CarouselComponent } from "./carousel/carousel.component";
 import {CarouselModule} from "ngx-bootstrap";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 //import {UsersDetalisComponent} from "./modules/components/detalis/users-detalis";
 //import { ModalComponent } from "./modal/modal.component";
 
@@ -44,6 +45,8 @@ import {CarouselModule} from "ngx-bootstrap";
     ModalModule.forRoot(),
     routing,
     CarouselModule.forRoot(),
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot()
 
   ],
   providers: [],
