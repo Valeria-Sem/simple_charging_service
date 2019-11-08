@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
-    @Value("http://localhost:8080/")
+    @Value("http://localhost:8081/")
     private String backendServerUrl;
 
     @Override

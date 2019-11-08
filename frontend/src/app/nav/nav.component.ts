@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import { TemplateRef } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {Category} from "../nav/categories/category"
+import {CategoryService} from "../services/category.service";
 
 @Component({
   selector: 'app-nav',
@@ -10,6 +14,7 @@ import { TemplateRef } from '@angular/core';
 })
 // @Component({
 //   selector: 'app-modal',
+
 //   templateUrl: './nav.component.html'
 // })
 
@@ -27,8 +32,16 @@ import { TemplateRef } from '@angular/core';
 export class NavComponent implements OnInit {
   loaded : boolean ;
   modalRef: BsModalRef;
+  items : any;
 
-  constructor(private modalService: BsModalService) {
+  constructor(private modalService: BsModalService, categorySerevice : CategoryService) {
+
+    categorySerevice.getCategories().subscribe((data:any) => {
+      this.items = data
+      console.log("asdf" + this.items)
+    }, error => {
+      console.log("error: " + JSON.stringify(error))
+    });
   }
 
   openModal(template: TemplateRef<any>) {
@@ -40,23 +53,28 @@ export class NavComponent implements OnInit {
 
   }
 
-  items: string[] = [
-    'The first choice!',
-    'And another choice for you.',
-    'but wait! A third!'
-  ];
+  // items: string[] = [
+  //   'The first choice!',
+  //   'And another choice for you.',
+  //   'but wait! A third!'
+ // ];
 
   onHidden(): void {
     console.log('Dropdown is hidden');
   }
   onShown(): void {
     console.log('Dropdown is shown');
+
   }
   isOpenChange(): void {
     console.log('Dropdown state is changed');
   }
 
 }
+
+
+
+
 
 
 
