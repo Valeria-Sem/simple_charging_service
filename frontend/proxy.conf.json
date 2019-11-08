@@ -1,9 +1,9 @@
 {
-  "/api/*": {
+  "*": {
     "target": {
       "host": "localhost",
       "protocol": "http:",
-      "port": 4301
+      "port": 8081
     },
     "secure": false,
     "logLevel": "info"
