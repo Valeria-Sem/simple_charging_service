@@ -51,7 +51,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "scs:build",
-            "port": 8081
+            "port": 4301
           },
           "configurations": {
             "production": {
