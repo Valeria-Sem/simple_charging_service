@@ -1,5 +1,12 @@
-
 .modal.show .modal-dialog {
   background: none !important;
   box-shadow: none !important;
+}
+
+.dropdown-menu {
+  top: 55px !important;
+}
+
+.nav-item span {
+  position: relative;
 }

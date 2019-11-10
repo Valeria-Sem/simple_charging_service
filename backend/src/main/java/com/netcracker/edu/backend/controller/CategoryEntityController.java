@@ -22,6 +22,11 @@ public class CategoryEntityController {
         this.categoryEntityService = categoryEntityService;
     }
 
+    @RequestMapping(method = RequestMethod.GET)
+    public Iterable<CategoryEntity> getAllCategories() {
+        return categoryEntityService.getAllCategories();
+    }
+
     @RequestMapping (value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<CategoryEntity> getCategoryById(@PathVariable(name = "id") Integer id) {
         Optional<CategoryEntity> category = categoryEntityService.getCategoryById(id);

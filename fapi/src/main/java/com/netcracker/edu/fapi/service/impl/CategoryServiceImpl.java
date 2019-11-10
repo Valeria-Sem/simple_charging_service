@@ -30,6 +30,12 @@ public class CategoryServiceImpl implements CategoryService {
         return restTemplate.getForObject(backendServerUrl + "/api/category/" + id, CategoryViewModel.class);
     }
 
+//    @Override
+//    public CategoryViewModel getAllCategory(String[] category) {
+//        RestTemplate restTemplate = new RestTemplate();
+//        return restTemplate.getForObject(backendServerUrl + "/api/category/" + category, CategoryViewModel.class);
+//    }
+
     @Override
     public CategoryViewModel saveCategory(CategoryViewModel category) {
         RestTemplate restTemplate = new RestTemplate();

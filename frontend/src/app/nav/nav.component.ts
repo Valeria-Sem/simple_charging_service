@@ -1,6 +1,6 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
-import { TemplateRef } from '@angular/core';
+import {TemplateRef} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Category} from "../nav/categories/category"
@@ -30,26 +30,26 @@ import {CategoryService} from "../services/category.service";
 // }
 
 export class NavComponent implements OnInit {
-  loaded : boolean ;
+  loaded: boolean;
   modalRef: BsModalRef;
-  items : any;
+  categories: Category[];
 
-  constructor(private modalService: BsModalService, categorySerevice : CategoryService) {
-
-    categorySerevice.getCategories().subscribe((data:any) => {
-      this.items = data
-      console.log("asdf" + this.items)
-    }, error => {
-      console.log("error: " + JSON.stringify(error))
-    });
+  constructor(private modalService: BsModalService, private categoryService: CategoryService,
+              private cdr: ChangeDetectorRef) {
   }
 
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, Object.assign({}, { class: 'gray modal-sm' }));
+    this.modalRef = this.modalService.show(template, Object.assign({}, {class: 'gray modal-sm'}));
   }
 
   ngOnInit() {
-    this.loaded = true
+    this.loaded = true;
+    this.categoryService.getCategories().subscribe((data) => {
+      this.categories = data as Category[];
+      this.cdr.detectChanges();
+      // }, error => {
+      //   console.log("error: " + JSON.stringify(error))
+    });
 
   }
 
@@ -57,15 +57,17 @@ export class NavComponent implements OnInit {
   //   'The first choice!',
   //   'And another choice for you.',
   //   'but wait! A third!'
- // ];
+  // ];
 
   onHidden(): void {
     console.log('Dropdown is hidden');
   }
+
   onShown(): void {
     console.log('Dropdown is shown');
 
   }
+
   isOpenChange(): void {
     console.log('Dropdown state is changed');
   }

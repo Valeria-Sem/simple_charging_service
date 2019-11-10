@@ -4,7 +4,8 @@
     <a href="#" class="navbar-brand">
       <img src="assets\logo.png" wight="30" height="50" alt="logo">
     </a>
-    <button class="navbar-toggler" tupe="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" tupe="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -12,18 +13,18 @@
         <li class="nav-item active">
           <a href="#" class="nav-link">Home</a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item">
           <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
             <a href id="basic-link" dropdownToggle (click)="false" class="nav-link"
-              >Categories</a>
+            >Categories</a>
             <ul id="basic-link-dropdown" *dropdownMenu class="dropdown-menu"
                 role="menu" aria-labelledby="basic-link">
-              <li *ngFor="let choice of items">
-                  <a class="dropdown-item" href="#">{{choice}}</a>
+              <li *ngFor="let choice of categories">
+                  <a class="dropdown-item" href="#">{{choice.name}}</a>
               </li>
             </ul>
           </span>
-<!--          <p>{{items | json}}</p>-->
+          <!--          <p>{{items | json}}</p>-->
 
         </li>
         <li class="nav-item ">
@@ -35,34 +36,38 @@
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="p-1" type="text" name="form-control mr-sm-2" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 20px;">Search</button>
+        <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 20px;">Search
+        </button>
         <button class="btn btn-outline-primary my-2 my-sn-0" (click)="openModal(template)">Log in</button>
 
         <ng-template #template>
-            <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title pull-left">Authorization</h4>
-            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="container-fluid">
-              <form>
-                <div class="form-froup m-3">
-                  <label>E-mail addres*</label>
-                  <input type="E-mail" name="form-control"  aria-describdby="emailHelp" placeholder="test@gmail.com" class="p-2">
-                </div>
-                <div class="form-froup m-3" >
-                  <label >Password*</label>
-                  <input type="Password" name="form-control"  placeholder="Password" class="p-2">
-                  <small id="passwordHelp" class="form-text text-muted">Password must be at least 8 characters</small>
-                </div>
-                <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 20px;">Login</button>
-              </form>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title pull-left">Authorization</h4>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+                <form>
+                  <div class="form-froup m-3">
+                    <label>E-mail addres*</label>
+                    <input type="E-mail" name="form-control" aria-describdby="emailHelp" placeholder="test@gmail.com"
+                           class="p-2">
+                  </div>
+                  <div class="form-froup m-3">
+                    <label>Password*</label>
+                    <input type="Password" name="form-control" placeholder="Password" class="p-2">
+                    <small id="passwordHelp" class="form-text text-muted">Password must be at least 8 characters</small>
+                  </div>
+                  <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 20px;">
+                    Login
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
-            </div>
         </ng-template>
 
       </form>

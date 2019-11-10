@@ -7,6 +7,7 @@ import java.util.List;
 public interface CategoryService {
     List<CategoryViewModel> getAll();
     CategoryViewModel getCategoryById(Long id);
+   // CategoryViewModel getAllCategory(String category[]);
     CategoryViewModel saveCategory(CategoryViewModel category);
     void deleteCategory(Long id);
 }
