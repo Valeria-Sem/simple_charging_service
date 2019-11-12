@@ -9,8 +9,6 @@ import java.util.Objects;
 public class WalletEntity {
     private int idWallet;
     private int balance;
-
-    @Enumerated(EnumType.STRING)
     private WalletStatus walletStatus;
 
     @Id
@@ -34,6 +32,7 @@ public class WalletEntity {
     }
 
     @Basic
+    @Enumerated(EnumType.STRING)
     @Column(name = "wallet_status")
     public WalletStatus getWalletStatus() {
         return walletStatus;

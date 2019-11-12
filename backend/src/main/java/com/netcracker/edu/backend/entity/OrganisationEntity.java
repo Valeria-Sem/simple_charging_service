@@ -36,7 +36,7 @@ public class OrganisationEntity {
     }
 
     @Basic
-    @Column(name = "e-mail")
+    @Column(name = "email")
     public String geteMail() {
         return eMail;
     }

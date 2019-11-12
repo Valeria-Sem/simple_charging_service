@@ -1,7 +1,13 @@
 package com.netcracker.edu.backend.entity;
 
-import javax.persistence.*;
-import java.util.Collection;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.Table;
+//import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -10,8 +16,6 @@ public class UsersEntity {
     private int idUsers;
     private String login;
     private String password;
-
-    @Enumerated(EnumType.STRING)
     private UsersRole role;
 
     @Id
@@ -45,6 +49,7 @@ public class UsersEntity {
     }
 
     @Basic
+    @Enumerated(EnumType.STRING)
     @Column(name = "role")
     public UsersRole getRole() {
         return role;
@@ -75,4 +80,5 @@ public class UsersEntity {
         ORGANISATION,
         ADMIN
     }
+
 }
