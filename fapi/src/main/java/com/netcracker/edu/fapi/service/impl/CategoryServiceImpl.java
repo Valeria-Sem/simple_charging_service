@@ -21,7 +21,6 @@ public class CategoryServiceImpl implements CategoryService {
         RestTemplate restTemplate = new RestTemplate();
         CategoryViewModel[] categoryViewModelResponse = restTemplate.getForObject(backendServerUrl + "/api/category/", CategoryViewModel[].class);
         return categoryViewModelResponse == null? Collections.emptyList() : Arrays.asList(categoryViewModelResponse);
-    //categoryViewModelResponse == null? что это значит // CategoryViewModel.class
     }
 
     @Override
