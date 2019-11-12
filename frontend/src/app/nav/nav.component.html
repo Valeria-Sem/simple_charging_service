@@ -28,7 +28,15 @@
 
         </li>
         <li class="nav-item ">
-          <a href="#" class="nav-link">Organisation</a>
+          <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
+          <a href id="basic-link2" dropdownToggle (click)="false" class="nav-link">Organisation</a>
+            <ul id="basic-link2-dropdown" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="basic-link2">
+              <li *ngFor="let choice of organisations">
+                  <a class="dropdown-item" href="#">{{choice.name}}</a>
+              </li>
+            </ul>
+          </span>
         </li>
         <li class="nav-item ">
           <a href="#" class="nav-link">About us</a>

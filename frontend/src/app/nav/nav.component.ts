@@ -5,6 +5,8 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Category} from "../nav/categories/category"
 import {CategoryService} from "../services/category.service";
+import {Organisation} from "./organisations/organisation";
+import {OrganisationService} from "../services/organisation.service";
 
 @Component({
   selector: 'app-nav',
@@ -33,8 +35,9 @@ export class NavComponent implements OnInit {
   loaded: boolean;
   modalRef: BsModalRef;
   categories: Category[];
+  organisations: Organisation[];
 
-  constructor(private modalService: BsModalService, private categoryService: CategoryService,
+  constructor(private modalService: BsModalService, private organisationService: OrganisationService, private categoryService: CategoryService,
               private cdr: ChangeDetectorRef) {
   }
 
@@ -46,6 +49,13 @@ export class NavComponent implements OnInit {
     this.loaded = true;
     this.categoryService.getCategories().subscribe((data) => {
       this.categories = data as Category[];
+      this.cdr.detectChanges();
+      // }, error => {
+      //   console.log("error: " + JSON.stringify(error))
+    });
+
+    this.organisationService.getOrganisation().subscribe((data) => {
+      this.organisations = data as Organisation[];
       this.cdr.detectChanges();
       // }, error => {
       //   console.log("error: " + JSON.stringify(error))
