@@ -12,6 +12,6 @@ export class OrganisationService {
 
   getOrganisation(): Observable<Organisation[]>{
 //    console.log("sdfsadgd")
-    return this.http.get<Organisation[]>('http://localhost:8081/api/organisation')
+    return this.http.get<Organisation[]>('/api/organisation')
   }
 }
