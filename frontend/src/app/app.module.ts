@@ -3,7 +3,7 @@ import { NgModule } from "@angular/core";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { TooltipModule } from "ngx-bootstrap/tooltip";
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { FormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { routing } from './app.routing';
 
 import { AppComponent } from "./app.component";
@@ -13,7 +13,7 @@ import {RouterModule, Routes} from "@angular/router";
 import { NavComponent } from "./nav/nav.component";
 import {HomeComponent} from "./home/home.component";
 import { CarouselComponent } from "./carousel/carousel.component";
-import {CarouselModule} from "ngx-bootstrap";
+import {ButtonsModule, CarouselModule} from "ngx-bootstrap";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AboutComponent} from "./about/about.component";
 //import {UsersDetalisComponent} from "./modules/components/detalis/users-detalis";
@@ -48,7 +48,9 @@ import {AboutComponent} from "./about/about.component";
     routing,
     CarouselModule.forRoot(),
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ReactiveFormsModule,
+    ButtonsModule.forRoot()
 
   ],
   providers: [],

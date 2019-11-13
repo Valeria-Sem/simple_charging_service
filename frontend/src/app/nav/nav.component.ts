@@ -7,6 +7,7 @@ import {Category} from "../nav/categories/category"
 import {CategoryService} from "../services/category.service";
 import {Organisation} from "./organisations/organisation";
 import {OrganisationService} from "../services/organisation.service";
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-nav',
@@ -14,36 +15,35 @@ import {OrganisationService} from "../services/organisation.service";
   styleUrls: ['./nav.component.css'],
 
 })
-// @Component({
-//   selector: 'app-modal',
-
-//   templateUrl: './nav.component.html'
-// })
-
-// export class ModalComponent {
-//   modalRef: BsModalRef;
-//
-//   constructor(private modalService: BsModalService) {
-//   }
-//
-//   openModal(template: TemplateRef<any>) {
-//     this.modalRef = this.modalService.show(template);
-//   }
-// }
 
 export class NavComponent implements OnInit {
   loaded: boolean;
-  modalRef: BsModalRef;
+  modalRef: BsModalRef | null;
+  modalRef2: BsModalRef;
   categories: Category[];
   organisations: Organisation[];
+  myForm: FormGroup;
 
   constructor(private modalService: BsModalService, private organisationService: OrganisationService, private categoryService: CategoryService,
-              private cdr: ChangeDetectorRef) {
+              private cdr: ChangeDetectorRef, private formBuilder: FormBuilder) {
   }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, Object.assign({}, {class: 'gray modal-sm'}));
   }
+
+  openModal2(template: TemplateRef<any>) {
+    this.modalRef2 = this.modalService.show(template, { class: 'second' });
+  }
+
+  // closeFirstModal() {
+  //   if (!this.modalRef) {
+  //     return;
+  //   }
+  //
+  //   this.modalRef.hide();
+  //   this.modalRef = null;
+  // }
 
   ngOnInit() {
     this.loaded = true;
@@ -59,6 +59,10 @@ export class NavComponent implements OnInit {
       this.cdr.detectChanges();
       // }, error => {
       //   console.log("error: " + JSON.stringify(error))
+    });
+
+    this.myForm = this.formBuilder.group({
+      radio: ''
     });
 
   }
