@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 //import { AuthGuard } from './interceptors'
 
 import { HomeComponent } from './home/home.component';
+import {AboutComponent} from "./about/about.component";
 //import { ContactComponent } from './contact/contact.component'
 // import { CompanyListComponent } from './companies/company-list/company-list.component';
 // import { CompanyDetailComponent } from './companies/company-detail/company-detail.component';
@@ -24,6 +25,7 @@ import { HomeComponent } from './home/home.component';
 
 const appRoutes : Routes = [
   { path: '', component: HomeComponent }
+  ,{path: 'about', component: AboutComponent}
 //   , { path: 'signup', component: SignupComponent }
 // //  , { path: 'contact', component: ContactComponent }
 //   , { path: 'company/list' , component: CompanyListComponent }

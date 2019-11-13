@@ -15,6 +15,7 @@ import {HomeComponent} from "./home/home.component";
 import { CarouselComponent } from "./carousel/carousel.component";
 import {CarouselModule} from "ngx-bootstrap";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AboutComponent} from "./about/about.component";
 //import {UsersDetalisComponent} from "./modules/components/detalis/users-detalis";
 //import { ModalComponent } from "./modal/modal.component";
 
@@ -32,6 +33,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     NavComponent,
     HomeComponent,
     CarouselComponent,
+    AboutComponent
     //  UsersDetalisComponent
     //ModalComponent
   ],
