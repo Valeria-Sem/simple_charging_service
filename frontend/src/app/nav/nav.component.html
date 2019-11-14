@@ -48,6 +48,7 @@
         </button>
         <button class="btn btn-outline-primary my-2 my-sn-0" (click)="openModal(template)">Log in</button>
 
+
         <ng-template #template>
           <div class="modal-content" >
             <div class="modal-header" >
@@ -62,16 +63,21 @@
                   <div class="form-froup m-3">
                     <label>E-mail addres*</label>
                     <input type="E-mail" name="form-control" aria-describdby="emailHelp" placeholder="test@gmail.com"
-                           class="p-2">
+                           class="p-2" formControlName="userLogin" #login>
+<!--                    formControlName="userLogin" #login-->
                   </div>
                   <div class="form-froup m-3">
                     <label>Password*</label>
-                    <input type="Password" name="form-control" placeholder="Password" class="p-2">
+                    <input type="Password" name="form-control" placeholder="Password" class="p-2" formControlName="userPassword" #password >
+<!--                    formControlName="userPassword" #password-->
                     <small id="passwordHelp" class="form-text text-muted">Password must be at least 8 characters</small>
                   </div>
-                  <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 80px;">
+                  <a routerLink="/">
+                  <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 80px;" (click)="getUserByLogin(login.value)"   >
+<!--                    (click)="getUserByLogin(login.value)" [disabled]="loginForm.invalid"-->
                     Login
                   </button>
+                    </a>
                 </form>
                 <a href="#" class="visited-link" style="margin-left: 40px" (click)="openModal2(templateNested)">Register a new profile</a>
               </div>

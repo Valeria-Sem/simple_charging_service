@@ -2,12 +2,14 @@ import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {TemplateRef} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {Category} from "../nav/categories/category"
 import {CategoryService} from "../services/category.service";
 import {Organisation} from "./organisations/organisation";
 import {OrganisationService} from "../services/organisation.service";
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {UserService} from "../services/user.service";
+import {User} from "./user/user";
 
 @Component({
   selector: 'app-nav',
@@ -23,9 +25,13 @@ export class NavComponent implements OnInit {
   categories: Category[];
   organisations: Organisation[];
   myForm: FormGroup;
+  private subscriptions: Subscription[] = [];
+  // private login: string;
+  loginForm: FormGroup;
 
   constructor(private modalService: BsModalService, private organisationService: OrganisationService, private categoryService: CategoryService,
-              private cdr: ChangeDetectorRef, private formBuilder: FormBuilder) {
+              private cdr: ChangeDetectorRef, private formBuilder: FormBuilder, private userService: UserService) {
+    //private userService: UserService
   }
 
   openModal(template: TemplateRef<any>) {
@@ -65,13 +71,18 @@ export class NavComponent implements OnInit {
       radio: ''
     });
 
+    this.loginForm = new FormGroup({
+      "userLogin": new FormControl("", [Validators.required, Validators.pattern("[a-zA-Z_.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}")]),
+      "userPassword": new FormControl("", Validators.required)
+    });
+
   }
 
-  // items: string[] = [
-  //   'The first choice!',
-  //   'And another choice for you.',
-  //   'but wait! A third!'
-  // ];
+  public getUserByLogin(login): void {
+    this.subscriptions.push(this.userService.getUserByLogin(login).subscribe(user => {
+      this.userService.currentUser = user as User;
+    }));
+  }
 
   onHidden(): void {
     console.log('Dropdown is hidden');
