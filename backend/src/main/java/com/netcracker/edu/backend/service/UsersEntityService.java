@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UsersEntityService {
 
-    List<UsersEntity> findAll();
+    Iterable<UsersEntity> getAllUsers();
     UsersEntity findByLogin(String login);
     UsersEntity save(UsersEntity usersEntity);
     void delete(long id);

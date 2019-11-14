@@ -9,4 +9,5 @@ public interface UsersSevice {
     Users findByLogin(String login);
     List<Users> findAll();
     Users save(Users user);
+    void deleteUser(Integer id);
 }

@@ -34,7 +34,7 @@ public class OrganisationController {
     }
 
     @RequestMapping(value = "/{id}")
-    public ResponseEntity<Organisation> getAllOrganisations(@PathVariable String id) throws InterruptedException {
+    public ResponseEntity<Organisation> getOrganisationById(@PathVariable String id) throws InterruptedException {
         Long organisationId = Long.valueOf(id);
         return ResponseEntity.ok(organisationService.getOrganisationById(organisationId));
     }

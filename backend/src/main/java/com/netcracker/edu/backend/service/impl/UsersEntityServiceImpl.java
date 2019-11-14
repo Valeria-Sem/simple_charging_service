@@ -15,8 +15,8 @@ public class UsersEntityServiceImpl implements UsersEntityService {
     private UsersEntityRepository usersEntityRepository;
 
     @Override
-    public List<UsersEntity> findAll() {
-        return (List<UsersEntity>) usersEntityRepository;
+    public Iterable<UsersEntity> getAllUsers() {
+        return usersEntityRepository.findAll();
     }
 
     @Override

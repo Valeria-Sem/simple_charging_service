@@ -21,8 +21,8 @@ public class UsersEntityController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<UsersEntity> getAllUsers(){
-        return usersEntityService.findAll();
+    public Iterable<UsersEntity> getAllUsers(){
+        return usersEntityService.getAllUsers();
     }
 
     @RequestMapping(method = RequestMethod.POST)
