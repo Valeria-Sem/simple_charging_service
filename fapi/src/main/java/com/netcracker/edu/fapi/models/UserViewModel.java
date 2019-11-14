@@ -3,17 +3,17 @@ package com.netcracker.edu.fapi.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Users {
+public class UserViewModel {
 
     private long id;
     private String login;
     private String password;
     private String role;
 
-    public Users() {
+    public UserViewModel() {
     }
 
-    public Users(long id, String login, String password, String role) {
+    public UserViewModel(long id, String login, String password, String role) {
         this.id = id;
         this.login = login;
         this.password = password;
