@@ -19,6 +19,7 @@ import {AboutComponent} from "./about/about.component";
 import {User} from "./nav/user/user";
 import {UserRegComponent} from "./registration/userReg/user.registration.component";
 import {OrganisationRegComponent} from "./registration/organisationReg/org.registration.component";
+import {FooterComponent} from "./footer/footer.component";
 
 
 
@@ -37,7 +38,8 @@ import {OrganisationRegComponent} from "./registration/organisationReg/org.regis
     CarouselComponent,
     AboutComponent,
     UserRegComponent,
-    OrganisationRegComponent
+    OrganisationRegComponent,
+    FooterComponent
     //  UsersDetalisComponent
     //ModalComponent
   ],
