@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import {AboutComponent} from "./about/about.component";
+import {UserRegComponent} from "./registration/userReg/user.registration.component";
 //import { ContactComponent } from './contact/contact.component'
 // import { CompanyListComponent } from './companies/company-list/company-list.component';
 // import { CompanyDetailComponent } from './companies/company-detail/company-detail.component';
@@ -26,6 +27,7 @@ import {AboutComponent} from "./about/about.component";
 const appRoutes : Routes = [
   { path: '', component: HomeComponent }
   ,{path: 'about', component: AboutComponent}
+  ,{path: 'userReg', component: UserRegComponent}
 //   , { path: 'signup', component: SignupComponent }
 // //  , { path: 'contact', component: ContactComponent }
 //   , { path: 'company/list' , component: CompanyListComponent }

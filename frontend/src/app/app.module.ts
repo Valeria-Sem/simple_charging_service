@@ -17,6 +17,8 @@ import {ButtonsModule, CarouselModule} from "ngx-bootstrap";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AboutComponent} from "./about/about.component";
 import {User} from "./nav/user/user";
+import {UserRegComponent} from "./registration/userReg/user.registration.component";
+import {OrganisationRegComponent} from "./registration/organisationReg/org.registration.component";
 
 
 
@@ -33,7 +35,9 @@ import {User} from "./nav/user/user";
     NavComponent,
     HomeComponent,
     CarouselComponent,
-    AboutComponent
+    AboutComponent,
+    UserRegComponent,
+    OrganisationRegComponent
     //  UsersDetalisComponent
     //ModalComponent
   ],
