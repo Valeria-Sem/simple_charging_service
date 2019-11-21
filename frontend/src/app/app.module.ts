@@ -20,6 +20,7 @@ import {User} from "./nav/user/user";
 import {UserRegComponent} from "./registration/userReg/user.registration.component";
 import {OrganisationRegComponent} from "./registration/organisationReg/org.registration.component";
 import {FooterComponent} from "./footer/footer.component";
+import {FilmsComponent} from "./categories/films/films.component";
 
 
 
@@ -39,7 +40,8 @@ import {FooterComponent} from "./footer/footer.component";
     AboutComponent,
     UserRegComponent,
     OrganisationRegComponent,
-    FooterComponent
+    FooterComponent,
+    FilmsComponent
     //  UsersDetalisComponent
     //ModalComponent
   ],

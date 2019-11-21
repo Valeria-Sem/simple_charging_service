@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import {AboutComponent} from "./about/about.component";
 import {UserRegComponent} from "./registration/userReg/user.registration.component";
+import {FilmsComponent} from "./categories/films/films.component";
 //import { ContactComponent } from './contact/contact.component'
 // import { CompanyListComponent } from './companies/company-list/company-list.component';
 // import { CompanyDetailComponent } from './companies/company-detail/company-detail.component';
@@ -28,19 +29,7 @@ const appRoutes : Routes = [
   { path: '', component: HomeComponent }
   ,{path: 'about', component: AboutComponent}
   ,{path: 'userReg', component: UserRegComponent}
-//   , { path: 'signup', component: SignupComponent }
-// //  , { path: 'contact', component: ContactComponent }
-//   , { path: 'company/list' , component: CompanyListComponent }
-//   , { path: 'company/register' , component: CompanyRegisterComponent }
-//   , { path: 'company/:id', component: CompanyProfileComponent }
-//   , { path: 'company/:id/bonus/:bid', component: BonusComponent }
-//   , { path: 'account/balance', component: AccountBalanceComponent }
-//   , { path: 'account/list' , component: UserListComponent }
-//   , { path: 'account/edit' , component: UserEditComponent }
-//   , { path: 'account/:id'  , component: UserProfileComponent }
-//   , { path: 'forgot', component: ForgotComponent }
-//   , { path: 'reset/:token', component: ResetComponent }
-//   , { path: 'login' , component: LoginComponent }
+  ,{path: 'films', component: FilmsComponent}
 ];
 
 export const routing : ModuleWithProviders = RouterModule.forRoot(appRoutes);
