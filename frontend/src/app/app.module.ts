@@ -21,6 +21,7 @@ import {UserRegComponent} from "./registration/userReg/user.registration.compone
 import {OrganisationRegComponent} from "./registration/organisationReg/org.registration.component";
 import {FooterComponent} from "./footer/footer.component";
 import {FilmsComponent} from "./categories/films/films.component";
+import {AppsComponent} from "./categories/apps/apps.component";
 
 
 
@@ -41,7 +42,8 @@ import {FilmsComponent} from "./categories/films/films.component";
     UserRegComponent,
     OrganisationRegComponent,
     FooterComponent,
-    FilmsComponent
+    FilmsComponent,
+    AppsComponent
     //  UsersDetalisComponent
     //ModalComponent
   ],
