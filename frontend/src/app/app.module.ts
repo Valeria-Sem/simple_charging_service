@@ -23,6 +23,7 @@ import {FooterComponent} from "./footer/footer.component";
 import {FilmsComponent} from "./categories/films/films.component";
 import {AppsComponent} from "./categories/apps/apps.component";
 import {GamesComponent} from "./categories/games/game.component";
+import {MusicComponent} from "./categories/music/music.component";
 
 
 
@@ -45,9 +46,8 @@ import {GamesComponent} from "./categories/games/game.component";
     FooterComponent,
     FilmsComponent,
     AppsComponent,
-    GamesComponent
-    //  UsersDetalisComponent
-    //ModalComponent
+    GamesComponent,
+    MusicComponent
   ],
   imports: [
     BrowserModule,

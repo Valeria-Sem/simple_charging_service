@@ -7,6 +7,7 @@ import {UserRegComponent} from "./registration/userReg/user.registration.compone
 import {FilmsComponent} from "./categories/films/films.component";
 import {AppsComponent} from "./categories/apps/apps.component";
 import {GamesComponent} from "./categories/games/game.component";
+import {MusicComponent} from "./categories/music/music.component";
 
 
 
@@ -17,6 +18,7 @@ const appRoutes : Routes = [
   ,{path: 'films', component: FilmsComponent}
   ,{path: 'app', component: AppsComponent}
   ,{path: 'games', component: GamesComponent}
+  ,{path: 'music', component: MusicComponent}
 ];
 
 export const routing : ModuleWithProviders = RouterModule.forRoot(appRoutes);
