@@ -24,6 +24,7 @@ import {FilmsComponent} from "./categories/films/films.component";
 import {AppsComponent} from "./categories/apps/apps.component";
 import {GamesComponent} from "./categories/games/game.component";
 import {MusicComponent} from "./categories/music/music.component";
+import {SitesComponent} from "./categories/sites/sites.component";
 
 
 
@@ -47,7 +48,8 @@ import {MusicComponent} from "./categories/music/music.component";
     FilmsComponent,
     AppsComponent,
     GamesComponent,
-    MusicComponent
+    MusicComponent,
+    SitesComponent
   ],
   imports: [
     BrowserModule,

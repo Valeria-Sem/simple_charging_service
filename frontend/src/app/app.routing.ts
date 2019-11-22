@@ -8,6 +8,7 @@ import {FilmsComponent} from "./categories/films/films.component";
 import {AppsComponent} from "./categories/apps/apps.component";
 import {GamesComponent} from "./categories/games/game.component";
 import {MusicComponent} from "./categories/music/music.component";
+import {SitesComponent} from "./categories/sites/sites.component";
 
 
 
@@ -19,6 +20,7 @@ const appRoutes : Routes = [
   ,{path: 'app', component: AppsComponent}
   ,{path: 'games', component: GamesComponent}
   ,{path: 'music', component: MusicComponent}
+  ,{path: 'sites', component: SitesComponent}
 ];
 
 export const routing : ModuleWithProviders = RouterModule.forRoot(appRoutes);
