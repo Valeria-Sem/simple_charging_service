@@ -28,9 +28,14 @@ export class NavComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   // private login: string;
   loginForm: FormGroup;
+  user$ = this.userService.currentUser$;
 
-  constructor(private modalService: BsModalService, private organisationService: OrganisationService, private categoryService: CategoryService,
-              private cdr: ChangeDetectorRef, private formBuilder: FormBuilder, private userService: UserService) {
+  constructor(private modalService: BsModalService,
+              private organisationService: OrganisationService,
+              private categoryService: CategoryService,
+              private cdr: ChangeDetectorRef,
+              private formBuilder: FormBuilder,
+              private userService: UserService) {
     //private userService: UserService
   }
 
@@ -39,7 +44,8 @@ export class NavComponent implements OnInit {
   }
 
   openModal2(template: TemplateRef<any>) {
-    this.modalRef2 = this.modalService.show(template, { class: 'second' });
+    this.modalRef.hide();
+    this.modalRef2 = this.modalService.show(template, {class: 'second'});
   }
 
   // closeFirstModal() {
@@ -75,13 +81,17 @@ export class NavComponent implements OnInit {
       "userLogin": new FormControl("", [Validators.required, Validators.pattern("[a-zA-Z_.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}")]),
       "userPassword": new FormControl("", Validators.required)
     });
-
   }
 
   public getUserByLogin(login): void {
-    this.subscriptions.push(this.userService.getUserByLogin(login).subscribe(user => {
-      this.userService.currentUser = user as User;
-    }));
+    this.subscriptions.push(
+      this.userService.getUserByLogin(login)
+        .subscribe(() => {
+            // this.userService.currentUser = user as User;
+            this.modalRef.hide();
+          }
+        )
+    );
   }
 
   onHidden(): void {

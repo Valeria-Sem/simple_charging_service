@@ -1,14 +1,19 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {User} from "../nav/user/user";
+import {tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  public currentUser: User = null;
+  // public currentUser: User = null;
+
+  private subjectUser: Subject<User> = new Subject();
+
+  public currentUser$ = this.subjectUser.asObservable();
 
   constructor(private http: HttpClient) {
   }
@@ -18,7 +23,9 @@ export class UserService {
   // }
 
   getUserByLogin(login: string): Observable<User> {
-    return this.http.get<User>('/api/user/login/' + login);
+    return this.http.get<User>('/api/user/login/' + login).pipe(
+      tap(user => this.subjectUser.next(user))
+    );
   }
 
   // getAllUsers(): Observable<User[]> {
