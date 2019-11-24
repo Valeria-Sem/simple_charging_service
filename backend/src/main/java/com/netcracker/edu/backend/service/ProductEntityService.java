@@ -8,6 +8,7 @@ public interface ProductEntityService {
 
     ProductEntity saveProduct(ProductEntity product);
     Optional<ProductEntity> getProductById(Integer id);
+    Optional<ProductEntity> getProductByCategory(Integer idCategory);
     Iterable<ProductEntity> getAllProducts();
     void deleteProduct(Integer id);
 }
