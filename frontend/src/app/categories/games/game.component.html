@@ -12,16 +12,14 @@
       <div class="col col-lg-4">
         <div class="card text-center">
           <img src="assets\img\games\1.jpg" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $15
+          <div class="card-body" *ngFor="let choice of products">
+            <h1 class="card-title pricing-card-title" >
+              ${{choice.monthPrise}}
               <small class="text-muted">/ mo</small>
             </h1>
-            <h4 class="card-title">Asphalt 9: Legends</h4>
+            <h4 class="card-title">{{choice.name}}</h4>
             <p class="card-text">
-              Asphalt 9: Legends is a racing game developed by
-              Gameloft Barcelona and publisher of Gameloft. She
-              became the ninth in a series of Asphalt games.
+              {{choice.description}}
             </p>
             <a class="btn btn-outline-primary">Get started</a>
           </div>
@@ -41,7 +39,7 @@
               developed by Moon Studios and published by Microsoft
               Studios for the Windows and Xbox One platforms.
             </p>
-            <a class="btn btn-outline-primary" routerLink="/films">Get started</a>
+            <a class="btn btn-outline-primary">Get started</a>
           </div>
         </div>
       </div>

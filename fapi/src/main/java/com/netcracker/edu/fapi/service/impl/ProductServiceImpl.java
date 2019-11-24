@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    @Value("http://localhost:8080/")
+    @Value("http://localhost:8080")
     private String backendServerUrl;
 
     @Override

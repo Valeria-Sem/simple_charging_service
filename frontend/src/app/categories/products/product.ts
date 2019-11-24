@@ -1,22 +1,23 @@
 export class Product {
   id: string;
-  id_category: string;
+  idCategory: string;
   description: string;
-  id_organisation: string;
-  month_price: string;
+  idOrganisation: string;
+  monthPrise: string;
   name: string;
 
 
   static cloneBase(product: Product): Product{
-    const cloneCategory: Product = new Product();
-    cloneCategory.id = product.id;
-    cloneCategory.name = product.name;
-    cloneCategory.id_category = product.id_category;
-    cloneCategory.description = product.description;
-    cloneCategory.id_organisation = product.id_organisation;
-    cloneCategory.month_price = product.month_price;
-    return cloneCategory;
+    const cloneProduct: Product = new Product();
+    cloneProduct.id = product.id;
+    cloneProduct.name = product.name;
+    cloneProduct.idCategory = product.idCategory;
+    cloneProduct.description = product.description;
+    cloneProduct.idOrganisation = product.idOrganisation;
+    cloneProduct.monthPrise = product.monthPrise;
+    return cloneProduct;
   }
+
 }
 
 export class ProductStr{
