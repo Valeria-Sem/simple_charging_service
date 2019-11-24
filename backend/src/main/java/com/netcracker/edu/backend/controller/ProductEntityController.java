@@ -37,13 +37,9 @@ public class ProductEntityController {
         }
     }
     @RequestMapping(value = "/category/{idCategory}", method = RequestMethod.GET)
-    public ResponseEntity<ProductEntity> getProductByCategory(@PathVariable(name ="idCategory") Integer idCategory) {
-        Optional<ProductEntity> product = productEntityService.getProductByCategory(idCategory);
-        if (product.isPresent()) {
-            return ResponseEntity.ok(product.get());
-        } else {
-            return  ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<ProductEntity> getUsersByLogin(@PathVariable(name = "idCategory") int idCategory) {
+        ProductEntity usersEntity = productEntityService.getProductByCategory(idCategory);
+        return ResponseEntity.ok(usersEntity);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

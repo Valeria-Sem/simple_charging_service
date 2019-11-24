@@ -27,8 +27,8 @@ public class ProductEntityServiceImpl implements ProductEntityService {
     }
 
     @Override
-    public Optional<ProductEntity> getProductByCategory(Integer idCategory) {
-        return repository.findById(idCategory);
+    public ProductEntity getProductByCategory(Integer idCategory) {
+        return repository.findByIdCategory(idCategory);
     }
 
     @Override
