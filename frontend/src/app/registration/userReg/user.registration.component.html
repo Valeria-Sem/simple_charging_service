@@ -1,16 +1,25 @@
 <div class="container">
   <form>
     <h1 class="h3 mb-3 font-weight-normal">Registration</h1>
+
+    <label for="inputEmail" class="sr-only">Name</label>
+    <input type="email" id="inputName" class="form-control" placeholder="Name" required autofocus>
+
+    <label for="inputEmail" class="sr-only">Surname</label>
+    <input type="email" id="inputSurname" class="form-control" placeholder="Surname" required>
+
     <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+
+    <label for="inputEmail" class="sr-only">Login</label>
+    <input type="email" id="inputLogin" class="form-control" placeholder="Login" required>
+
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
   </form>
 </div>
+
+<app-footer></app-footer>

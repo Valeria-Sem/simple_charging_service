@@ -109,12 +109,12 @@
                     </button>
                   </a>
                 </form>
-                <a href="#"
-                   class="visited-link"
+<!--                //todo style and cursor pointer, and hide modal-->
+                <span class="link"
                    style="margin-left: 40px"
                    (click)="openModal2(templateNested)">
                   Register a new profile
-                </a>
+                </span>
               </div>
             </div>
           </div>
@@ -140,17 +140,17 @@
                       <div class="form-group">
                         <div class="btn-group" btnRadioGroup formControlName="radio">
                           <label btnRadio="A" class="btn btn-primary"
-                                 tabindex="0" role="button">Organisation</label>
+                                 tabindex="0" role="button" routerLink="/orgReg" >Organisation</label>
                           <label btnRadio="B" class="btn btn-primary"
-                                 tabindex="0" role="button">Customer</label>
+                                 tabindex="0" role="button" routerLink="/userReg">Customer</label>
                         </div>
                       </div>
                     </form>
                   </div>
-                  <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 100px;"
-                          routerLink="/userReg">
-                    Next
-                  </button>
+<!--                  <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 100px;"-->
+<!--                          routerLink="/userReg">-->
+<!--                    Next-->
+<!--                  </button>-->
                 </form>
               </div>
             </div>

@@ -9,6 +9,7 @@ import {AppsComponent} from "./categories/apps/apps.component";
 import {GamesComponent} from "./categories/games/game.component";
 import {MusicComponent} from "./categories/music/music.component";
 import {SitesComponent} from "./categories/sites/sites.component";
+import {OrganisationRegComponent} from "./registration/organisationReg/org.registration.component";
 
 
 
@@ -16,6 +17,7 @@ const appRoutes : Routes = [
   { path: '', component: HomeComponent }
   ,{path: 'about', component: AboutComponent}
   ,{path: 'userReg', component: UserRegComponent}
+  ,{path: 'orgReg', component: OrganisationRegComponent}
   ,{path: 'films', component: FilmsComponent}
   ,{path: 'app', component: AppsComponent}
   ,{path: 'games', component: GamesComponent}
