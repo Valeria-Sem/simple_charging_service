@@ -16,7 +16,7 @@ export class GamesComponent {
               private cdr: ChangeDetectorRef,) {}
 
   ngOnInit(){
-    this.productService.getProducts().subscribe((data) => {
+    this.productService.getProductsByIdCategory('3').subscribe((data) => {
       // if (this.product.id_Category = 3)
       this.products = data as Product[];
       this.cdr.detectChanges();

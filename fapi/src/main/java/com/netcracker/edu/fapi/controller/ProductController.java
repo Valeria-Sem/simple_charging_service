@@ -27,7 +27,7 @@ public class ProductController {
         }
         return null;
     }
-
+//todo add delete to request
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteProduct(@PathVariable String id) {
         productService.deleteProduct(Long.valueOf(id));
@@ -37,5 +37,17 @@ public class ProductController {
     public ResponseEntity<Product> getProductById(@PathVariable String id) throws InterruptedException {
         Long productId = Long.valueOf(id);
         return ResponseEntity.ok(productService.getProductById(productId));
+    }
+
+//    @RequestMapping(value = "/category/{idCategory}")
+//    public ResponseEntity<Product> getProductByIdCategory(@PathVariable String idCategory) throws InterruptedException {
+//        Long productIdCategory = Long.valueOf(idCategory);
+//        return ResponseEntity.ok(productService.getProductByIdCategory(productIdCategory));
+//    }
+
+    @RequestMapping(value = "/category/{idCategory}")
+    public Product[] getProductByIdCategory(@PathVariable String idCategory) throws InterruptedException {
+        Long productIdCategory = Long.valueOf(idCategory);
+        return productService.getProductByIdCategory(productIdCategory);
     }
 }

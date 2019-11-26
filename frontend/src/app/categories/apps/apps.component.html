@@ -1,8 +1,7 @@
 <div class="pricing-header px-3 py-3 pt-md-5 p-md-4 mx-auto text-center">
   <h1 class="display-4">App</h1>
   <p class="lead">
-    "
-    Various app subscriptions are provided here.
+    "Various app subscriptions are provided here.
     You can find an application that you like and buy a subscription to it."
   </p>
 </div>
@@ -10,118 +9,17 @@
 <div class="container-fluid mt-5" style="background-color: #eeeeee">
   <div class="container p-5">
     <div class="row justify-content-center">
-      <div class="col col-lg-4">
-        <div class="card text-center">
-          <img src="assets\img\app\1.jpg" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $15
-              <small class="text-muted">/ mo</small>
-            </h1>
-            <h4 class="card-title">Instagram</h4>
-            <p class="card-text">
-              Instagram is an application for sharing photos and
-              videos with elements of a social network that allows
-              you to take photos and videos, apply filters to them,
-              and distribute them through your service and a number
-              of other social networks.
-            </p>
-            <a class="btn btn-outline-primary">Get started</a>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-4">
-        <div class="card text-center">
-          <img src="assets\img\app\2.jpg" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $30
-              <small class="text-muted">/ mo</small>
-            </h1>
-            <h4 class="card-title">Wattpad</h4>
-            <p class="card-text">
-              Wattpad is an online community for writers and readers
-              in which users can post articles, stories, fanfiction,
-              poems, and novels online or through the Wattpad app.
-              In addition to the permanent archive of the Internet library,
-              new works are regularly added.
-            </p>
-            <a class="btn btn-outline-primary">Get started</a>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-4">
-        <div class="card text-center">
-          <img src="assets\img\app\6.png" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $10
-              <small class="text-muted">/ mo</small>
-            </h1>
-            <h4 class="card-title">Snapchat</h4>
-            <p class="card-text">
-              Snapchat is a mobile messaging app with attached photos
-              and videos. Created by Evan Spiegel, Bobby Murphy and
-              Reggie Brown while studying at Stanford University.
-              You can only see the last snap again
-              and only once every 24 hours.
-            </p>
-            <a class="btn btn-outline-primary">Get started</a>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-4">
+      <div class="col col-lg-4" *ngFor="let choice of products">
         <div class="card text-center mt-5">
-          <img src="assets\img\app\4.jpg" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $9
+          <img src={{choice.img}} alt="" class="card-img-top">
+          <div class="card-body" >
+            <h1 class="card-title pricing-card-title" >
+              ${{choice.monthPrise}}
               <small class="text-muted">/ mo</small>
             </h1>
-            <h4 class="card-title">SoloLearn</h4>
+            <h4 class="card-title">{{choice.name}}</h4>
             <p class="card-text">
-              SoloLearn is the largest collection of FREE programming
-              study materials for beginners and professionals! Thousands
-              of aspects of programming will help you learn the basics,
-              hone your skills, or just keep abreast of the latest trends.
-            </p>
-            <a class="btn btn-outline-primary">Get started</a>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-4">
-        <div class="card text-center mt-5">
-          <img src="assets\img\app\5.png" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $25
-              <small class="text-muted">/ mo</small>
-            </h1>
-            <h4 class="card-title">Vk</h4>
-            <p class="card-text">
-              The social network VKontakte is a communication with friends
-              and calls to relatives, thematic communities and favorite
-              music, much more. Messages will always accurately convey your
-              emotions thanks to stickers.
-            </p>
-            <a class="btn btn-outline-primary">Get started</a>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-4">
-        <div class="card text-center mt-5">
-          <img src="assets\img\app\3.png" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $20
-              <small class="text-muted">/ mo</small>
-            </h1>
-            <h4 class="card-title">Better Me</h4>
-            <p class="card-text">
-              BetterMe application is ready!
-              We are very pleased to present you a completely updated
-              application with a lot of new content and new features that will help you
-              get your dream body even faster!
+              {{choice.description}}
             </p>
             <a class="btn btn-outline-primary">Get started</a>
           </div>

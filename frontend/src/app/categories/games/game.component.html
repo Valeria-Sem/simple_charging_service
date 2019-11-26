@@ -6,13 +6,13 @@
   </p>
 </div>
 
-<div class="container-fluid mt-5" style="background-color: #eeeeee">
-  <div class="container p-5">
-    <div class="row justify-content-center">
-      <div class="col col-lg-4">
-        <div class="card text-center">
-          <img src="assets\img\games\1.jpg" alt="" class="card-img-top">
-          <div class="card-body" *ngFor="let choice of products">
+<div class="container-fluid" style="background-color: #eeeeee" >
+  <div class="container p-5" >
+    <div class="row justify-content-center" >
+      <div class="col col-lg-4" *ngFor="let choice of products">
+        <div class="card text-center mt-5">
+          <img src={{choice.img}} alt="" class="card-img-top">
+          <div class="card-body" >
             <h1 class="card-title pricing-card-title" >
               ${{choice.monthPrise}}
               <small class="text-muted">/ mo</small>
@@ -25,95 +25,96 @@
           </div>
         </div>
       </div>
-      <div class="col col-lg-4">
-        <div class="card text-center">
-          <img src="assets\img\games\2.jpg" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $30
-              <small class="text-muted">/ mo</small>
-            </h1>
-            <h4 class="card-title">Ori and the blind forest</h4>
-            <p class="card-text">
-              Ori and the Blind Forest is a platformer video game
-              developed by Moon Studios and published by Microsoft
-              Studios for the Windows and Xbox One platforms.
-            </p>
-            <a class="btn btn-outline-primary">Get started</a>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-4">
-        <div class="card text-center">
-          <img src="assets\img\games\3.jpg" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $10
-              <small class="text-muted">/ mo</small>
-            </h1>
-            <h4 class="card-title">World of Tanks</h4>
-            <p class="card-text">
-              World of Tanks is a massive real-time online game
-              in the genre of arcade tank simulator in the historical
-              setting of World War II.
-            </p>
-            <a class="btn btn-outline-primary">Get started</a>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-4">
-        <div class="card text-center mt-5">
-          <img src="assets\img\games\4.png" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $9
-              <small class="text-muted">/ mo</small>
-            </h1>
-            <h4 class="card-title">Sims 4</h4>
-            <p class="card-text">
-              The Sims 4 is a single-player computer game in the genre
-              of life simulator developed by Maxis and published by
-              Electronic Arts for Windows and MacOS.
-            </p>
-            <a class="btn btn-outline-primary">Get started</a>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-4">
-        <div class="card text-center mt-5">
-          <img src="assets\img\games\5.jpg" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $25
-              <small class="text-muted">/ mo</small>
-            </h1>
-            <h4 class="card-title">GTA 5</h4>
-            <p class="card-text">
-              Grand Theft Auto V is an open-world action-adventure multiplayer
-              computer game developed by Rockstar North and published by Rockstar Games.
-            </p>
-            <a class="btn btn-outline-primary">Get started</a>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-4">
-        <div class="card text-center mt-5">
-          <img src="assets\img\games\6.png" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $20
-              <small class="text-muted">/ mo</small>
-            </h1>
-            <h4 class="card-title">Dota 2</h4>
-            <p class="card-text">
-              Dota 2 is a computer-based multiplayer team game in the
-              genre of multiplayer online battle arena, developed by
-              Valve Corporation.
-            </p>
-            <a class="btn btn-outline-primary">Get started</a>
-          </div>
-        </div>
-      </div>
+
+<!--      <div class="col col-lg-4">-->
+<!--        <div class="card text-center">-->
+<!--          <img src="assets\img\games\2.jpg" alt="" class="card-img-top">-->
+<!--          <div class="card-body">-->
+<!--            <h1 class="card-title pricing-card-title">-->
+<!--              ${{choice.monthPrise}}-->
+<!--              <small class="text-muted">/ mo</small>-->
+<!--            </h1>-->
+<!--            <h4 class="card-title">Ori and the blind forest</h4>-->
+<!--            <p class="card-text">-->
+<!--              Ori and the Blind Forest is a platformer video game-->
+<!--              developed by Moon Studios and published by Microsoft-->
+<!--              Studios for the Windows and Xbox One platforms.-->
+<!--            </p>-->
+<!--            <a class="btn btn-outline-primary">Get started</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col col-lg-4">-->
+<!--        <div class="card text-center">-->
+<!--          <img src="assets\img\games\3.jpg" alt="" class="card-img-top">-->
+<!--          <div class="card-body">-->
+<!--            <h1 class="card-title pricing-card-title">-->
+<!--              $10-->
+<!--              <small class="text-muted">/ mo</small>-->
+<!--            </h1>-->
+<!--            <h4 class="card-title">World of Tanks</h4>-->
+<!--            <p class="card-text">-->
+<!--              World of Tanks is a massive real-time online game-->
+<!--              in the genre of arcade tank simulator in the historical-->
+<!--              setting of World War II.-->
+<!--            </p>-->
+<!--            <a class="btn btn-outline-primary">Get started</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col col-lg-4">-->
+<!--        <div class="card text-center mt-5">-->
+<!--          <img src="assets\img\games\4.png" alt="" class="card-img-top">-->
+<!--          <div class="card-body">-->
+<!--            <h1 class="card-title pricing-card-title">-->
+<!--              $9-->
+<!--              <small class="text-muted">/ mo</small>-->
+<!--            </h1>-->
+<!--            <h4 class="card-title">Sims 4</h4>-->
+<!--            <p class="card-text">-->
+<!--              The Sims 4 is a single-player computer game in the genre-->
+<!--              of life simulator developed by Maxis and published by-->
+<!--              Electronic Arts for Windows and MacOS.-->
+<!--            </p>-->
+<!--            <a class="btn btn-outline-primary">Get started</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col col-lg-4">-->
+<!--        <div class="card text-center mt-5">-->
+<!--          <img src="assets\img\games\5.jpg" alt="" class="card-img-top">-->
+<!--          <div class="card-body">-->
+<!--            <h1 class="card-title pricing-card-title">-->
+<!--              $25-->
+<!--              <small class="text-muted">/ mo</small>-->
+<!--            </h1>-->
+<!--            <h4 class="card-title">GTA 5</h4>-->
+<!--            <p class="card-text">-->
+<!--              Grand Theft Auto V is an open-world action-adventure multiplayer-->
+<!--              computer game developed by Rockstar North and published by Rockstar Games.-->
+<!--            </p>-->
+<!--            <a class="btn btn-outline-primary">Get started</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col col-lg-4">-->
+<!--        <div class="card text-center mt-5">-->
+<!--          <img src="assets\img\games\6.png" alt="" class="card-img-top">-->
+<!--          <div class="card-body">-->
+<!--            <h1 class="card-title pricing-card-title">-->
+<!--              $20-->
+<!--              <small class="text-muted">/ mo</small>-->
+<!--            </h1>-->
+<!--            <h4 class="card-title">Dota 2</h4>-->
+<!--            <p class="card-text">-->
+<!--              Dota 2 is a computer-based multiplayer team game in the-->
+<!--              genre of multiplayer online battle arena, developed by-->
+<!--              Valve Corporation.-->
+<!--            </p>-->
+<!--            <a class="btn btn-outline-primary">Get started</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
   </div>
 </div>

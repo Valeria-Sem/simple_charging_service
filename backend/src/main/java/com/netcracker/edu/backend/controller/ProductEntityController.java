@@ -37,9 +37,9 @@ public class ProductEntityController {
         }
     }
     @RequestMapping(value = "/category/{idCategory}", method = RequestMethod.GET)
-    public ResponseEntity<ProductEntity> getUsersByLogin(@PathVariable(name = "idCategory") int idCategory) {
-        ProductEntity usersEntity = productEntityService.getProductByCategory(idCategory);
-        return ResponseEntity.ok(usersEntity);
+    public ResponseEntity<ProductEntity[]> getProductByCategory(@PathVariable(name = "idCategory") int idCategory) {
+        ProductEntity[] products = productEntityService.getProductByCategory(idCategory);
+        return ResponseEntity.ok(products);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

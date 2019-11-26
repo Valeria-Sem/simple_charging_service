@@ -13,6 +13,7 @@ public class ProductEntity {
     private String description;
     private int monthPrise;
     private int idCategory;
+    private String img;
 
     @Id
     @Column(name = "id_product")
@@ -74,6 +75,16 @@ public class ProductEntity {
         this.idCategory = idCategory;
     }
 
+    @Basic
+    @Column(name = "img")
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -83,6 +94,7 @@ public class ProductEntity {
                 idOrganisation == that.idOrganisation &&
                 monthPrise == that.monthPrise &&
                 Objects.equals(name, that.name) &&
+                Objects.equals(img, that.img) &&
                    idCategory == that.idCategory &&
                 Objects.equals(description, that.description);
     }

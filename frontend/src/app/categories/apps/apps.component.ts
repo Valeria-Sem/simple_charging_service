@@ -1,4 +1,6 @@
-import { Component } from "@angular/core";
+import {ChangeDetectorRef, Component} from "@angular/core";
+import {Product} from "../products/product";
+import {ProductService} from "../../services/product.service";
 
 @Component({
   selector: "app-apps",
@@ -6,4 +8,16 @@ import { Component } from "@angular/core";
   styleUrls: ['./apps.component.css']
 })
 export class AppsComponent {
+  products: Product[];
+
+  constructor(private productService: ProductService,
+              private cdr: ChangeDetectorRef,) {}
+
+  ngOnInit(){
+    this.productService.getProductsByIdCategory('2').subscribe((data) => {
+      // if (this.product.id_Category = 3)
+      this.products = data as Product[];
+      this.cdr.detectChanges();
+    });
+  }
 }

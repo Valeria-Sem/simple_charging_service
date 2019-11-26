@@ -30,6 +30,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product[] getProductByIdCategory(Long idCategory) {
+        RestTemplate restTemplate = new RestTemplate();
+        Product[] products = restTemplate.getForObject(backendServerUrl + "/api/product/category/" + idCategory, Product[].class);
+        return products;  //restTemplate.getForObject(backendServerUrl + "/api/product/category/" + idCategory, Product.class);
+    }
+
+    @Override
     public Product saveProduct(Product product) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForEntity(backendServerUrl + "/api/product", product, Product.class).getBody();

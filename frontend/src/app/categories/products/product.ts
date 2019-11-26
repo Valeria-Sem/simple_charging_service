@@ -5,6 +5,7 @@ export class Product {
   idOrganisation: string;
   monthPrise: string;
   name: string;
+  img: string;
 
 
   static cloneBase(product: Product): Product{
@@ -15,6 +16,7 @@ export class Product {
     cloneProduct.description = product.description;
     cloneProduct.idOrganisation = product.idOrganisation;
     cloneProduct.monthPrise = product.monthPrise;
+    cloneProduct.img = product.img;
     return cloneProduct;
   }
 
