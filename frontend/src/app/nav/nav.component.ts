@@ -10,6 +10,7 @@ import {OrganisationService} from "../services/organisation.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from "../services/user.service";
 import {User} from "./user/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-nav',
@@ -35,7 +36,8 @@ export class NavComponent implements OnInit {
               private categoryService: CategoryService,
               private cdr: ChangeDetectorRef,
               private formBuilder: FormBuilder,
-              private userService: UserService) {
+              private userService: UserService,
+              private router: Router) {
     //private userService: UserService
   }
 
@@ -105,6 +107,11 @@ export class NavComponent implements OnInit {
 
   isOpenChange(): void {
     console.log('Dropdown state is changed');
+  }
+
+  public logout(): void {
+    this.userService.setUser(null);
+    this.router.navigate(['/']);
   }
 
 }

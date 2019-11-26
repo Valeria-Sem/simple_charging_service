@@ -24,8 +24,6 @@
               </li>
             </ul>
           </span>
-          <!--          <p>{{items | json}}</p>-->
-
         </li>
         <li class="nav-item ">
           <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
@@ -54,8 +52,9 @@
         <strong [style.color]="'#ffffff'"
                 *ngIf="user$ | async as user">
           {{user.login}}
+<!--          <a class="btn btn-outline-primary" routerLink="/home">Log out</a>-->
+          <button class="btn btn-outline-primary" (click)="logout()">Log out</button>
         </strong>
-
 
         <ng-template #template>
           <div class="modal-content">

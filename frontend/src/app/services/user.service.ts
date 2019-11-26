@@ -28,6 +28,10 @@ export class UserService {
     );
   }
 
+  public setUser(user: User): void {
+    this.subjectUser.next(user);
+  }
+
   // getAllUsers(): Observable<User[]> {
   //   return this.http.get<User[]>('api/user');
   // }
