@@ -15,7 +15,6 @@ export class AppsComponent {
 
   ngOnInit(){
     this.productService.getProductsByIdCategory('2').subscribe((data) => {
-      // if (this.product.id_Category = 3)
       this.products = data as Product[];
       this.cdr.detectChanges();
     });

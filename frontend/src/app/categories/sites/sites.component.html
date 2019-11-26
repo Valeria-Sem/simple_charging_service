@@ -9,112 +9,17 @@
 <div class="container-fluid mt-5" style="background-color: #eeeeee">
   <div class="container p-5">
     <div class="row justify-content-center">
-      <div class="col col-lg-4">
-        <div class="card text-center">
-          <img src="assets\img\site\1.png" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $15
-              <small class="text-muted">/ mo</small>
-            </h1>
-            <h4 class="card-title">YouTube Premium</h4>
-            <p class="card-text">
-              YouTube Premium - a paid streaming subscription service for
-              YouTube that provides you to watch video without ads,
-              background playback on mobile devices or offline playback.
-            </p>
-            <a class="btn btn-outline-primary">Get started</a>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-4">
-        <div class="card text-center">
-          <img src="assets\img\site\2.png" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $30
-              <small class="text-muted">/ mo</small>
-            </h1>
-            <h4 class="card-title">Amazon Prime</h4>
-            <p class="card-text">
-              Amazon Prime is a paid subscription service offered by
-              Amazon that provides users with access to services that
-              would otherwise be unavailable or unnecessary for an
-              ordinary Amazon customer.
-            </p>
-            <a class="btn btn-outline-primary" routerLink="/films">Get started</a>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-4">
-        <div class="card text-center">
-          <img src="assets\img\site\3.png" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $10
-              <small class="text-muted">/ mo</small>
-            </h1>
-            <h4 class="card-title">Netflix</h4>
-            <p class="card-text">
-              Netflix is ​​an American entertainment company that provides
-              movies and TV shows based on streaming media.
-              Since 2013, Netflix has been producing its own films, series,
-              and television shows.
-            </p>
-            <a class="btn btn-outline-primary">Get started</a>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-4">
+      <div class="col col-lg-4" *ngFor="let choice of products">
         <div class="card text-center mt-5">
-          <img src="assets\img\site\4.png" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $9
+          <img src={{choice.img}} alt="" class="card-img-top">
+          <div class="card-body" >
+            <h1 class="card-title pricing-card-title" >
+              ${{choice.monthPrise}}
               <small class="text-muted">/ mo</small>
             </h1>
-            <h4 class="card-title">SoundCloud</h4>
+            <h4 class="card-title">{{choice.name}}</h4>
             <p class="card-text">
-              SoundCloud is an online platform and site for the distribution
-              of digitized audio information with the functions of a social
-              network, as well as the company of the same name.
-            </p>
-            <a class="btn btn-outline-primary">Get started</a>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-4">
-        <div class="card text-center mt-5">
-          <img src="assets\img\site\5.png" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $25
-              <small class="text-muted">/ mo</small>
-            </h1>
-            <h4 class="card-title">Yandex +</h4>
-            <p class="card-text">
-              Yandex is a Russian multinational company registered in the
-              Netherlands and owns a search engine of the same name on the Web,
-              Internet portals and services in several countries.
-            </p>
-            <a class="btn btn-outline-primary">Get started</a>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-4">
-        <div class="card text-center mt-5">
-          <img src="assets\img\site\6.png" alt="" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $20
-              <small class="text-muted">/ mo</small>
-            </h1>
-            <h4 class="card-title">JavaRush</h4>
-            <p class="card-text">
-              JavaRush - Java programming as an online game.
-              New approach to learning programming
-              and education in general. How about training,
-              where is the goal, means and outcome?
+              {{choice.description}}
             </p>
             <a class="btn btn-outline-primary">Get started</a>
           </div>
