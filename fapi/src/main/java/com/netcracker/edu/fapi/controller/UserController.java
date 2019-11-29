@@ -14,14 +14,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping
-    public ResponseEntity<List<UserViewModel>> getAllCategories(){
-        return ResponseEntity.ok(userService.getAll());
-    }
+//    @RequestMapping
+//    public ResponseEntity<List<UserViewModel>> getAllCategories(){
+//        return ResponseEntity.ok(userService.getAll());
+//    }
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<UserViewModel> saveUser(@RequestBody UserViewModel user) {
         if(user != null) {
+            System.out.println("memes");
             return ResponseEntity.ok(userService.saveUser(user));
         }
         return null;

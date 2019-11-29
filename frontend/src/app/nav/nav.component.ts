@@ -50,6 +50,10 @@ export class NavComponent implements OnInit {
     this.modalRef2 = this.modalService.show(template, {class: 'second'});
   }
 
+  closeModal2(template: TemplateRef<any>) {
+    this.modalRef2.hide();
+  }
+
   // closeFirstModal() {
   //   if (!this.modalRef) {
   //     return;

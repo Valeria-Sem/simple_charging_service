@@ -1,6 +1,6 @@
 .footer {
   flex: 0 0 auto !important;
-  background: black !important;
+  background: rgba(22,22,22,0.9) !important;
   width: auto;
   height: 100px ;
 }
