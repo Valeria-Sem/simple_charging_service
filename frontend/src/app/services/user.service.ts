@@ -18,9 +18,9 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  // saveUser(user: User): Observable<User> {
-  //   return this.http.post<User>('/api/user', user);
-  // }
+  saveUser(user: User): Observable<User> {
+    return this.http.post<User>('/api/user', user);
+  }
 
   getUserByLogin(login: string): Observable<User> {
     return this.http.get<User>('/api/user/login/' + login).pipe(

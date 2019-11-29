@@ -3,7 +3,7 @@
     <h1 class="h3 mb-3 font-weight-normal">Registration</h1>
 
     <label for="inputEmail" class="sr-only">Name</label>
-    <input type="email" id="inputName" class="form-control" placeholder="Name" required autofocus>
+    <input type="email" id="inputName" class="form-control" placeholder="Name" required autofocus >
 
     <label for="inputEmail" class="sr-only">Surname</label>
     <input type="email" id="inputSurname" class="form-control" placeholder="Surname" required>
@@ -12,12 +12,12 @@
     <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
 
     <label for="inputEmail" class="sr-only">Login</label>
-    <input type="email" id="inputLogin" class="form-control" placeholder="Login" required>
+    <input type="email" id="inputLogin" class="form-control" placeholder="Login" required  [(ngModel)]="login" name="log">
 
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required [(ngModel)]="password" name="pas">
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="saveUser(user)">Save</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
   </form>
 </div>
