@@ -41,12 +41,12 @@ public class WalletModel {
         this.walletStatus = walletStatus;
     }
 
-    @Override
-    public String toString(){
-        return "Users{" +
-                "idWallet=" + idWallet +
-                ", balance='" + balance + '\'' +
-                ", walletStatus='" + walletStatus + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString(){
+//        return "Users{" +
+//                "idWallet=" + idWallet +
+//                ", balance='" + balance + '\'' +
+//                ", walletStatus='" + walletStatus + '\'' +
+//                '}';
+//    }
 }
