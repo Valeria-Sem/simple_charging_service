@@ -1,13 +1,13 @@
 package com.netcracker.edu.fapi.service;
 
-import com.netcracker.edu.fapi.models.CategoryViewModel;
+import com.netcracker.edu.fapi.models.CategoryModel;
 
 import java.util.List;
 
 public interface CategoryService {
-    List<CategoryViewModel> getAll();
-    CategoryViewModel getCategoryById(Long id);
+    List<CategoryModel> getAll();
+    CategoryModel getCategoryById(Long id);
    // CategoryViewModel getAllCategory(String category[]);
-    CategoryViewModel saveCategory(CategoryViewModel category);
+    CategoryModel saveCategory(CategoryModel category);
     void deleteCategory(Long id);
 }

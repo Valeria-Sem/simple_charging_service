@@ -3,15 +3,15 @@ package com.netcracker.edu.fapi.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CategoryViewModel {
+public class CategoryModel {
 
     private int idCategory;
     private String name;
 
-    public CategoryViewModel(){
+    public CategoryModel(){
     }
 
-    public CategoryViewModel( int idCategory, String name){
+    public CategoryModel(int idCategory, String name){
         this.idCategory = idCategory;
         this.name = name;
     }

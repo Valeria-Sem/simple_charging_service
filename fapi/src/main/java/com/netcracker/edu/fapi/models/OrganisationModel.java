@@ -3,7 +3,7 @@ package com.netcracker.edu.fapi.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Organisation {
+public class OrganisationModel {
 
     private int idOrganisation;
     private String name;
@@ -11,10 +11,10 @@ public class Organisation {
     private String linkOfSite;
     private String phone;
 
-    public Organisation(){
+    public OrganisationModel(){
     }
 
-    public Organisation(int idOrganisation, String name, String eMail, String linkOfSite, String phone){
+    public OrganisationModel(int idOrganisation, String name, String eMail, String linkOfSite, String phone){
         this.idOrganisation = idOrganisation;
         this.name = name;
         this.eMail = eMail;

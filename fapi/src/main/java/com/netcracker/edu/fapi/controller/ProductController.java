@@ -1,6 +1,6 @@
 package com.netcracker.edu.fapi.controller;
 
-import com.netcracker.edu.fapi.models.Product;
+import com.netcracker.edu.fapi.models.ProductModel;
 import com.netcracker.edu.fapi.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,25 +16,25 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping
-    public ResponseEntity<List<Product>> getAllProduct(){
+    public ResponseEntity<List<ProductModel>> getAllProduct(){
         return ResponseEntity.ok(productService.getAll());
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Product> saveProduct (@RequestBody Product product){
+    public ResponseEntity<ProductModel> saveProduct (@RequestBody ProductModel product){
         if(product != null) {
             return ResponseEntity.ok(productService.saveProduct(product));
         }
         return null;
     }
-//todo add delete to request
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public void deleteProduct(@PathVariable String id) {
         productService.deleteProduct(Long.valueOf(id));
     }
 
     @RequestMapping(value = "/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable String id) throws InterruptedException {
+    public ResponseEntity<ProductModel> getProductById(@PathVariable String id) throws InterruptedException {
         Long productId = Long.valueOf(id);
         return ResponseEntity.ok(productService.getProductById(productId));
     }
@@ -46,7 +46,7 @@ public class ProductController {
 //    }
 
     @RequestMapping(value = "/category/{idCategory}")
-    public Product[] getProductByIdCategory(@PathVariable String idCategory) throws InterruptedException {
+    public ProductModel[] getProductByIdCategory(@PathVariable String idCategory) throws InterruptedException {
         Long productIdCategory = Long.valueOf(idCategory);
         return productService.getProductByIdCategory(productIdCategory);
     }

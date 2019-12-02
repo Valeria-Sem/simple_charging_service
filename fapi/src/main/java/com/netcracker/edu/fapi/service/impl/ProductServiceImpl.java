@@ -1,6 +1,6 @@
 package com.netcracker.edu.fapi.service.impl;
 
-import com.netcracker.edu.fapi.models.Product;
+import com.netcracker.edu.fapi.models.ProductModel;
 import com.netcracker.edu.fapi.service.ProductService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,34 +17,34 @@ public class ProductServiceImpl implements ProductService {
     private String backendServerUrl;
 
     @Override
-    public List<Product> getAll() {
+    public List<ProductModel> getAll() {
         RestTemplate restTemplate = new RestTemplate();
-        Product[] productResponse = restTemplate.getForObject(backendServerUrl + "/api/product", Product[].class);
+        ProductModel[] productResponse = restTemplate.getForObject(backendServerUrl + "/api/product", ProductModel[].class);
         return productResponse == null? Collections.emptyList() : Arrays.asList(productResponse);
     }
 
     @Override
-    public Product getProductById(Long id) {
+    public ProductModel getProductById(Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(backendServerUrl + "/api/product/" + id, Product.class);
+        return restTemplate.getForObject(backendServerUrl + "/api/product/" + id, ProductModel.class);
     }
 
     @Override
-    public Product[] getProductByIdCategory(Long idCategory) {
+    public ProductModel[] getProductByIdCategory(Long idCategory) {
         RestTemplate restTemplate = new RestTemplate();
-        Product[] products = restTemplate.getForObject(backendServerUrl + "/api/product/category/" + idCategory, Product[].class);
+        ProductModel[] products = restTemplate.getForObject(backendServerUrl + "/api/product/category/" + idCategory, ProductModel[].class);
         return products;  //restTemplate.getForObject(backendServerUrl + "/api/product/category/" + idCategory, Product.class);
     }
 
     @Override
-    public Product saveProduct(Product product) {
+    public ProductModel saveProduct(ProductModel product) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForEntity(backendServerUrl + "/api/product", product, Product.class).getBody();
+        return restTemplate.postForEntity(backendServerUrl + "/api/product", product, ProductModel.class).getBody();
     }
 
     @Override
     public void deleteProduct(Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete(backendServerUrl + "/api/product" + id);
+        restTemplate.delete(backendServerUrl + "/api/product/delete" + id);
     }
 }

@@ -1,13 +1,13 @@
 package com.netcracker.edu.fapi.service;
 
-import com.netcracker.edu.fapi.models.Product;
+import com.netcracker.edu.fapi.models.ProductModel;
 
 import java.util.List;
 
 public interface ProductService {
-        List<Product> getAll();
-        Product getProductById(Long id);
-        Product[] getProductByIdCategory(Long idCategory);
-        Product saveProduct(Product product);
+        List<ProductModel> getAll();
+        ProductModel getProductById(Long id);
+        ProductModel[] getProductByIdCategory(Long idCategory);
+        ProductModel saveProduct(ProductModel product);
         void deleteProduct(Long id);
 }

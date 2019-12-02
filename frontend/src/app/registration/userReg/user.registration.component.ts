@@ -23,9 +23,6 @@ export class UserRegComponent {
 
   public saveUser(user): void {
     this.user = new User(this.login, this.password, this.role);
-    //   .login = this.login;
-    // this.user.password = this.password;
-    // this.user.role = this.role;
     this.userSevice.saveUser(this.user).subscribe();
   }
 }

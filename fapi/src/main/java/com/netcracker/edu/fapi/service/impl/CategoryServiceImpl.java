@@ -1,6 +1,6 @@
 package com.netcracker.edu.fapi.service.impl;
 
-import com.netcracker.edu.fapi.models.CategoryViewModel;
+import com.netcracker.edu.fapi.models.CategoryModel;
 import com.netcracker.edu.fapi.service.CategoryService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,16 +17,16 @@ public class CategoryServiceImpl implements CategoryService {
     private String backendServerUrl;
 
     @Override
-    public List<CategoryViewModel> getAll() {
+    public List<CategoryModel> getAll() {
         RestTemplate restTemplate = new RestTemplate();
-        CategoryViewModel[] categoryViewModelResponse = restTemplate.getForObject(backendServerUrl + "/api/category/", CategoryViewModel[].class);
-        return categoryViewModelResponse == null? Collections.emptyList() : Arrays.asList(categoryViewModelResponse);
+        CategoryModel[] categoryModelResponse = restTemplate.getForObject(backendServerUrl + "/api/category/", CategoryModel[].class);
+        return categoryModelResponse == null? Collections.emptyList() : Arrays.asList(categoryModelResponse);
     }
 
     @Override
-    public CategoryViewModel getCategoryById(Long id) {
+    public CategoryModel getCategoryById(Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(backendServerUrl + "/api/category/" + id, CategoryViewModel.class);
+        return restTemplate.getForObject(backendServerUrl + "/api/category/" + id, CategoryModel.class);
     }
 
 //    @Override
@@ -36,9 +36,9 @@ public class CategoryServiceImpl implements CategoryService {
 //    }
 
     @Override
-    public CategoryViewModel saveCategory(CategoryViewModel category) {
+    public CategoryModel saveCategory(CategoryModel category) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForEntity(backendServerUrl + "/api/category", category, CategoryViewModel.class).getBody();
+        return restTemplate.postForEntity(backendServerUrl + "/api/category", category, CategoryModel.class).getBody();
     }
 
     @Override

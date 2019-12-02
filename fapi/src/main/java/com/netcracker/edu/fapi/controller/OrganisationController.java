@@ -1,6 +1,6 @@
 package com.netcracker.edu.fapi.controller;
 
-import com.netcracker.edu.fapi.models.Organisation;
+import com.netcracker.edu.fapi.models.OrganisationModel;
 import com.netcracker.edu.fapi.service.OrganisationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +16,12 @@ public class OrganisationController {
     private OrganisationService organisationService;
 
     @RequestMapping
-    public ResponseEntity<List<Organisation>> getAllOrganisation(){
+    public ResponseEntity<List<OrganisationModel>> getAllOrganisation(){
         return ResponseEntity.ok(organisationService.getAll());
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Organisation> saveOrganisation (@RequestBody Organisation organisation){
+    public ResponseEntity<OrganisationModel> saveOrganisation (@RequestBody OrganisationModel organisation){
         if(organisation != null) {
             return ResponseEntity.ok(organisationService.saveOrganisation(organisation));
         }
@@ -34,7 +34,7 @@ public class OrganisationController {
     }
 
     @RequestMapping(value = "/{id}")
-    public ResponseEntity<Organisation> getOrganisationById(@PathVariable String id) throws InterruptedException {
+    public ResponseEntity<OrganisationModel> getOrganisationById(@PathVariable String id) throws InterruptedException {
         Long organisationId = Long.valueOf(id);
         return ResponseEntity.ok(organisationService.getOrganisationById(organisationId));
     }

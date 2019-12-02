@@ -1,14 +1,10 @@
 package com.netcracker.edu.fapi.controller;
 
-import com.netcracker.edu.fapi.models.UserViewModel;
+import com.netcracker.edu.fapi.models.UserModel;
 import com.netcracker.edu.fapi.service.UserService;
-import org.jboss.logging.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
@@ -22,7 +18,7 @@ public class UserController {
 //    }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<UserViewModel> saveUser(@RequestBody UserViewModel user) {
+    public ResponseEntity<UserModel> saveUser(@RequestBody UserModel user) {
 
         if(user != null) {
             return ResponseEntity.ok(userService.saveUser(user));
@@ -36,7 +32,7 @@ public class UserController {
 //    }
 
     @GetMapping("/login/{login}")
-    public UserViewModel getUserByLogin(@PathVariable String login) {
+    public UserModel getUserByLogin(@PathVariable String login) {
         return userService.findByLogin(login);
     }
 

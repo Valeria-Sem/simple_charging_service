@@ -1,6 +1,6 @@
 package com.netcracker.edu.fapi.service.impl;
 
-import com.netcracker.edu.fapi.models.UserViewModel;
+import com.netcracker.edu.fapi.models.UserModel;
 import com.netcracker.edu.fapi.service.UserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -16,22 +16,22 @@ public class UserServiceImpl implements UserService {
     private String backendServerUrl;
 
     @Override
-    public UserViewModel saveUser(UserViewModel user) {
+    public UserModel saveUser(UserModel user) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForEntity(backendServerUrl + "/api/user", user, UserViewModel.class).getBody();
+        return restTemplate.postForEntity(backendServerUrl + "/api/user", user, UserModel.class).getBody();
     }
 
     @Override
-    public UserViewModel findByLogin(String login) {
+    public UserModel findByLogin(String login) {
         RestTemplate restTemplate = new RestTemplate();
-        UserViewModel user = restTemplate.getForObject(backendServerUrl + "/api/user/login/" + login, UserViewModel.class);
+        UserModel user = restTemplate.getForObject(backendServerUrl + "/api/user/login/" + login, UserModel.class);
         return user;
     }
 
     @Override
-    public List<UserViewModel> getAll() {
+    public List<UserModel> getAll() {
         RestTemplate restTemplate = new RestTemplate();
-        UserViewModel[] userResponse = restTemplate.getForObject(backendServerUrl + "/api/user", UserViewModel[].class);
+        UserModel[] userResponse = restTemplate.getForObject(backendServerUrl + "/api/user", UserModel[].class);
         return userResponse == null ? Collections.emptyList() : Arrays.asList(userResponse);
     }
 

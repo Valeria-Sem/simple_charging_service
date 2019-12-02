@@ -3,7 +3,7 @@ package com.netcracker.edu.fapi.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Product {
+public class ProductModel {
 
     private int idProduct;
     private int idOrganisation;
@@ -13,9 +13,9 @@ public class Product {
     private int idCategory;
     private String img;
 
-    public Product() {}
+    public ProductModel() {}
 
-    public Product(int idProduct, int idOrganisation, String name, String description, int monthPrise, int idCategory, String img) {
+    public ProductModel(int idProduct, int idOrganisation, String name, String description, int monthPrise, int idCategory, String img) {
         this.idProduct = idProduct;
         this.idCategory = idOrganisation;
         this.name = name;

@@ -1,6 +1,6 @@
 package com.netcracker.edu.fapi.service.impl;
 
-import com.netcracker.edu.fapi.models.Organisation;
+import com.netcracker.edu.fapi.models.OrganisationModel;
 import com.netcracker.edu.fapi.service.OrganisationService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,22 +17,22 @@ public class OrganisationServiceImpl implements OrganisationService {
     private String backendServerUrl;
 
     @Override
-    public List<Organisation> getAll() {
+    public List<OrganisationModel> getAll() {
         RestTemplate restTemplate = new RestTemplate();
-        Organisation[] organisationsResponse = restTemplate.getForObject(backendServerUrl + "/api/organisation", Organisation[].class);
+        OrganisationModel[] organisationsResponse = restTemplate.getForObject(backendServerUrl + "/api/organisation", OrganisationModel[].class);
         return organisationsResponse == null? Collections.emptyList() : Arrays.asList(organisationsResponse);
     }
 
     @Override
-    public Organisation getOrganisationById(Long id) {
+    public OrganisationModel getOrganisationById(Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(backendServerUrl + "/api/organisation/" + id, Organisation.class);
+        return restTemplate.getForObject(backendServerUrl + "/api/organisation/" + id, OrganisationModel.class);
     }
 
     @Override
-    public Organisation saveOrganisation(Organisation organisation) {
+    public OrganisationModel saveOrganisation(OrganisationModel organisation) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForEntity(backendServerUrl + "/api/organisation", organisation, Organisation.class).getBody();
+        return restTemplate.postForEntity(backendServerUrl + "/api/organisation", organisation, OrganisationModel.class).getBody();
     }
 
     @Override

@@ -22,7 +22,7 @@ export class User {
 
 export enum Role {
   CUSTOMER,
-  ORGANIZATION
+  ORGANISATION
 }
 
 export class OrganisationStr{
