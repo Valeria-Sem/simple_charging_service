@@ -37,7 +37,7 @@ public class OrganisationEntityController {
         }
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public void deleteOrganisationEntity(@PathVariable(name = "id")int id) {
         organisationEntityService.deleteCategory(id);
     }

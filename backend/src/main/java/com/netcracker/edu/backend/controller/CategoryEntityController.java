@@ -37,7 +37,7 @@ public class CategoryEntityController {
         }
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public void deleteCategoryEntity(@PathVariable(name = "id") Integer id) {
         categoryEntityService.deleteCategory(id);
     }
