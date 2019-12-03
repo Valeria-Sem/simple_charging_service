@@ -21,6 +21,7 @@ public class CustomerModel {
         this.lastVisitDate=lastVisitDate;
         this.name = name;
         this.surname = surname;
+
     }
 
     public int getIdWallet() {

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserModel {
 
-    private long id;
+    private long idUser;
     private String login;
     private String password;
     private String role;
@@ -13,19 +13,19 @@ public class UserModel {
     public UserModel() {
     }
 
-    public UserModel(long id, String login, String password, String role) {
-        this.id = id;
+    public UserModel(long idUser, String login, String password, String role) {
+        this.idUser = idUser;
         this.login = login;
         this.password = password;
         this.role = role;
     }
 
-    public long getId() {
-        return id;
+    public long getIdUser() {
+        return idUser;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIdUser(long idUser) {
+        this.idUser = idUser;
     }
 
     public String getLogin() {
@@ -52,13 +52,4 @@ public class UserModel {
         this.role = role;
     }
 
-    @Override
-    public String toString(){
-        return "Users{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                '}';
-    }
 }

@@ -40,13 +40,4 @@ public class WalletModel {
     public void setWalletStatus(String walletStatus) {
         this.walletStatus = walletStatus;
     }
-
-//    @Override
-//    public String toString(){
-//        return "Users{" +
-//                "idWallet=" + idWallet +
-//                ", balance='" + balance + '\'' +
-//                ", walletStatus='" + walletStatus + '\'' +
-//                '}';
-//    }
 }
