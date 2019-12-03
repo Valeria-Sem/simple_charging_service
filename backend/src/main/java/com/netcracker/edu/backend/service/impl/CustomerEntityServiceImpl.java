@@ -23,7 +23,7 @@ public class CustomerEntityServiceImpl implements CustomerEntityService{
     }
 
     @Override
-    public Optional<CustomerEntity> getCustomerById(Integer id) {
+    public Optional<CustomerEntity> getCustomerById(long id) {
         return customerRepository.findById(id);
     }
 

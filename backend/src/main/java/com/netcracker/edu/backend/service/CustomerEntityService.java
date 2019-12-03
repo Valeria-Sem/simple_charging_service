@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface CustomerEntityService {
     CustomerEntity saveCustomer(CustomerEntity customer);
-    Optional<CustomerEntity> getCustomerById(Integer id);
+    Optional<CustomerEntity> getCustomerById(long id);
     Iterable<CustomerEntity> getAllCustomers();
     void deleteCustomer(Integer id);
 }
