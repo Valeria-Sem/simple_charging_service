@@ -10,31 +10,30 @@ import java.util.Optional;
 
 @Service
 public class CustomerEntityServiceImpl implements CustomerEntityService{
-    private CustomerEntityRepository repository;
+    private CustomerEntityRepository customerRepository;
 
     @Autowired
     public CustomerEntityServiceImpl(CustomerEntityRepository repository){
-        this.repository = repository;
+        this.customerRepository = repository;
     }
-
 
     @Override
     public CustomerEntity saveCustomer(CustomerEntity customer) {
-        return repository.save(customer);
+        return customerRepository.save(customer);
     }
 
     @Override
     public Optional<CustomerEntity> getCustomerById(Integer id) {
-        return repository.findById(id);
+        return customerRepository.findById(id);
     }
 
     @Override
     public Iterable<CustomerEntity> getAllCustomers() {
-        return repository.findAll();
+        return customerRepository.findAll();
     }
 
     @Override
     public void deleteCustomer(Integer id) {
-        repository.deleteById(id);
+        customerRepository.deleteById(id);
     }
 }

@@ -15,27 +15,27 @@ public class CustomerEntityController {
     private CustomerEntityService customerEntityService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public Iterable<CustomerEntity> getAllWallets(){
+    public Iterable<CustomerEntity> getAllCustomers(){
         return customerEntityService.getAllCustomers();
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public CustomerEntity saveWallet(@RequestBody CustomerEntity walletEntity){
-        return customerEntityService.saveCustomer(walletEntity);
+    public CustomerEntity saveCustomer(@RequestBody CustomerEntity customerEntity){
+        return customerEntityService.saveCustomer(customerEntity);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<CustomerEntity> getWalletById(@PathVariable(name ="id") Integer id) {
-        Optional<CustomerEntity> wallet = customerEntityService.getCustomerById(id);
-        if (wallet.isPresent()) {
-            return ResponseEntity.ok(wallet.get());
+    public ResponseEntity<CustomerEntity> getCustomerById(@PathVariable(name ="id") Integer id) {
+        Optional<CustomerEntity> customer = customerEntityService.getCustomerById(id);
+        if (customer.isPresent()) {
+            return ResponseEntity.ok(customer.get());
         } else {
             return  ResponseEntity.notFound().build();
         }
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public void deleteWallet(@PathVariable(name = "id") Integer id) {
+    public void deleteCustomer(@PathVariable(name = "id") Integer id) {
         customerEntityService.deleteCustomer(id);
     }
 }

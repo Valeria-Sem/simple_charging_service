@@ -38,6 +38,6 @@ public class WalletServiceImp implements WalletService {
     @Override
     public void deleteWallet(Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete(backendServerUrl + "/api/delete/" + id);
+        restTemplate.delete(backendServerUrl + "/api/wallet/delete/" + id);
     }
 }

@@ -10,14 +10,6 @@ export class User {
     this.role = role;
   }
 
-  // static cloneBase(user: User): User{
-  //   const cloneUser: User = new User();
-  //   cloneUser.id = user.id;
-  //   cloneUser.login = user.login;
-  //   cloneUser.password = user.password;
-  //   cloneUser.role = user.role;
-  //   return cloneUser;
-  // }
 }
 
 export enum Role {
