@@ -48,12 +48,12 @@
             <version>3.3.2.Final</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>com.netcracker.edu</groupId>
-            <artifactId>backend</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.netcracker.edu</groupId>-->
+<!--            <artifactId>backend</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--            <scope>compile</scope>-->
+<!--        </dependency>-->
 
 
         <!--Spring Security & JWT-->

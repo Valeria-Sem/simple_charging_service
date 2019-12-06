@@ -9,13 +9,11 @@ import {tap} from "rxjs/operators";
 })
 export class RegistrationService {
 
-  // private subjectUser: Subject<Customer> = new Subject();
-
   constructor(private http: HttpClient) {
   }
 
   saveAll(information: Registration): Observable<Registration> {
-    return this.http.post<Registration>('/api/customerReg', information);
+    return this.http.post<Registration>('/api/registration', information);
   }
 
 }

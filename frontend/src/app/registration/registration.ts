@@ -5,7 +5,7 @@ export class Registration {
   idCustomer: string;
   name: string;
   surname: string;
-  email: string;
+  eMail: string;
 
   idUser: string;
   login: string;
@@ -17,13 +17,13 @@ export class Registration {
   walletStatus: Status;
 
 
-  constructor(name: string, surname: string, email: string, balance: string, walletStatus: Status, login: string, password: string, role: Role) {
+  constructor(name: string, surname: string, eMail: string, balance: string, walletStatus: Status, login: string, password: string, role: Role) {
     this.login = login;
     this.password = password;
     this.role = role;
     this.name = name;
     this.surname = surname;
-    this.email = email;
+    this.eMail = eMail;
     this.balance = balance;
     this.walletStatus = walletStatus;
   }

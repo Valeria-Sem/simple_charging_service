@@ -1,7 +1,6 @@
 package com.netcracker.edu.backend.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -12,12 +11,12 @@ public class CustomerEntity {
     private String name;
     private String surname;
     private String eMail;
-    private Date lastVisitDate;
     private WalletEntity walletByIdWallet;
     private UsersEntity usersByIdUsers;
 
     @Id
     @Column(name = "id_customer")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getIdCustomer() {
         return idCustomer;
     }
@@ -56,17 +55,6 @@ public class CustomerEntity {
         this.eMail = eMail;
     }
 
-    @Basic
-    @Column(name = "last_visit_date")
-    public Date getLastVisitDate() {
-        return lastVisitDate;
-    }
-
-    public void setLastVisitDate(Date lastVisitDate) {
-        this.lastVisitDate = lastVisitDate;
-    }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -75,16 +63,15 @@ public class CustomerEntity {
         return idCustomer == that.idCustomer &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(surname, that.surname) &&
-                Objects.equals(eMail, that.eMail) &&
-                Objects.equals(lastVisitDate, that.lastVisitDate);
+                Objects.equals(eMail, that.eMail);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idCustomer, name, surname, eMail, lastVisitDate);
+        return Objects.hash(idCustomer, name, surname, eMail);
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_wallet", referencedColumnName = "id_wallet", nullable = false)
     public WalletEntity getWalletByIdWallet() {
         return walletByIdWallet;
@@ -94,7 +81,7 @@ public class CustomerEntity {
         this.walletByIdWallet = walletByIdWallet;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_users", referencedColumnName = "id_users", nullable = false)
     public UsersEntity getUsersByIdUsers() {
         return usersByIdUsers;

@@ -2,13 +2,7 @@ package com.netcracker.edu.backend.entity;
 
 import com.netcracker.edu.backend.entity.enums.UsersRole;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 //import java.util.Collection;
 import java.util.Objects;
 
@@ -22,6 +16,7 @@ public class UsersEntity {
 
     @Id
     @Column(name = "id_users")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getIdUsers() {
         return idUsers;
     }

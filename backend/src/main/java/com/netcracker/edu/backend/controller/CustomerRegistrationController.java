@@ -16,19 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/registration")
 public class CustomerRegistrationController {
-//    @Autowired
-//    private CustomerEntityService customerEntityService;
-//
-//    @Autowired
-//    private UsersEntityService usersEntityService;
-//
-//    @Autowired
-//    private WalletEntityService walletEntityService;
+
     @Autowired
     private CustomerRegistrationService customerRegistrationService;
 
     @RequestMapping(method = RequestMethod.POST)
     public CustomerRegistration registerCustomer(@RequestBody CustomerRegistration customerRegistration){
-    return customerRegistrationService.registerCustomer(customerRegistration);
+        return customerRegistrationService.registerCustomer(customerRegistration);
     }
 }

@@ -5,7 +5,6 @@ import com.netcracker.edu.backend.entity.enums.WalletStatus;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import java.sql.Date;
 
 public class CustomerRegistration {
     private int idUser;
@@ -17,7 +16,6 @@ public class CustomerRegistration {
     private String name;
     private String surname;
     private String eMail;
-    private Date lastVisitDate;
 
     private int idWallet;
     private int balance;
@@ -27,7 +25,7 @@ public class CustomerRegistration {
     }
 
     public CustomerRegistration(int idUser, String login, String password, UsersRole role, int idCustomer, String name, String surname, String eMail,
-                                Date lastVisitDate, int idWallet, int balance, WalletStatus walletStatus) {
+                                 int idWallet, int balance, WalletStatus walletStatus) {
         this.idUser = idUser;
         this.login = login;
         this.password = password;
@@ -37,7 +35,6 @@ public class CustomerRegistration {
         this.walletStatus = walletStatus;
         this.eMail = eMail;
         this.idCustomer = idCustomer;
-        this.lastVisitDate=lastVisitDate;
         this.name = name;
         this.surname = surname;
     }
@@ -88,14 +85,6 @@ public class CustomerRegistration {
 
     public String geteMail() {
         return eMail;
-    }
-
-    public Date getLastVisitDate() {
-        return lastVisitDate;
-    }
-
-    public void setLastVisitDate(Date lastVisitDate) {
-        this.lastVisitDate = lastVisitDate;
     }
 
     public String getSurname() {

@@ -11,6 +11,8 @@ import com.netcracker.edu.backend.transferOfObjects.CustomerRegistration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+
 @Service
 public class CustomerRegistrationServiceImpl implements CustomerRegistrationService {
     private CustomerEntityService customerEntityService;
@@ -51,7 +53,6 @@ public class CustomerRegistrationServiceImpl implements CustomerRegistrationServ
         WalletEntity walletEntity = new WalletEntity();
         walletEntity.setBalance(info.getBalance());
         walletEntity.setWalletStatus(info.getWalletStatus());
-        walletEntityService.saveWallet(walletEntity);
         return walletEntity;
     }
 
@@ -60,7 +61,6 @@ public class CustomerRegistrationServiceImpl implements CustomerRegistrationServ
         usersEntity.setLogin(info.getLogin());
         usersEntity.setPassword(info.getPassword());
         usersEntity.setRole(info.getRole());
-        usersEntityService.save(usersEntity);
         return usersEntity;
     }
 
@@ -69,11 +69,9 @@ public class CustomerRegistrationServiceImpl implements CustomerRegistrationServ
         customerEntity.setName(info.getName());
         customerEntity.setSurname(info.getSurname());
         customerEntity.seteMail(info.geteMail());
-        customerEntity.setLastVisitDate(info.getLastVisitDate());
         customerEntity.setUsersByIdUsers(user);
         customerEntity.setWalletByIdWallet(wallet);
-        customerEntityService.saveCustomer(customerEntity);
-        return customerEntity;
+        return customerEntityService.saveCustomer(customerEntity);
     }
 
 }

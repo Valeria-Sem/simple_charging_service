@@ -13,7 +13,6 @@ public class CustomerRegistrationModel {
     private String name;
     private String surname;
     private String eMail;
-    private String lastVisitDate;
 
     private int idWallet;
     private int balance;
@@ -23,7 +22,7 @@ public class CustomerRegistrationModel {
     }
 
     public CustomerRegistrationModel(int idUser, String login, String password, Role role, int idCustomer, String name, String surname, String eMail,
-                                     String lastVisitDate, int idWallet, int balance, WalletStatus walletStatus) {
+                                      int idWallet, int balance, WalletStatus walletStatus) {
         this.idUser = idUser;
         this.login = login;
         this.password = password;
@@ -33,7 +32,6 @@ public class CustomerRegistrationModel {
         this.walletStatus = walletStatus;
         this.eMail = eMail;
         this.idCustomer = idCustomer;
-        this.lastVisitDate=lastVisitDate;
         this.name = name;
         this.surname = surname;
     }
@@ -86,14 +84,6 @@ public class CustomerRegistrationModel {
         return eMail;
     }
 
-    public String getLastVisitDate() {
-        return lastVisitDate;
-    }
-
-    public void setLastVisitDate(String lastVisitDate) {
-        this.lastVisitDate = lastVisitDate;
-    }
-
     public String getSurname() {
         return surname;
     }
@@ -134,4 +124,20 @@ public class CustomerRegistrationModel {
         this.role = role;
     }
 
+    @Override
+    public String toString() {
+        return "CustomerRegistrationModel{" +
+                "idUser=" + idUser +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", idCustomer=" + idCustomer +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", eMail='" + eMail + '\'' +
+                ", idWallet=" + idWallet +
+                ", balance=" + balance +
+                ", walletStatus=" + walletStatus +
+                '}';
+    }
 }

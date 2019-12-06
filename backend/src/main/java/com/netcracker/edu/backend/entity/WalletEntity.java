@@ -15,6 +15,7 @@ public class WalletEntity {
 
     @Id
     @Column(name = "id_wallet")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getIdWallet() {
         return idWallet;
     }
