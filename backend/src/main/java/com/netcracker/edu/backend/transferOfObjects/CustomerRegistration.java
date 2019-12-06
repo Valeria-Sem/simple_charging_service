@@ -1,6 +1,6 @@
-package com.netcracker.edu.fapi.models;
+package com.netcracker.edu.backend.transferOfObjects;
 
-public class CustomerRegistrationModel {
+public class CustomerRegistration {
     private long idUser;
     private String login;
     private String password;
@@ -16,10 +16,10 @@ public class CustomerRegistrationModel {
     private int balance;
     private String walletStatus;
 
-    public CustomerRegistrationModel() {
+    public CustomerRegistration() {
     }
 
-    public CustomerRegistrationModel(long idUser, String login, String password, String role, int idCustomer, String name, String surname, String eMail,
+    public CustomerRegistration(long idUser, String login, String password, String role, int idCustomer, String name, String surname, String eMail,
                                      String lastVisitDate, int idWallet, int balance, String walletStatus) {
         this.idUser = idUser;
         this.login = login;

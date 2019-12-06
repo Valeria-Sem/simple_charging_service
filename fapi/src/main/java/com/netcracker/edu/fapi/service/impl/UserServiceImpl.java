@@ -4,13 +4,14 @@ import com.netcracker.edu.fapi.models.UserModel;
 import com.netcracker.edu.fapi.service.UserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-@Component
+@Service
 public class UserServiceImpl implements UserService {
     @Value("http://localhost:8080/")
     private String backendServerUrl;

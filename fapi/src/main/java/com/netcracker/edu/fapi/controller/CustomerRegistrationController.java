@@ -1,9 +1,9 @@
 package com.netcracker.edu.fapi.controller;
 
-import com.netcracker.edu.fapi.models.CustomerModel;
 import com.netcracker.edu.fapi.models.CustomerRegistrationModel;
 import com.netcracker.edu.fapi.models.UserModel;
 import com.netcracker.edu.fapi.models.WalletModel;
+import com.netcracker.edu.fapi.service.CustomerRegistrationService;
 import com.netcracker.edu.fapi.service.CustomerService;
 import com.netcracker.edu.fapi.service.UserService;
 import com.netcracker.edu.fapi.service.WalletService;
@@ -15,47 +15,54 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/customerReg")
+@RequestMapping("/api/new/customer")
 public class CustomerRegistrationController {
-
     @Autowired
-    private CustomerService customerService;
+    private CustomerRegistrationService customerRegistrationService;
 
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private WalletService walletService;
-
-    @Autowired
-    private CustomerRegistrationModel customerRegistrationModel;
-
-    @RequestMapping(value = "/api/new/customer", method = RequestMethod.POST)
-    public ResponseEntity<CustomerRegistrationModel> saveCustomer(@RequestBody CustomerRegistrationModel information) {
-        WalletModel newWallet = new WalletModel();
-        newWallet.setBalance(information.getBalance());
-        newWallet.setWalletStatus(information.getWalletStatus());
-        WalletModel wallet = walletService.saveWallet(newWallet);
-
-        UserModel userModel = new UserModel();
-        userModel.setLogin(information.getLogin());
-        userModel.setPassword(information.getPassword());
-        userModel.setRole(information.getRole());
-        UserModel userDetails = userService.saveUser(userModel);
-
-        CustomerModel saveCustomer = new CustomerModel();
-        saveCustomer.setName(information.getName());
-        saveCustomer.setSurname(information.getSurname());
-        saveCustomer.setIdUser((int) userDetails.getIdUser());
-        saveCustomer.setIdWallet(wallet.getIdWallet());
-        CustomerModel customerViewModel = customerService.saveCustomer(saveCustomer);
-
-        return ResponseEntity.ok(customerRegistrationModel);
-//        UserSignatureViewModel userSignatureViewModel = new UserSignatureViewModel();
-//        userSignatureViewModel.setId(customerViewModel.getId());
-//        userSignatureViewModel.setUserDetailsId(userDetails.getId());
-//        userSignatureViewModel.setWalletId(wallet.getId());
-//        userSignatureViewModel.setUserRole(userDetails.getUserRoleId());
-//        return ResponseEntity.ok(userSignatureViewModel);
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<CustomerRegistrationModel> saveNewCustomer (@RequestBody CustomerRegistrationModel newCustomer){
+        if(newCustomer != null) {
+            return ResponseEntity.ok(customerRegistrationService.saveNewCustomer(newCustomer));
+        }
+        return null;
     }
+
+//    @Autowired
+//    private CustomerService customerService;
+//
+//    @Autowired
+//    private UserService userService;
+//
+//    @Autowired
+//    private WalletService walletService;
+//
+//    @RequestMapping( method = RequestMethod.POST)
+//    public ResponseEntity<CustomerRegistrationModel> saveCustomer(@RequestBody CustomerRegistrationModel information) {
+//        WalletModel newWallet = new WalletModel();
+//        newWallet.setBalance(information.getBalance());
+//        newWallet.setWalletStatus(information.getWalletStatus());
+//        WalletModel wallet = walletService.saveWallet(newWallet);
+//
+//        UserModel userModel = new UserModel();
+//        userModel.setLogin(information.getLogin());
+//        userModel.setPassword(information.getPassword());
+//        userModel.setRole(information.getRole());
+//        UserModel userDetails = userService.saveUser(userModel);
+//
+//        CustomerModel saveCustomer = new CustomerModel();
+//        saveCustomer.setName(information.getName());
+//        saveCustomer.setSurname(information.getSurname());
+//        saveCustomer.setIdUser((int) userDetails.getIdUser());
+//        saveCustomer.setIdWallet(wallet.getIdWallet());
+//        CustomerModel customerViewModel = customerService.saveCustomer(saveCustomer);
+//
+//        return ResponseEntity.ok(customerRegistrationModel);
+////        UserSignatureViewModel userSignatureViewModel = new UserSignatureViewModel();
+////        userSignatureViewModel.setId(customerViewModel.getId());
+////        userSignatureViewModel.setUserDetailsId(userDetails.getId());
+////        userSignatureViewModel.setWalletId(wallet.getId());
+////        userSignatureViewModel.setUserRole(userDetails.getUserRoleId());
+////        return ResponseEntity.ok(userSignatureViewModel);
+//    }
 }

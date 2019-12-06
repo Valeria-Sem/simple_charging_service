@@ -58,8 +58,18 @@ public class WalletEntity {
     }
 
     public enum WalletStatus {
-        ACTIVE,
-        FROZEN,
-        BLOCKED
+        active("ACTIVE"),
+        frozen("FROZEN"),
+        blocked("BLOCKED");
+
+        private String status;
+
+        WalletStatus(String status) {
+            this.status = status;
+        }
+
+        String getStatus(){
+            return status;
+        }
     }
 }

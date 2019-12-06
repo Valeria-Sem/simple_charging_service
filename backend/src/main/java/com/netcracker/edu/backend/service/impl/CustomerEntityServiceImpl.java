@@ -33,7 +33,7 @@ public class CustomerEntityServiceImpl implements CustomerEntityService{
     }
 
     @Override
-    public void deleteCustomer(Integer id) {
+    public void deleteCustomer(long id) {
         customerRepository.deleteById(id);
     }
 }

@@ -1,9 +1,7 @@
 import {Component} from "@angular/core";
-import {Role, User} from "../../nav/user/user";
-import {UserService} from "../../services/user.service";
-import {Router} from "@angular/router";
-import {Customer} from "../customer";
-import {CustomerService} from "../../services/customer.sevice";
+import {Role} from "../../nav/user/user";
+import {Registration} from "../registration";
+import {Status} from "../wallet";
 
 @Component({
   selector: "app-useReg",
@@ -11,43 +9,39 @@ import {CustomerService} from "../../services/customer.sevice";
   styleUrls: ['./user.registration.component.css']
 })
 export class UserRegComponent {
-  user: User;
-  customer: Customer;
+  // user: User;
+  // customer: Customer;
+  //information: Registration;
   public login: string;
   public password: string;
   public name: string;
   public surname: string;
   public email: string;
-  public balance: string;
-  //public walletStatus: ;
+  public balance: string = "100";
+  public walletStatus: Status = 0;
   public role: Role = Role.CUSTOMER;
 
-  constructor(private customerSevice: CustomerService,
-              private userSevice : UserService) {
+  constructor() {
   }
 
   ngOnInit(){
   }
 
-  public saveUser(user): void {
-    this.user = new User(this.login, this.password, this.role);
-    this.userSevice.saveUser(this.user).subscribe();
-  }
-
-  public saveCustomer(customer): void {
-    this.customer = new Customer(this.name, this.surname, this.email);
-    this.customerSevice.saveCustomer(this.customer).subscribe();
-  }
+  // public saveUser(user): void {
+  //   this.user = new User(this.login, this.password, this.role);
+  //   this.userSevice.saveUser(this.user).subscribe();
+  // }
+  //
+  // public saveCustomer(customer): void {
+  //   this.customer = new Customer(this.name, this.surname, this.email);
+  //   this.customerSevice.saveCustomer(this.customer).subscribe();
+  // }
 
   public saveAll(): void{
-    let user = new User(this.login, this.password, this.role);
-    let customer = new Customer(this.name, this.surname, this.email);
-
+    let information = new Registration(this.name, this.surname, this.email, this.balance, this.walletStatus, this.login, this.password, this.role)
     let registration = {
-      ...user,
-      ...customer
+      ...information
     }
-
     console.log(registration);
   }
 }

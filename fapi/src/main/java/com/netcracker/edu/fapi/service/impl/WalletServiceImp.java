@@ -3,6 +3,7 @@ package com.netcracker.edu.fapi.service.impl;
 import com.netcracker.edu.fapi.models.WalletModel;
 import com.netcracker.edu.fapi.service.WalletService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
