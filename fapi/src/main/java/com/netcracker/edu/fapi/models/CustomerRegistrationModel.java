@@ -1,10 +1,13 @@
 package com.netcracker.edu.fapi.models;
 
+import com.netcracker.edu.fapi.models.enums.Role;
+import com.netcracker.edu.fapi.models.enums.WalletStatus;
+
 public class CustomerRegistrationModel {
-    private long idUser;
+    private int idUser;
     private String login;
     private String password;
-    private String role;
+    private Role role;
 
     private int idCustomer;
     private String name;
@@ -14,13 +17,13 @@ public class CustomerRegistrationModel {
 
     private int idWallet;
     private int balance;
-    private String walletStatus;
+    private WalletStatus walletStatus;
 
     public CustomerRegistrationModel() {
     }
 
-    public CustomerRegistrationModel(long idUser, String login, String password, String role, int idCustomer, String name, String surname, String eMail,
-                                     String lastVisitDate, int idWallet, int balance, String walletStatus) {
+    public CustomerRegistrationModel(int idUser, String login, String password, Role role, int idCustomer, String name, String surname, String eMail,
+                                     String lastVisitDate, int idWallet, int balance, WalletStatus walletStatus) {
         this.idUser = idUser;
         this.login = login;
         this.password = password;
@@ -51,11 +54,11 @@ public class CustomerRegistrationModel {
         this.balance = balance;
     }
 
-    public String getWalletStatus() {
+    public WalletStatus getWalletStatus() {
         return walletStatus;
     }
 
-    public void setWalletStatus(String walletStatus) {
+    public void setWalletStatus(WalletStatus walletStatus) {
         this.walletStatus = walletStatus;
     }
 
@@ -99,11 +102,11 @@ public class CustomerRegistrationModel {
         this.surname = surname;
     }
 
-    public long getIdUser() {
+    public int getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(long idUser) {
+    public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
 
@@ -123,11 +126,11 @@ public class CustomerRegistrationModel {
         this.password = password;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

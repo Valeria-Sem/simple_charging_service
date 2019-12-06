@@ -10,7 +10,7 @@ public class CustomerRegistrationServiceImpl implements CustomerRegistrationServ
     private String backendServerUrl;
 
     @Override
-    public CustomerRegistrationModel saveNewCustomer(CustomerRegistrationModel newCustomer) {
+    public CustomerRegistrationModel registerCustomer(CustomerRegistrationModel newCustomer) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForEntity(backendServerUrl + "/api/new/customer", newCustomer, CustomerRegistrationModel.class).getBody();
     }

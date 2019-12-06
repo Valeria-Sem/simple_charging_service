@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/new/customer")
+@RequestMapping("/api/registration")
 public class CustomerRegistrationController {
     @Autowired
     private CustomerRegistrationService customerRegistrationService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<CustomerRegistrationModel> saveNewCustomer (@RequestBody CustomerRegistrationModel newCustomer){
+    public ResponseEntity<CustomerRegistrationModel> registerCustomer (@RequestBody CustomerRegistrationModel newCustomer){
         if(newCustomer != null) {
-            return ResponseEntity.ok(customerRegistrationService.saveNewCustomer(newCustomer));
+            return ResponseEntity.ok(customerRegistrationService.registerCustomer(newCustomer));
         }
         return null;
     }
