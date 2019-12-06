@@ -34,31 +34,46 @@ public class CustomerRegistrationServiceImpl implements CustomerRegistrationServ
         this.usersEntityService = usersEntityService;
     }
 
-//    @Autowired
-//    private CustomerRegistrationServiceImpl(CustomerEntityService customerEntityService){}
-
-
     @Override
-    public CustomerRegistration registrateCustomer(CustomerRegistration registration) {
-        WalletEntity walletEntity = saveNewWallet(registration);
+    public CustomerRegistration registerCustomer(CustomerRegistration registration) {
+        WalletEntity wallet = saveNewWallet(registration);
+        UsersEntity user = saveNewUser(registration);
+        CustomerEntity customerEntity = saveNewCustomer(registration, user, wallet );
 
-        UsersEntity usersEntity = usersEntityService.save(registration);
-
-        CustomerEntity customerEntity = customerEntityService.saveCustomer(registration);
         CustomerRegistration customerRegistration = new CustomerRegistration();
-        customerRegistration.
+        customerRegistration.setIdUser(user.getIdUsers());
+        customerRegistration.setIdWallet(wallet.getIdWallet());
+        return customerRegistration;
 
     }
 
     private WalletEntity saveNewWallet(CustomerRegistration info){
         WalletEntity walletEntity = new WalletEntity();
         walletEntity.setBalance(info.getBalance());
-        new WalletEntity.WalletStatus(info.getWalletStatus())
         walletEntity.setWalletStatus(info.getWalletStatus());
         walletEntityService.saveWallet(walletEntity);
         return walletEntity;
     }
 
+    private UsersEntity saveNewUser(CustomerRegistration info){
+        UsersEntity usersEntity = new UsersEntity();
+        usersEntity.setLogin(info.getLogin());
+        usersEntity.setPassword(info.getPassword());
+        usersEntity.setRole(info.getRole());
+        usersEntityService.save(usersEntity);
+        return usersEntity;
+    }
 
+    private CustomerEntity saveNewCustomer(CustomerRegistration info, UsersEntity user, WalletEntity wallet){
+        CustomerEntity customerEntity = new CustomerEntity();
+        customerEntity.setName(info.getName());
+        customerEntity.setSurname(info.getSurname());
+        customerEntity.seteMail(info.geteMail());
+        customerEntity.setLastVisitDate(info.getLastVisitDate());
+        customerEntity.setUsersByIdUsers(user);
+        customerEntity.setWalletByIdWallet(wallet);
+        customerEntityService.saveCustomer(customerEntity);
+        return customerEntity;
+    }
 
 }

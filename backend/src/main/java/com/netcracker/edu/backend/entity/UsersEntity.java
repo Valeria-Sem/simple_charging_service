@@ -1,5 +1,7 @@
 package com.netcracker.edu.backend.entity;
 
+import com.netcracker.edu.backend.entity.enums.UsersRole;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -75,10 +77,10 @@ public class UsersEntity {
         return Objects.hash(idUsers, login, password, role);
     }
 
-    public enum UsersRole {
-        CUSTOMER,
-        ORGANISATION,
-        ADMIN
-    }
+//    public enum UsersRole {
+//        CUSTOMER,
+//        ORGANISATION,
+//        ADMIN
+//    }
 
 }

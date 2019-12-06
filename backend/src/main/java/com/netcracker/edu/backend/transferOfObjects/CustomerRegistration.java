@@ -1,26 +1,33 @@
 package com.netcracker.edu.backend.transferOfObjects;
 
+import com.netcracker.edu.backend.entity.enums.UsersRole;
+import com.netcracker.edu.backend.entity.enums.WalletStatus;
+
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import java.sql.Date;
+
 public class CustomerRegistration {
-    private long idUser;
+    private int idUser;
     private String login;
     private String password;
-    private String role;
+    private UsersRole role;
 
     private int idCustomer;
     private String name;
     private String surname;
     private String eMail;
-    private String lastVisitDate;
+    private Date lastVisitDate;
 
     private int idWallet;
     private int balance;
-    private String walletStatus;
+    private WalletStatus walletStatus;
 
     public CustomerRegistration() {
     }
 
-    public CustomerRegistration(long idUser, String login, String password, String role, int idCustomer, String name, String surname, String eMail,
-                                     String lastVisitDate, int idWallet, int balance, String walletStatus) {
+    public CustomerRegistration(int idUser, String login, String password, UsersRole role, int idCustomer, String name, String surname, String eMail,
+                                Date lastVisitDate, int idWallet, int balance, WalletStatus walletStatus) {
         this.idUser = idUser;
         this.login = login;
         this.password = password;
@@ -51,11 +58,11 @@ public class CustomerRegistration {
         this.balance = balance;
     }
 
-    public String getWalletStatus() {
+    public WalletStatus getWalletStatus() {
         return walletStatus;
     }
 
-    public void setWalletStatus(String walletStatus) {
+    public void setWalletStatus(WalletStatus walletStatus) {
         this.walletStatus = walletStatus;
     }
 
@@ -83,11 +90,11 @@ public class CustomerRegistration {
         return eMail;
     }
 
-    public String getLastVisitDate() {
+    public Date getLastVisitDate() {
         return lastVisitDate;
     }
 
-    public void setLastVisitDate(String lastVisitDate) {
+    public void setLastVisitDate(Date lastVisitDate) {
         this.lastVisitDate = lastVisitDate;
     }
 
@@ -99,11 +106,11 @@ public class CustomerRegistration {
         this.surname = surname;
     }
 
-    public long getIdUser() {
+    public int getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(long idUser) {
+    public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
 
@@ -123,12 +130,14 @@ public class CustomerRegistration {
         this.password = password;
     }
 
-    public String getRole() {
+    public UsersRole getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(UsersRole role) {
         this.role = role;
     }
+
+
 
 }

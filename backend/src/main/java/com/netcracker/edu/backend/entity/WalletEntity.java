@@ -1,5 +1,7 @@
 package com.netcracker.edu.backend.entity;
 
+import com.netcracker.edu.backend.entity.enums.WalletStatus;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -57,19 +59,19 @@ public class WalletEntity {
         return Objects.hash(idWallet, balance, walletStatus);
     }
 
-    public enum WalletStatus {
-        active("ACTIVE"),
-        frozen("FROZEN"),
-        blocked("BLOCKED");
-
-        private String status;
-
-        WalletStatus(String status) {
-            this.status = status;
-        }
-
-        String getStatus(){
-            return status;
-        }
-    }
+//    public enum WalletStatus {
+//        ACTIVE("ACTIVE"),
+//        FROZEN("FROZEN"),
+//        BLOCKED("BLOCKED");
+//
+//        private String status;
+//
+//        WalletStatus(String status) {
+//            this.status = status;
+//        }
+//
+//        String getStatus(){
+//            return status;
+//        }
+//    }
 }
