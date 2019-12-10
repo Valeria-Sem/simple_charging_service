@@ -25,6 +25,8 @@ import {AppsComponent} from "./categories/apps/apps.component";
 import {GamesComponent} from "./categories/games/game.component";
 import {MusicComponent} from "./categories/music/music.component";
 import {SitesComponent} from "./categories/sites/sites.component";
+import {CustomerProfileComponent} from "./profile/customer/customer.component";
+//import {WalletComponent} from "./wallet/wallet.component";
 
 
 
@@ -49,7 +51,9 @@ import {SitesComponent} from "./categories/sites/sites.component";
     AppsComponent,
     GamesComponent,
     MusicComponent,
-    SitesComponent
+    SitesComponent,
+    CustomerProfileComponent
+   // WalletComponent
   ],
   imports: [
     BrowserModule,

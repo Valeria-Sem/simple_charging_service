@@ -18,4 +18,6 @@ export class CustomerService {
     return this.http.post<Customer>('/api/customer', customer);
   }
 
+ // getCustomerById()
+
 }

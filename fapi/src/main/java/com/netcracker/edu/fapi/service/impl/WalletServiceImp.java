@@ -37,6 +37,18 @@ public class WalletServiceImp implements WalletService {
     }
 
     @Override
+    public WalletModel payment(WalletModel wallet) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForEntity(backendServerUrl + "/api/wallet/payment", wallet, WalletModel.class).getBody();
+    }
+
+    @Override
+    public WalletModel balanceReplenishment(WalletModel wallet) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForEntity(backendServerUrl + "/api/wallet/replenishment", wallet, WalletModel.class).getBody();
+    }
+
+    @Override
     public void deleteWallet(Long id) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/api/wallet/delete/" + id);

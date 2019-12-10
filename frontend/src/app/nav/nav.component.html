@@ -44,6 +44,7 @@
         <input class="p-1" type="text" name="form-control mr-sm-2" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 20px;">Search
         </button>
+
         <button *ngIf="!(user$ | async)"
                 class="btn btn-outline-primary my-2 my-sn-0"
                 (click)="openModal(template)">
@@ -51,8 +52,24 @@
         </button>
         <strong [style.color]="'#ffffff'"
                 *ngIf="user$ | async as user">
-          {{user.login}}
-<!--          <a class="btn btn-outline-primary" routerLink="/home">Log out</a>-->
+          <div class="btn-group" dropdown>
+          <button dropdownToggle type="button"
+                  class="btn btn-outline-primary dropdown-toggle"
+                  aria-controls="dropdown-basic"      >
+<!--            <aria-controls="dropdown-basic">-->
+            {{user.login}}
+            <span class="caret"></span>
+          </button>
+
+          <ul id="dropdown-animated"
+              *dropdownMenu class="dropdown-menu"
+              role="menu"
+              aria-labelledby="button-animated">
+            <li role="menuitem"><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+            <li role="menuitem"><a class="dropdown-item" routerLink="/wallet">Wallet</a>
+            </li>
+          </ul>
+          </div>
           <button class="btn btn-outline-primary" (click)="logout()">Log out</button>
         </strong>
 

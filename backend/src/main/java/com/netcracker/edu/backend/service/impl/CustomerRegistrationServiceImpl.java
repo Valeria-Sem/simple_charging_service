@@ -40,7 +40,7 @@ public class CustomerRegistrationServiceImpl implements CustomerRegistrationServ
     public CustomerRegistration registerCustomer(CustomerRegistration registration) {
         WalletEntity wallet = saveNewWallet(registration);
         UsersEntity user = saveNewUser(registration);
-        CustomerEntity customerEntity = saveNewCustomer(registration, user, wallet );
+        saveNewCustomer(registration, user, wallet );
 
         CustomerRegistration customerRegistration = new CustomerRegistration();
         customerRegistration.setIdUser(user.getIdUsers());
@@ -64,14 +64,14 @@ public class CustomerRegistrationServiceImpl implements CustomerRegistrationServ
         return usersEntity;
     }
 
-    private CustomerEntity saveNewCustomer(CustomerRegistration info, UsersEntity user, WalletEntity wallet){
+    private void saveNewCustomer(CustomerRegistration info, UsersEntity user, WalletEntity wallet){
         CustomerEntity customerEntity = new CustomerEntity();
         customerEntity.setName(info.getName());
         customerEntity.setSurname(info.getSurname());
         customerEntity.seteMail(info.geteMail());
         customerEntity.setUsersByIdUsers(user);
         customerEntity.setWalletByIdWallet(wallet);
-        return customerEntityService.saveCustomer(customerEntity);
+        customerEntityService.saveCustomer(customerEntity);
     }
 
 }

@@ -29,6 +29,16 @@ public class WalletEntityServiceImpl implements WalletEntityService {
     }
 
     @Override
+    public WalletEntity balanceReplenishment(WalletEntity wallet) {
+        return repository.save(wallet);
+    }
+
+    @Override
+    public WalletEntity payment(WalletEntity wallet) {
+        return repository.save(wallet);
+    }
+
+    @Override
     public Iterable<WalletEntity> getAllWallets() {
         return repository.findAll();
     }
