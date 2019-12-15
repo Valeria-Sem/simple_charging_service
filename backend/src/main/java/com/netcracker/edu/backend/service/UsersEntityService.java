@@ -9,5 +9,6 @@ public interface UsersEntityService {
     Iterable<UsersEntity> getAllUsers();
     UsersEntity findByLogin(String login);
     UsersEntity save(UsersEntity usersEntity);
+    UsersEntity getUserIdByLoginAndPassword(String login, String password);
     void delete(long id);
 }

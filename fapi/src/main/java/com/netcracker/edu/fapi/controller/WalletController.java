@@ -28,9 +28,17 @@ public class WalletController {
         return null;
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public void deleteWallet(@PathVariable String id) {
-        walletService.deleteWallet(Long.valueOf(id));
+    @RequestMapping(value = "/replenishment",method = RequestMethod.POST)
+    public ResponseEntity<WalletModel> balanceReplenishment (@RequestBody WalletModel wallet){
+        if(wallet != null) {
+            return ResponseEntity.ok(walletService.balanceReplenishment(wallet));
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/delete/{idDelete}", method = RequestMethod.DELETE)
+    public void deleteWallet(@PathVariable String idDelete) {
+        walletService.deleteWallet(Long.valueOf(idDelete));
     }
 
     @RequestMapping(value = "/{id}")

@@ -10,6 +10,7 @@ import {GamesComponent} from "./categories/games/game.component";
 import {MusicComponent} from "./categories/music/music.component";
 import {SitesComponent} from "./categories/sites/sites.component";
 import {OrganisationRegComponent} from "./registration/organisationReg/org.registration.component";
+import {CustomerProfileComponent} from "./profile/customer/customer.component";
 
 
 
@@ -23,6 +24,7 @@ const appRoutes : Routes = [
   ,{path: 'games', component: GamesComponent}
   ,{path: 'music', component: MusicComponent}
   ,{path: 'sites', component: SitesComponent}
+  ,{path: 'profile', component: CustomerProfileComponent}
 ];
 
 export const routing : ModuleWithProviders = RouterModule.forRoot(appRoutes);

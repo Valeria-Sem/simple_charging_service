@@ -3,21 +3,32 @@ import {HttpClient} from "@angular/common/http";
 import {Observable, Subject} from "rxjs";
 import {Customer} from "../registration/customer";
 import {tap} from "rxjs/operators";
+import {User} from "../nav/user/user";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class CustomerService {
+  public currentCustomer: Customer;
 
- // private subjectUser: Subject<Customer> = new Subject();
+  private subjectCustomer: Subject<Customer> = new Subject();
+
+  public currentCustomer$ = this.subjectCustomer.asObservable();
 
   constructor(private http: HttpClient) {
   }
 
-  saveCustomer(customer: Customer): Observable<Customer> {
-    return this.http.post<Customer>('/api/customer', customer);
+  getCustomerProfileInfo(login: string, password: string): Observable<Customer> {
+    return this.http.get<Customer>('/api/registration/login/' + login + '/password/' + password).pipe(
+      tap(customer => {
+        this.subjectCustomer.next(customer);
+        this.currentCustomer = customer;
+      })
+    );
   }
 
- // getCustomerById()
+  public setCustomer(customer: Customer): void {
+    this.subjectCustomer.next(customer);
+  }
 
 }

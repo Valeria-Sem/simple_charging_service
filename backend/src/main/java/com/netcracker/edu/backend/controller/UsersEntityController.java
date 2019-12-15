@@ -21,6 +21,7 @@ public class UsersEntityController {
         return ResponseEntity.ok(usersEntity);
     }
 
+
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<UsersEntity> getAllUsers(){
         return usersEntityService.getAllUsers();

@@ -30,6 +30,11 @@ public class UsersEntityServiceImpl implements UsersEntityService {
     }
 
     @Override
+    public UsersEntity getUserIdByLoginAndPassword(String login, String password) {
+        return usersEntityRepository.getUserIdByLoginAndPassword(login, password);
+    }
+
+    @Override
     public void delete(long id) {
         usersEntityRepository.deleteById(id);
     }

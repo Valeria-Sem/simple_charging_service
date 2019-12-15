@@ -1,26 +1,62 @@
-<!--<div class="container">-->
-<!--  <form>-->
-<!--    <h1 class="h3 mb-3 font-weight-normal">Registration</h1>-->
 
-<!--    <label for="inputEmail" class="sr-only">Name</label>-->
-<!--    <input type="email" id="inputName" class="form-control" placeholder="Name" required autofocus [(ngModel)]="name" name="name">-->
+<div class="container">
+  <form>
+    <h1 class="h3 mb-3 font-weight-normal">Customer</h1>
 
-<!--    <label for="inputEmail" class="sr-only">Surname</label>-->
-<!--    <input type="email" id="inputSurname" class="form-control" placeholder="Surname" required [(ngModel)]="surname" name="surname">-->
+    <div class="container-fluid mt-5" style="background-color: lavender">
+      <div class="container p-5">
+        <div class="row justify-content-center">
+          <div class="col col-lg-4" >
+<!--            *ngFor="let choice of customer"-->
+            <div class="card text-center mt-5">
+<!--              <img src={{choice.img}} alt="" class="card-img-top">-->
+              <div class="card-body" >
+                <h1 class="card-title pricing-card-title" >
+                  Profile
+<!--                  ${{choice.monthPrise}}-->
+<!--                  <small class="text-muted">/ mo</small>-->
+                </h1>
+                <h4 class="card-title">
+                  {{customer.name}} {{customer.surname}}
+                </h4>
+                <p class="card-text"> email:
+                  {{customer.eMail}}
+                </p>
+                <p class="card-text">balance:
+                  {{customer.balance}}
+                </p>
+                <p class="card-text">wallet status:
+                  {{customer.walletStatus}}
+                </p>
+                <button class="btn btn-outline-primary" (click)="openModal(template)">Replenish balance</button>
 
-<!--    <label for="inputEmail" class="sr-only">Email address</label>-->
-<!--    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required [(ngModel)]="eMail" name="email">-->
+                <ng-template #template>
+                  <div class="modal-header">
+                    <h4 class="modal-title pull-left">Replenish balance</h4>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Enter the desired amount.
 
-<!--    <label for="inputEmail" class="sr-only">Login</label>-->
-<!--    <input type="email" id="inputLogin" class="form-control" placeholder="Login" required  [(ngModel)]="login" name="log">-->
+                    <input autofocus
+                           name="form-control"
+                           class="p-2"
+                           formControlName="balance"
+                    >
+                  </div>
+                  <button class="btn btn-outline-primary">Add</button>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<!--    <label for="inputPassword" class="sr-only">Password</label>-->
-<!--    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required [(ngModel)]="password" name="pas">-->
-
-<!--    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="saveAll(information)" routerLink="/">Save</button>-->
-<!--    <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>-->
-<!--  </form>-->
-<!--</div>-->
+  </form>
+</div>
 
 <!--<app-footer></app-footer>-->
 

@@ -1,6 +1,7 @@
 package com.netcracker.edu.backend.controller;
 
 import com.netcracker.edu.backend.entity.CustomerEntity;
+import com.netcracker.edu.backend.entity.UsersEntity;
 import com.netcracker.edu.backend.service.CustomerEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,7 @@ public class CustomerEntityController {
             return  ResponseEntity.notFound().build();
         }
     }
+
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public void deleteCustomer(@PathVariable(name = "id") Integer id) {

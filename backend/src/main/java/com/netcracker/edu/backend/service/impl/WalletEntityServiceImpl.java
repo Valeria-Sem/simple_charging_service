@@ -43,6 +43,7 @@ public class WalletEntityServiceImpl implements WalletEntityService {
         return repository.findAll();
     }
 
+
     @Override
     public void deleteWallet(Integer id) {
         repository.deleteById(id);

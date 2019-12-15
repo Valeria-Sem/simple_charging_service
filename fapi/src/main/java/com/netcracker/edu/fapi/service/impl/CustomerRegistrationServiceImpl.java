@@ -16,4 +16,11 @@ public class CustomerRegistrationServiceImpl implements CustomerRegistrationServ
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForEntity(backendServerUrl + "/api/registration", newCustomer, CustomerRegistrationModel.class).getBody();
     }
+
+    @Override
+    public CustomerRegistrationModel getCustomerProfile(String log, String pass) {
+        RestTemplate restTemplate = new RestTemplate();
+        CustomerRegistrationModel customerRegistrationModel = restTemplate.getForObject(backendServerUrl + "/api/registration/login/" + log + "/password/" + pass, CustomerRegistrationModel.class);
+        return customerRegistrationModel;
+    }
 }

@@ -10,5 +10,5 @@ public interface WalletService {
     WalletModel saveWallet(WalletModel wallet);
     WalletModel payment(WalletModel wallet);
     WalletModel balanceReplenishment(WalletModel wallet);
-    void deleteWallet(Long id);
+    void deleteWallet(Long idDelete);
 }

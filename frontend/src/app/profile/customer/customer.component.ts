@@ -1,31 +1,40 @@
-import {Component} from "@angular/core";
-import {Status} from "../../registration/wallet";
+import {Component, OnInit, TemplateRef} from "@angular/core";
 import {CustomerService} from "../../services/customer.sevice";
+import {BsModalRef, BsModalService} from "ngx-bootstrap";
+import {tap} from "rxjs/operators";
+import {Customer} from "../../registration/customer";
+import {Wallet} from "../../registration/wallet";
 
 @Component({
-  selector: "app-useReg",
-  templateUrl: "./user.registration.component.html",
-  styleUrls: ['./user.registration.component.css']
+  selector: "app-cusProf",
+  templateUrl: "./customer.component.html",
+  styleUrls: ['./customer.component.css']
 })
-export class CustomerProfileComponent {
-  // user: User;
-  // customer: Customer;
-  //information: Registration;
-  public name: string;
-  public surname: string;
-  public eMail: string;
-  public balance: string = "100";
-  public walletStatus: Status = 0;
+export class CustomerProfileComponent implements OnInit {
+  public wallet: Wallet;
+  public customer: Customer = this.customerService.currentCustomer;
+  public newBalance: string;
+  modalRef: BsModalRef;
 
-  constructor(customerService: CustomerService) {
+  constructor(private customerService: CustomerService,
+              private modalService: BsModalService) {
   }
 
-  ngOnInit(){
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, Object.assign({}, {class: 'gray modal-sm'}));
   }
 
-  // public saveAll(information): void {
-  //   this.information = new Registration(this.name, this.surname, this.eMail, this.balance,
-  //     this.walletStatus, this.login, this.password, this.role);
-  //   this.registrationService.saveAll(this.information).subscribe();
-  // }
+  ngOnInit() {
+    console.log(1);
+    console.log(this.customerService);
+    // this.customerService.currentCustomer$.subscribe(v => console.log(v))
+  }
+
+  public replenishBalance (newBalance): void {
+    this.wallet = new Wallet(newBalance);
+
+  }
+
+
+
 }

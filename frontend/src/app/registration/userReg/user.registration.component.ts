@@ -32,5 +32,7 @@ export class UserRegComponent {
     this.information = new Registration(this.name, this.surname, this.eMail, this.balance,
       this.walletStatus, this.login, this.password, this.role);
     this.registrationService.saveAll(this.information).subscribe();
+
+
   }
 }

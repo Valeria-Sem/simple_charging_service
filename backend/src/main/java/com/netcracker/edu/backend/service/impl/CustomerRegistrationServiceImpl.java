@@ -9,6 +9,7 @@ import com.netcracker.edu.backend.service.UsersEntityService;
 import com.netcracker.edu.backend.service.WalletEntityService;
 import com.netcracker.edu.backend.transferOfObjects.CustomerRegistration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -47,6 +48,24 @@ public class CustomerRegistrationServiceImpl implements CustomerRegistrationServ
         customerRegistration.setIdWallet(wallet.getIdWallet());
         return customerRegistration;
 
+    }
+
+    @Override
+    public CustomerRegistration getCustomerProfileInformation(String log, String pas) {
+        UsersEntity usersEntity = usersEntityService.getUserIdByLoginAndPassword(log, pas);
+        CustomerEntity customerEntity = customerEntityService.getCustomerEntityByUsersByIdUsers(usersEntity);    //usersEntity.getIdUsers
+        WalletEntity walletEntity = customerEntity.getWalletByIdWallet();
+        return new CustomerRegistration(usersEntity.getIdUsers(),
+                usersEntity.getLogin(),
+                usersEntity.getPassword(),
+                usersEntity.getRole(),
+                customerEntity.getIdCustomer(),
+                customerEntity.getName(),
+                customerEntity.getSurname(),
+                customerEntity.geteMail(),
+                walletEntity.getIdWallet(),
+                walletEntity.getBalance(),
+                walletEntity.getWalletStatus());
     }
 
     private WalletEntity saveNewWallet(CustomerRegistration info){

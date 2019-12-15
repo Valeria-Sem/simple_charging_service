@@ -11,6 +11,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from "../services/user.service";
 import {User} from "./user/user";
 import {Router} from "@angular/router";
+import {CustomerService} from "../services/customer.sevice";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-nav',
@@ -29,7 +31,8 @@ export class NavComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   // private login: string;
   loginForm: FormGroup;
-  user$ = this.userService.currentUser$;
+  //user$ = this.userService.currentUser$;
+  customer$ = this.customerService.currentCustomer$;
 
   constructor(private modalService: BsModalService,
               private organisationService: OrganisationService,
@@ -37,6 +40,7 @@ export class NavComponent implements OnInit {
               private cdr: ChangeDetectorRef,
               private formBuilder: FormBuilder,
               private userService: UserService,
+              private customerService: CustomerService,
               private router: Router) {
     //private userService: UserService
   }
@@ -89,9 +93,9 @@ export class NavComponent implements OnInit {
     });
   }
 
-  public getUserByLogin(login): void {
+  public getCustomerProfileInfo(login, password): void {
     this.subscriptions.push(
-      this.userService.getUserByLogin(login)
+      this.customerService.getCustomerProfileInfo(login, password)
         .subscribe(() => {
             // this.userService.currentUser = user as User;
             this.modalRef.hide();
@@ -114,7 +118,7 @@ export class NavComponent implements OnInit {
   }
 
   public logout(): void {
-    this.userService.setUser(null);
+    this.customerService.setCustomer(null);
     this.router.navigate(['/']);
   }
 

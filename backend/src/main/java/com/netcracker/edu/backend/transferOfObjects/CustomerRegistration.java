@@ -1,5 +1,6 @@
 package com.netcracker.edu.backend.transferOfObjects;
 
+import com.netcracker.edu.backend.entity.WalletEntity;
 import com.netcracker.edu.backend.entity.enums.UsersRole;
 import com.netcracker.edu.backend.entity.enums.WalletStatus;
 
@@ -38,6 +39,7 @@ public class CustomerRegistration {
         this.name = name;
         this.surname = surname;
     }
+
 
     public int getIdWallet() {
         return idWallet;
