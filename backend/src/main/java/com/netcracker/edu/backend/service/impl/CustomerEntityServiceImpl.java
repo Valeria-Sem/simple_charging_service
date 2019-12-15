@@ -39,7 +39,6 @@ public class CustomerEntityServiceImpl implements CustomerEntityService{
     @Override
     public CustomerEntity getCustomerEntityByUsersByIdUsers(UsersEntity usersEntity) {
         usersEntity = usersEntityService.getUserIdByLoginAndPassword(usersEntity.getLogin(), usersEntity.getPassword());
-         //todo make repository method getCustomerByUserId
         return customerRepository.getCustomerEntityByUsersByIdUsers(usersEntity);
     }
 

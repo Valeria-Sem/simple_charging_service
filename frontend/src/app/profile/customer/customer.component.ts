@@ -3,7 +3,10 @@ import {CustomerService} from "../../services/customer.sevice";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {tap} from "rxjs/operators";
 import {Customer} from "../../registration/customer";
-import {Wallet} from "../../registration/wallet";
+import {Status, Wallet} from "../../registration/wallet";
+import {WalletService} from "../../services/wallet.service";
+import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
+import {Registration} from "../../registration/registration";
 
 @Component({
   selector: "app-cusProf",
@@ -12,12 +15,16 @@ import {Wallet} from "../../registration/wallet";
 })
 export class CustomerProfileComponent implements OnInit {
   public wallet: Wallet;
-  public customer: Customer = this.customerService.currentCustomer;
-  public newBalance: string;
+  public customer: Registration = this.customerService.currentCustomer;
+  public newBalance: number;
+  public walletStatus: Status = 0;
+  public balance: number;
   modalRef: BsModalRef;
 
   constructor(private customerService: CustomerService,
-              private modalService: BsModalService) {
+              private modalService: BsModalService,
+              private walletService: WalletService,
+              private loadingService: Ng4LoadingSpinnerService) {
   }
 
   openModal(template: TemplateRef<any>) {
@@ -27,14 +34,18 @@ export class CustomerProfileComponent implements OnInit {
   ngOnInit() {
     console.log(1);
     console.log(this.customerService);
+  //  this.loadUserWallet(this.customer.idWallet);
     // this.customerService.currentCustomer$.subscribe(v => console.log(v))
   }
 
-  public replenishBalance (newBalance): void {
-    this.wallet = new Wallet(newBalance);
-
+  public replenishBalance (): void {
+    this.balance = (+this.customer.balance) + (+this.newBalance);
+    this.wallet = new Wallet(this.customer.idWallet, this.balance, this.walletStatus);
+    this.walletService.balanceReplenishment(this.wallet).subscribe();
   }
 
-
+  // private loadUserWallet(walletUserId: string): void {
+  //   this.loadingService.show();
+  // }
 
 }

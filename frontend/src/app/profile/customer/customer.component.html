@@ -1,8 +1,6 @@
 
 <div class="container">
   <form>
-    <h1 class="h3 mb-3 font-weight-normal">Customer</h1>
-
     <div class="container-fluid mt-5" style="background-color: lavender">
       <div class="container p-5">
         <div class="row justify-content-center">
@@ -40,13 +38,12 @@
                   <div class="modal-body">
                     Enter the desired amount.
 
-                    <input autofocus
-                           name="form-control"
-                           class="p-2"
-                           formControlName="balance"
-                    >
+                    <label for="inputBalance" class="sr-only">input new Balance</label>
+                    <input id="inputBalance" class="form-control" placeholder="new balance" required autofocus [(ngModel)]="newBalance" name="newBalance">
+
+                    <button class="btn btn-outline-primary" (click)="replenishBalance()" routerLink="/profile">Add</button>
                   </div>
-                  <button class="btn btn-outline-primary">Add</button>
+
                 </ng-template>
               </div>
             </div>

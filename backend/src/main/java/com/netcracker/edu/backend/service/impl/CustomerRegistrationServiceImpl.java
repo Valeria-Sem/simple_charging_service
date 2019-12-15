@@ -9,10 +9,7 @@ import com.netcracker.edu.backend.service.UsersEntityService;
 import com.netcracker.edu.backend.service.WalletEntityService;
 import com.netcracker.edu.backend.transferOfObjects.CustomerRegistration;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.sql.Date;
 
 @Service
 public class CustomerRegistrationServiceImpl implements CustomerRegistrationService {
@@ -92,5 +89,6 @@ public class CustomerRegistrationServiceImpl implements CustomerRegistrationServ
         customerEntity.setWalletByIdWallet(wallet);
         customerEntityService.saveCustomer(customerEntity);
     }
+
 
 }

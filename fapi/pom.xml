@@ -48,7 +48,13 @@
             <version>3.3.2.Final</version>
             <scope>compile</scope>
         </dependency>
-<!--<добавила в воскресенье>-->
+        <dependency>
+            <groupId>com.netcracker.edu</groupId>
+            <artifactId>backend</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <!--<добавила в воскресенье>-->
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.security</groupId>-->
 <!--            <artifactId>spring-security-test</artifactId>-->

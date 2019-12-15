@@ -18,7 +18,7 @@ export class UserRegComponent {
   public name: string;
   public surname: string;
   public eMail: string;
-  public balance: string = "100";
+  public balance: number = 100;
   public walletStatus: Status = 0;
   public role: Role = Role.CUSTOMER;
 
@@ -31,7 +31,7 @@ export class UserRegComponent {
   public saveAll(information): void {
     this.information = new Registration(this.name, this.surname, this.eMail, this.balance,
       this.walletStatus, this.login, this.password, this.role);
-    this.registrationService.saveAll(this.information).subscribe();
+    this.registrationService.saveCustomer(this.information).subscribe();
 
 
   }

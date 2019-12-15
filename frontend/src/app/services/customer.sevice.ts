@@ -4,22 +4,23 @@ import {Observable, Subject} from "rxjs";
 import {Customer} from "../registration/customer";
 import {tap} from "rxjs/operators";
 import {User} from "../nav/user/user";
+import {Registration} from "../registration/registration";
 
 @Injectable({
   providedIn: "root"
 })
 export class CustomerService {
-  public currentCustomer: Customer;
+  public currentCustomer: Registration;
 
-  private subjectCustomer: Subject<Customer> = new Subject();
+  private subjectCustomer: Subject<Registration> = new Subject();
 
   public currentCustomer$ = this.subjectCustomer.asObservable();
 
   constructor(private http: HttpClient) {
   }
 
-  getCustomerProfileInfo(login: string, password: string): Observable<Customer> {
-    return this.http.get<Customer>('/api/registration/login/' + login + '/password/' + password).pipe(
+  getCustomerProfileInfo(login: string, password: string): Observable<Registration> {
+    return this.http.get<Registration>('/api/registration/login/' + login + '/password/' + password).pipe(
       tap(customer => {
         this.subjectCustomer.next(customer);
         this.currentCustomer = customer;
@@ -27,7 +28,7 @@ export class CustomerService {
     );
   }
 
-  public setCustomer(customer: Customer): void {
+  public setCustomer(customer: Registration): void {
     this.subjectCustomer.next(customer);
   }
 

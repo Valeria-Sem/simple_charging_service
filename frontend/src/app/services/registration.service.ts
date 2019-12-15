@@ -12,8 +12,8 @@ export class RegistrationService {
   constructor(private http: HttpClient) {
   }
 
-  saveAll(information: Registration): Observable<Registration> {
-    return this.http.post<Registration>('/api/registration', information);
+  saveCustomer(information: Registration): Observable<Registration> {
+    return this.http.post<Registration>('/api/registration/customer', information);
   }
 
 }

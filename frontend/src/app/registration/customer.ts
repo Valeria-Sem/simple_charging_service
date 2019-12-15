@@ -2,15 +2,15 @@ export class Customer {
   idCustomer: string;
   name: string;
   surname: string;
-  email: string;
+  eMail: string;
   idWallet: string;
   idUser: string;
 
 
-  constructor(name: string, surname: string, email: string, ) {
+  constructor(name: string, surname: string, eMail: string, ) {
     this.name = name;
     this.surname = surname;
-    this.email = email;
+    this.eMail = eMail;
   }
 
 }

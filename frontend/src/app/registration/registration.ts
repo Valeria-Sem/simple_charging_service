@@ -13,11 +13,11 @@ export class Registration {
   role: Role;
 
   idWallet: string;
-  balance: string;
+  balance: number;
   walletStatus: Status;
 
 
-  constructor(name: string, surname: string, eMail: string, balance: string, walletStatus: Status, login: string, password: string, role: Role) {
+  constructor(name: string, surname: string, eMail: string, balance: number, walletStatus: Status, login: string, password: string, role: Role) {
     this.login = login;
     this.password = password;
     this.role = role;
