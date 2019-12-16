@@ -27,6 +27,7 @@ import {MusicComponent} from "./categories/music/music.component";
 import {SitesComponent} from "./categories/sites/sites.component";
 import {CustomerProfileComponent} from "./profile/customer/customer.component";
 import {CustomerService} from "./services/customer.sevice";
+import {OrganisationProfileComponent} from "./profile/organisation/organisation.component";
 // import {WalletComponent} from "./wallet/wallet.component";
 
 
@@ -54,6 +55,7 @@ import {CustomerService} from "./services/customer.sevice";
     MusicComponent,
     SitesComponent,
     CustomerProfileComponent,
+    OrganisationProfileComponent
     //WalletComponent
   ],
   imports: [

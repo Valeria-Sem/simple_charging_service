@@ -11,7 +11,7 @@ import {MusicComponent} from "./categories/music/music.component";
 import {SitesComponent} from "./categories/sites/sites.component";
 import {OrganisationRegComponent} from "./registration/organisationReg/org.registration.component";
 import {CustomerProfileComponent} from "./profile/customer/customer.component";
-
+import {OrganisationProfileComponent} from "./profile/organisation/organisation.component";
 
 
 const appRoutes : Routes = [
@@ -24,7 +24,8 @@ const appRoutes : Routes = [
   ,{path: 'games', component: GamesComponent}
   ,{path: 'music', component: MusicComponent}
   ,{path: 'sites', component: SitesComponent}
-  ,{path: 'profile', component: CustomerProfileComponent}
+  ,{path: 'custProfile', component: CustomerProfileComponent}
+  ,{path: 'orgProfile', component: CustomerProfileComponent}
 ];
 
 export const routing : ModuleWithProviders = RouterModule.forRoot(appRoutes);
