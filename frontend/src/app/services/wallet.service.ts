@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable, Subject} from "rxjs";
-import {Wallet} from "../registration/wallet";
+import {Wallet} from "../modules/wallet";
 import {tap} from "rxjs/operators";
-import {User} from "../nav/user/user";
+import {User} from "../modules/user";
 
 @Injectable({
   providedIn: 'root'

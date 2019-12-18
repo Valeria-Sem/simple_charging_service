@@ -1,6 +1,7 @@
 package com.netcracker.edu.backend.service.impl;
 
 import com.netcracker.edu.backend.entity.ProductEntity;
+import com.netcracker.edu.backend.entity.SubscriptionEntity;
 import com.netcracker.edu.backend.repository.ProductEntityRepository;
 import com.netcracker.edu.backend.service.ProductEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +22,24 @@ public class ProductEntityServiceImpl implements ProductEntityService {
         return repository.save(product);
     }
 
+//    @Override
+//    public ProductEntity getProduct(SubscriptionEntity subscriptionEntity) {
+//        return repository.getProduct(subscriptionEntity);
+//    }
+
     @Override
-    public Optional<ProductEntity> getProductById(Integer id) {
-        return repository.findById(id);
+    public ProductEntity getProductById(Integer id) {
+        return repository.getProductByIdProduct(id);
     }
 
     @Override
     public ProductEntity[] getProductByCategory(Integer idCategory) {
         return repository.findByIdCategory(idCategory);
+    }
+
+    @Override
+    public ProductEntity[] getProductByOrganisation(Integer idOrganisation) {
+        return repository.findByIdOrganisation(idOrganisation);
     }
 
     @Override
@@ -38,6 +49,6 @@ public class ProductEntityServiceImpl implements ProductEntityService {
 
     @Override
     public void deleteProduct(Integer id) {
-        repository.deleteById(id);
+            repository.deleteById(id);
     }
 }

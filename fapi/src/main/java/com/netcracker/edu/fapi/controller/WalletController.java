@@ -36,6 +36,14 @@ public class WalletController {
         return null;
     }
 
+    @RequestMapping(value = "/payment",method = RequestMethod.POST)
+    public ResponseEntity<WalletModel> balancePayment (@RequestBody WalletModel wallet){
+        if(wallet != null) {
+            return ResponseEntity.ok(walletService.payment(wallet));
+        }
+        return null;
+    }
+
     @RequestMapping(value = "/delete/{idDelete}", method = RequestMethod.DELETE)
     public void deleteWallet(@PathVariable String idDelete) {
         walletService.deleteWallet(Long.valueOf(idDelete));

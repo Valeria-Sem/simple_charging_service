@@ -1,5 +1,7 @@
 package com.netcracker.edu.backend.entity;
 
+import com.netcracker.edu.backend.entity.enums.SubStatus;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
@@ -8,9 +10,7 @@ import java.util.Objects;
 @Table(name = "subscription", schema = "charging_service", catalog = "")
 public class SubscriptionEntity {
     private int idSubscription;
-
-    @Enumerated(EnumType.STRING)
-    private SubscriptionStatus subscriptionStatus;
+    private SubStatus subscriptionStatus;
     private Date dateOfSubscription;
     private CustomerEntity customerByIdCustomers;
     private ProductEntity productByIdProduct;
@@ -26,12 +26,13 @@ public class SubscriptionEntity {
     }
 
     @Basic
+    @Enumerated(EnumType.STRING)
     @Column(name = "subscription_status")
-    public SubscriptionStatus getSubscriptionStatus() {
+    public SubStatus getSubscriptionStatus() {
         return subscriptionStatus;
     }
 
-    public void setSubscriptionStatus(SubscriptionStatus subscriptionStatus) {
+    public void setSubscriptionStatus(SubStatus subscriptionStatus) {
         this.subscriptionStatus = subscriptionStatus;
     }
 
@@ -80,9 +81,4 @@ public class SubscriptionEntity {
         this.productByIdProduct = productByIdProduct;
     }
 
-    public enum SubscriptionStatus{
-        ACTIVE,
-        FROZEN,
-        BLOCKED
-    }
 }

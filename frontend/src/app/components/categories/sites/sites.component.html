@@ -1,0 +1,47 @@
+<div class="pricing-header px-3 py-3 pt-md-5 p-md-4 mx-auto text-center">
+  <h1 class="display-4">Sites</h1>
+  <p class="lead">
+    "Various site subscriptions are provided here.
+    You can find a site that you like and buy a subscription to it."
+  </p>
+</div>
+
+<div class="container-fluid mt-5" style="background-color: #eeeeee">
+  <div class="container p-5">
+    <div class="row justify-content-center">
+      <div class="col col-lg-4" *ngFor="let choice of products">
+        <div class="card text-center mt-5">
+          <img src={{choice.img}} alt="" class="card-img-top">
+          <div class="card-body" >
+            <h1 class="card-title pricing-card-title" >
+              ${{choice.monthPrise}}
+              <small class="text-muted">/ mo</small>
+            </h1>
+            <h4 class="card-title">{{choice.name}}</h4>
+            <p class="card-text">
+              {{choice.description}}
+            </p>
+            <a class="btn btn-outline-primary" (click)="payment(choice.monthPrise, template)" routerLink="/">Get started</a>
+
+            <ng-template #template>
+              <div class="modal-header">
+                <h4 class="modal-title pull-left">Payment</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                Your account has been charged: ${{choice.monthPrise}}
+
+              </div>
+
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

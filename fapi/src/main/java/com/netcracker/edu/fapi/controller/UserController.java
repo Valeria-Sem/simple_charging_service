@@ -36,7 +36,13 @@ public class UserController {
         return userService.findByLogin(login);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+//    @GetMapping("/login/{login}/password/{pass}")
+//    public UserModel getUserByLoginAndPass(@PathVariable String login,
+//                                           @PathVariable String pass) {
+//        return userService.findByLoginPass(login, pass);
+//    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public void deleteUser(@PathVariable String id) {
         userService.deleteUser(Integer.valueOf(id));
     }

@@ -25,15 +25,16 @@ public class CustomerEntityController {
         return customerEntityService.saveCustomer(customerEntity);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<CustomerEntity> getCustomerById(@PathVariable(name ="id") Integer id) {
-        Optional<CustomerEntity> customer = customerEntityService.getCustomerById(id);
-        if (customer.isPresent()) {
-            return ResponseEntity.ok(customer.get());
-        } else {
-            return  ResponseEntity.notFound().build();
-        }
-    }
+//    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+//    public ResponseEntity<CustomerEntity> getCustomerById(@PathVariable(name ="id") Integer id) {
+//        CustomerEntity customer = customerEntityService.getCustomerById(id);
+//        return ResponseEntity.ok(customer);
+////        if (customer.isPresent()) {
+////            return ResponseEntity.ok(customer.get());
+////        } else {
+////            return  ResponseEntity.notFound().build();
+////        }
+//    }
 
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)

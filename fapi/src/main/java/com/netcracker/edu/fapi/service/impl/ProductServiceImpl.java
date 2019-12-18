@@ -33,7 +33,14 @@ public class ProductServiceImpl implements ProductService {
     public ProductModel[] getProductByIdCategory(Long idCategory) {
         RestTemplate restTemplate = new RestTemplate();
         ProductModel[] products = restTemplate.getForObject(backendServerUrl + "/api/product/category/" + idCategory, ProductModel[].class);
-        return products;  //restTemplate.getForObject(backendServerUrl + "/api/product/category/" + idCategory, Product.class);
+        return products;
+    }
+
+    @Override
+    public ProductModel[] getProductByIdOrganisation(Long IdOrganisation) {
+        RestTemplate restTemplate = new RestTemplate();
+        ProductModel[] products = restTemplate.getForObject(backendServerUrl + "/api/product/organisation/" + IdOrganisation, ProductModel[].class);
+        return products;
     }
 
     @Override

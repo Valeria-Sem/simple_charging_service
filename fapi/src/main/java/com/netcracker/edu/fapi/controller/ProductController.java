@@ -50,4 +50,10 @@ public class ProductController {
         Long productIdCategory = Long.valueOf(idCategory);
         return productService.getProductByIdCategory(productIdCategory);
     }
+
+    @RequestMapping(value = "/organisation/{idOrganisation}")
+    public ProductModel[] getProductByIdOrganisation(@PathVariable String idOrganisation) throws InterruptedException {
+        Long productIdOrganisation = Long.valueOf(idOrganisation);
+        return productService.getProductByIdOrganisation(productIdOrganisation);
+    }
 }

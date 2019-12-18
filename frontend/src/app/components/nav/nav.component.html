@@ -1,0 +1,181 @@
+<div *ngIf="loaded">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <a class="navbar-brand" routerLink="/">
+      <img src="assets\logo.png" wight="30" height="50" alt="logo">
+    </a>
+    <button class="navbar-toggler" tupe="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
+            <a href id="basic-link" dropdownToggle (click)="false" class="nav-link"
+            >Categories</a>
+            <ul id="basic-link-dropdown" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="basic-link">
+              <li *ngFor="let choice of categories">
+                  <a class="dropdown-item" routerLink="/{{choice.name | lowercase}}">{{choice.name}}</a>
+              </li>
+            </ul>
+          </span>
+        </li>
+<!--        todo фильтрация по организациям, если будет время-->
+<!--        <li class="nav-item ">-->
+<!--          <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">-->
+<!--          <a href id="basic-link2" dropdownToggle (click)="false" class="nav-link">Organisation</a>-->
+<!--            <ul id="basic-link2-dropdown" *dropdownMenu class="dropdown-menu"-->
+<!--                role="menu" aria-labelledby="basic-link2">-->
+<!--              <li *ngFor="let choice of organisations">-->
+<!--                  <a class="dropdown-item" routerLink="/organisation">{{choice.name}}</a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </span>-->
+<!--        </li>-->
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/about">About us</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+<!--        <input class="p-1" type="text" name="form-control mr-sm-2" placeholder="Search" aria-label="Search">-->
+<!--        <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 20px;">Search-->
+<!--        </button>-->
+
+        <button *ngIf="!(customer$ | async)"
+                class="btn btn-outline-primary my-2 my-sn-0"
+                (click)="openModal(template)">
+          Log in
+        </button>
+        <strong [style.color]="'#ffffff'"
+                *ngIf="customer$| async as customer">
+          <div class="btn-group" dropdown>
+          <button dropdownToggle type="button"
+                  class="btn btn-outline-primary dropdown-toggle"
+                  aria-controls="dropdown-basic"  >
+            {{customer.name}}
+            <span class="caret"></span>
+          </button>
+
+          <ul id="dropdown-animated"
+              *dropdownMenu class="dropdown-menu"
+              role="menu"
+              aria-labelledby="button-animated">
+            <li role="menuitem"><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+            <li role="menuitem"><a class="dropdown-item" routerLink="/sub">Subscription</a></li>
+
+          </ul>
+          </div>
+          <button class="btn btn-outline-primary"  (click)="logout()">Log out</button>
+        </strong>
+
+        <ng-template #template>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title pull-left"
+                  style="margin: auto; padding-left: 20px">
+                Authorization
+              </h4>
+              <button type="button"
+                      class="close pull-right"
+                      aria-label="Close"
+                      (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+                <form [formGroup]="loginForm">
+                  <div class="form-froup m-3">
+                    <label>Login*</label>
+                    <input autofocus
+                           type="E-mail"
+                           name="form-control"
+                           aria-describdby="emailHelp"
+                           class="p-2"
+                           formControlName="userLogin"
+                           #login>
+                    <!--                    formControlName="userLogin" #login-->
+                  </div>
+                  <div class="form-froup m-3">
+                    <label>Password*</label>
+                    <input type="Password"
+                           name="form-control"
+                           placeholder="Password"
+                           class="p-2"
+                           formControlName="userPassword"
+                           #password>
+                    <!--                    formControlName="userPassword" #password-->
+                    <small id="passwordHelp"
+                           class="form-text text-muted">
+                      Password must be at least 8 characters
+                    </small>
+                  </div>
+
+                  <a routerLink="/">
+                    <button class="btn btn-outline-primary my-2 my-sn-0"
+                            style="margin-right: 10px; margin-left: 80px;"
+                            (click)="getCustomerProfileInfo(login.value, password.value)">
+                      <!--                    (click)="getUserByLogin(login.value)" [disabled]="loginForm.invalid"-->
+                      Login
+                    </button>
+                  </a>
+                </form>
+<!--                //todo style and cursor pointer, and hide modal-->
+                <span class="link"
+                   style="margin-left: 40px"
+                   (click)="openModal2(templateNested)">
+                  Register a new profile
+                </span>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template #templateNested>
+          <div class="modal-content" style="margin: auto;">
+            <div class="modal-header">
+              <h4 class="modal-title pull-left" style="margin: auto; padding-left: 70px">CusRegistration</h4>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="margin: auto;">
+              <div class="container-fluid" style="margin: auto;">
+                <form>
+                  <div class="form-froup m-3">
+                    <p>You are Organisation or Customer ?</p>
+                  </div>
+                  <div class="form-froup m-3">
+                    <!--                    <pre class="card card-block card-header">{{ myForm.value | json }}</pre>-->
+                    <form [formGroup]="myForm" class="form-inline">
+                      <div class="form-group">
+                        <div class="btn-group" btnRadioGroup formControlName="radio">
+                          <label btnRadio="A" class="btn btn-primary"
+                                 tabindex="0" role="button" routerLink="/orgReg" (click)="closeModal2(templateNested)">Organisation</label>
+                          <label btnRadio="B" class="btn btn-primary"
+                                 tabindex="0" role="button" routerLink="/userReg" (click)="closeModal2(templateNested)">Customer</label>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+<!--                  <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 100px;"-->
+<!--                          routerLink="/userReg">-->
+<!--                    Next-->
+<!--                  </button>-->
+                </form>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </form>
+    </div>
+  </nav>
+</div>
+
+
+

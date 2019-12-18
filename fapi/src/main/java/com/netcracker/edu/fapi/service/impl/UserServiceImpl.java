@@ -35,6 +35,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserModel findByLoginPass(String log, String pass) {
+        RestTemplate restTemplate = new RestTemplate();
+        UserModel user = restTemplate.getForObject(backendServerUrl + "/api/user/login/" + log + "/password/pass", UserModel.class);
+        return user;
+    }
+
+    @Override
     public List<UserModel> getAll() {
         RestTemplate restTemplate = new RestTemplate();
         UserModel[] userResponse = restTemplate.getForObject(backendServerUrl + "/api/user", UserModel[].class);

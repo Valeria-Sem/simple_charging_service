@@ -1,6 +1,7 @@
 package com.netcracker.edu.backend.service.impl;
 
 import com.netcracker.edu.backend.entity.CustomerEntity;
+import com.netcracker.edu.backend.entity.SubscriptionEntity;
 import com.netcracker.edu.backend.entity.UsersEntity;
 import com.netcracker.edu.backend.repository.CustomerEntityRepository;
 import com.netcracker.edu.backend.service.CustomerEntityService;
@@ -26,9 +27,15 @@ public class CustomerEntityServiceImpl implements CustomerEntityService{
         return customerRepository.save(customer);
     }
 
+//    @Override
+//    public CustomerEntity getCustomer(SubscriptionEntity subscriptionEntity) {
+//        return customerRepository.getCustomer(subscriptionEntity);
+//    }
+
+// todo вернуть назад метод Optional<CustomerEntity> getCustomerById(long id), а может и нет
     @Override
-    public Optional<CustomerEntity> getCustomerById(long id) {
-        return customerRepository.findById(id);
+    public CustomerEntity getCustomerById(int id) {
+        return customerRepository.getCustomerByIdCustomer(id);
     }
 
     @Override
@@ -43,7 +50,7 @@ public class CustomerEntityServiceImpl implements CustomerEntityService{
     }
 
     @Override
-    public void deleteCustomer(long id) {
+    public void deleteCustomer(int id) {
         customerRepository.deleteById(id);
     }
 }

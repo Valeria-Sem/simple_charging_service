@@ -24,15 +24,17 @@ public class ProductEntityController {
         return productEntityService.getAllProducts();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<ProductEntity> getProductById(@PathVariable(name ="id") Integer id) {
-        Optional<ProductEntity> product = productEntityService.getProductById(id);
-        if (product.isPresent()) {
-            return ResponseEntity.ok(product.get());
-        } else {
-            return  ResponseEntity.notFound().build();
-        }
-    }
+//    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+//    public ResponseEntity<ProductEntity> getProductById(@PathVariable(name ="id") Integer id) {
+////        Optional<ProductEntity> product = productEntityService.getProductById(id);
+////        if (product.isPresent()) {
+////            return ResponseEntity.ok(product.get());
+////        } else {
+////            return  ResponseEntity.notFound().build();
+////        }
+//        ProductEntity products = productEntityService.getProductById(id);
+//        return ResponseEntity.ok(products);
+//    }
 
     @RequestMapping(method = RequestMethod.POST)
     public ProductEntity saveProduct(@RequestBody ProductEntity productEntity){
@@ -42,6 +44,12 @@ public class ProductEntityController {
     @RequestMapping(value = "/category/{idCategory}", method = RequestMethod.GET)
     public ResponseEntity<ProductEntity[]> getProductByCategory(@PathVariable(name = "idCategory") int idCategory) {
         ProductEntity[] products = productEntityService.getProductByCategory(idCategory);
+        return ResponseEntity.ok(products);
+    }
+
+    @RequestMapping(value = "/organisation/{idOrganisation}", method = RequestMethod.GET)
+    public ResponseEntity<ProductEntity[]> getProductByOrganisation(@PathVariable(name = "idOrganisation") int idOrganisation) {
+        ProductEntity[] products = productEntityService.getProductByOrganisation(idOrganisation);
         return ResponseEntity.ok(products);
     }
 

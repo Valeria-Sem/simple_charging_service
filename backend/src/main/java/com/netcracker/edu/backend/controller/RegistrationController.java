@@ -1,8 +1,8 @@
 package com.netcracker.edu.backend.controller;
 
-import com.netcracker.edu.backend.entity.OrganisationEntity;
-import com.netcracker.edu.backend.service.CustomerRegistrationService;
-import com.netcracker.edu.backend.service.OrganisationRegistrationService;
+
+import com.netcracker.edu.backend.service.RegistrationService;
+import com.netcracker.edu.backend.transferOfObjects.AbstractRegistrationModel;
 import com.netcracker.edu.backend.transferOfObjects.CustomerRegistration;
 import com.netcracker.edu.backend.transferOfObjects.OrganisationRegistration;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,38 +13,28 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/registration")
 public class RegistrationController {
 
-    private CustomerRegistrationService customerRegistrationService;
-    private OrganisationRegistrationService organisationRegistrationService;
+    private RegistrationService registrationService;
 
     @Autowired
-    public RegistrationController(CustomerRegistrationService customerRegistrationService, OrganisationRegistrationService organisationRegistrationService) {
-        this.customerRegistrationService = customerRegistrationService;
-        this.organisationRegistrationService = organisationRegistrationService;
+    public RegistrationController(RegistrationService registrationService) {
+        this.registrationService = registrationService;
     }
 
-    @RequestMapping(value = "/customer/login/{login}/password/{password}", method = RequestMethod.GET)
-    public ResponseEntity<CustomerRegistration> getCustomerRegisteredProfile(
+    @RequestMapping(value = "/login/{login}/password/{password}", method = RequestMethod.GET)
+    public ResponseEntity<AbstractRegistrationModel> getUserInfo(
             @PathVariable(name = "login") String login,
             @PathVariable(name = "password") String password) {
-       CustomerRegistration customer =  customerRegistrationService.getCustomerProfileInformation(login, password);
-        return ResponseEntity.ok(customer);
+        AbstractRegistrationModel information =  registrationService.getUserInfo(login, password);
+        return ResponseEntity.ok(information);
     }
 
-    @RequestMapping(value = "/customer", method = RequestMethod.POST)
-    public CustomerRegistration registerCustomer(@RequestBody CustomerRegistration customerRegistration){
-        return customerRegistrationService.registerCustomer(customerRegistration);
+    @RequestMapping(value = "/customer",method = RequestMethod.POST)
+    public AbstractRegistrationModel registerCust(@RequestBody CustomerRegistration customerRegistration){
+        return registrationService.registerUser(customerRegistration);
     }
 
-    @RequestMapping(value = "/organisation/login/{login}/password/{password}", method = RequestMethod.GET)
-    public ResponseEntity<OrganisationRegistration> getOrganisationRegisteredProfile(
-            @PathVariable(name = "login") String login,
-            @PathVariable(name = "password") String password) {
-        OrganisationRegistration organisation =  organisationRegistrationService.getOrganisationProfileInformation(login, password);
-        return ResponseEntity.ok(organisation);
-    }
-
-    @RequestMapping(value = "/organisation", method = RequestMethod.POST)
-    public OrganisationRegistration registerOrganisation(@RequestBody OrganisationRegistration organisationRegistration){
-        return organisationRegistrationService.registerOrganisation(organisationRegistration);
+    @RequestMapping(value = "/organisation",method = RequestMethod.POST)
+    public AbstractRegistrationModel registerOrg(@RequestBody OrganisationRegistration organisationRegistration){
+        return registrationService.registerUser(organisationRegistration);
     }
 }
