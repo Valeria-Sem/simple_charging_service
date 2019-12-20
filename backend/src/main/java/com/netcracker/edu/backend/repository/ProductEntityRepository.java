@@ -10,5 +10,4 @@ public interface ProductEntityRepository extends CrudRepository<ProductEntity, I
     ProductEntity[]findByIdCategory(int idCategory);
     ProductEntity[]findByIdOrganisation(int IdOrganisation);
     ProductEntity getProductByIdProduct(int idProduct);
-    //ProductEntity getProduct (SubscriptionEntity subscriptionEntity);
 }

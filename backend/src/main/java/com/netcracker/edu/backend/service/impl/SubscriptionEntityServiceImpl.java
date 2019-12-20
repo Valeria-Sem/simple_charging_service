@@ -12,6 +12,7 @@ import com.netcracker.edu.backend.service.SubscriptionEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 //import java.sql.Date;
@@ -67,4 +68,21 @@ public class SubscriptionEntityServiceImpl implements SubscriptionEntityService 
     public void deleteSub(Integer id) {
         subscriptionEntityRepository.deleteById(id);
     }
+
+    @Override
+    public List<SubscriptionEntity> getCustomerSub(int idCust) {
+        CustomerEntity customer = customerEntityService.getCustomerById(idCust);
+        return subscriptionEntityRepository.getSubscriptionEntitiesByCustomerByIdCustomers(customer);
+    }
+
+//    @Override
+//    public SubscriptionEntity[] getCustomerSub(int idCust) {
+//        CustomerEntity customer = customerEntityService.getCustomerById(idCust);
+//        return subscriptionEntityRepository.getSubscriptionEntitiesByCustomerByIdCustomers(customer);
+//    }
+
+//    @Override
+//    public SubscriptionEntity[] getProductsByCust(int idCust) {
+//        return new SubscriptionEntity[0];
+//    }
 }

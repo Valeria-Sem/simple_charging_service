@@ -4,6 +4,8 @@ import com.netcracker.edu.backend.entity.CustomerEntity;
 import com.netcracker.edu.backend.entity.SubscriptionEntity;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
+
 public interface SubscriptionEntityRepository extends CrudRepository<SubscriptionEntity, Integer> {
-    SubscriptionEntity[] getSubscriptionEntitiesByCustomerByIdCustomers(CustomerEntity customer);
+    List<SubscriptionEntity> getSubscriptionEntitiesByCustomerByIdCustomers(CustomerEntity customer);
 }

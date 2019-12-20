@@ -2,7 +2,7 @@ import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {TemplateRef} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable, Subscription} from "rxjs";
+import {Observable, Subject, Subscription} from "rxjs";
 import {Category} from "../../modules/category"
 import {CategoryService} from "../../services/category.service";
 import {Organisation} from "../../modules/organisation";
@@ -11,16 +11,17 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from "../../services/user.service";
 import {User} from "../../modules/user";
 import {Router} from "@angular/router";
-import {CustomerService} from "../../services/customer.sevice";
 import {tap} from "rxjs/operators";
 import {Product} from "../../modules/product";
 import {ProductService} from "../../services/product.service";
+import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
+import {Customer} from "../../modules/customer";
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css'],
-
+  providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }]
 })
 
 export class NavComponent implements OnInit {
@@ -28,15 +29,18 @@ export class NavComponent implements OnInit {
   modalRef: BsModalRef | null;
   modalRef2: BsModalRef;
   categories: Category[];
-  organisations: Organisation[];
   myForm: FormGroup;
   private subscriptions: Subscription[] = [];
-  // private login: string;
   loginForm: FormGroup;
-  //user$ = this.userService.currentUser$;
-  customer$ = this.customerService.currentCustomer$;
+  public user: User = this.userService.currentUser;
+  user$ = this.userService.currentUser$;
+  //customer$ = this.customerService.currentCustomer$;
   products: Product[];
   organisation: Organisation;
+  public login: string;
+  public password: string;
+
+ // unauthorizedError: string = null;
 
   constructor(private modalService: BsModalService,
               private organisationService: OrganisationService,
@@ -44,7 +48,6 @@ export class NavComponent implements OnInit {
               private cdr: ChangeDetectorRef,
               private formBuilder: FormBuilder,
               private userService: UserService,
-              private customerService: CustomerService,
               private router: Router,
               private productService: ProductService) {
     //private userService: UserService
@@ -64,52 +67,31 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.loaded = true;
     this.categoryService.getCategories().subscribe((data) => {
       this.categories = data as Category[];
       this.cdr.detectChanges();
     });
-  // todo фильтрация по организациям, если будет время
-    // this.organisationService.getOrganisation().subscribe((data) => {
-    //   this.organisations = data as Organisation[];
-    //   this.cdr.detectChanges();
-    // });
 
     this.myForm = this.formBuilder.group({
       radio: ''
     });
 
-    this.loginForm = new FormGroup({
-      "userLogin": new FormControl("", [Validators.required, Validators.pattern("[a-zA-Z_.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}")]),
-      "userPassword": new FormControl("", Validators.required)
-    });
-
-    // if (this.customer$ != null){
-    //   localStorage.setItem('user',JSON.stringify(this.customer$))
-    // }
-
-   // localStorage.setItem('user',JSON.stringify(this.customer$));
+    // this.loginForm = new FormGroup({
+    //   "userLogin": new FormControl("", [Validators.required, Validators.pattern("[a-zA-Z_.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}")]),
+    //   "userPassword": new FormControl("", Validators.required)
+    // });
   }
 
-  public getCustomerProfileInfo(login, password): void {
-    localStorage.setItem('user',JSON.stringify( this.subscriptions.push(
-      this.customerService.getCustomerProfileInfo(login, password)
+  public getUserInfo(login, password): void {
+    this.subscriptions.push(
+      this.userService.getUserInfo(login, password)
         .subscribe(() => {
-            // this.userService.currentUser = user as User;
-            // localStorage.setItem('user',JSON.stringify(this.customer$));
             this.modalRef.hide();
           }
         )
-    )));
-    // this.subscriptions.push(
-    //   this.customerService.getCustomerProfileInfo(login, password)
-    //     .subscribe(() => {
-    //         // this.userService.currentUser = user as User;
-    //        // localStorage.setItem('user',JSON.stringify(this.customer$));
-    //         this.modalRef.hide();
-    //       }
-    //     )
-    // );
+    )
   }
 
 
@@ -127,11 +109,10 @@ export class NavComponent implements OnInit {
   }
 
   public logout(): void {
-    this.customerService.setCustomer(null);
+    this.userService.setUser(null);
+    localStorage.removeItem("user");
     this.router.navigate(['/']);
   }
-
-
 
 }
 

@@ -1,10 +1,10 @@
 export class Category {
-  id: string;
+  idCategory: string;
   name: string;
 
   static cloneBase(category: Category): Category{
   const cloneCategory: Category = new Category();
-    cloneCategory.id = category.id;
+    cloneCategory.idCategory = category.idCategory;
     cloneCategory.name = category.name;
     return cloneCategory;
   }

@@ -27,4 +27,9 @@ public class SubscriptionController {
         }
         return null;
     }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public void unsubscribe(@PathVariable Integer id) {
+        subscriptionService.unsubscribe(Integer.valueOf(id));
+    }
 }

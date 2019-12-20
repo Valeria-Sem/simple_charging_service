@@ -4,8 +4,10 @@
     <a class="navbar-brand" routerLink="/">
       <img src="assets\logo.png" wight="30" height="50" alt="logo">
     </a>
-    <button class="navbar-toggler" tupe="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" tupe="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -15,7 +17,8 @@
         </li>
         <li class="nav-item">
           <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
-            <a href id="basic-link" dropdownToggle (click)="false" class="nav-link"
+            <a id="basic-link" dropdownToggle (click)="false" class="nav-link"
+               [class.disabled]="!user || (user && user.role === 'ORGANISATION')"
             >Categories</a>
             <ul id="basic-link-dropdown" *dropdownMenu class="dropdown-menu"
                 role="menu" aria-labelledby="basic-link">
@@ -25,39 +28,25 @@
             </ul>
           </span>
         </li>
-<!--        todo фильтрация по организациям, если будет время-->
-<!--        <li class="nav-item ">-->
-<!--          <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">-->
-<!--          <a href id="basic-link2" dropdownToggle (click)="false" class="nav-link">Organisation</a>-->
-<!--            <ul id="basic-link2-dropdown" *dropdownMenu class="dropdown-menu"-->
-<!--                role="menu" aria-labelledby="basic-link2">-->
-<!--              <li *ngFor="let choice of organisations">-->
-<!--                  <a class="dropdown-item" routerLink="/organisation">{{choice.name}}</a>-->
-<!--              </li>-->
-<!--            </ul>-->
-<!--          </span>-->
-<!--        </li>-->
+
         <li class="nav-item ">
           <a class="nav-link" routerLink="/about">About us</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-<!--        <input class="p-1" type="text" name="form-control mr-sm-2" placeholder="Search" aria-label="Search">-->
-<!--        <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 20px;">Search-->
-<!--        </button>-->
 
-        <button *ngIf="!(customer$ | async)"
+        <button *ngIf="!(user$ | async)"
                 class="btn btn-outline-primary my-2 my-sn-0"
                 (click)="openModal(template)">
           Log in
         </button>
         <strong [style.color]="'#ffffff'"
-                *ngIf="customer$| async as customer">
+                *ngIf="user$| async as user">
           <div class="btn-group" dropdown>
           <button dropdownToggle type="button"
                   class="btn btn-outline-primary dropdown-toggle"
                   aria-controls="dropdown-basic"  >
-            {{customer.name}}
+            {{user.name}}
             <span class="caret"></span>
           </button>
 
@@ -95,11 +84,11 @@
                     <input autofocus
                            type="E-mail"
                            name="form-control"
+                           placeholder="Login"
                            aria-describdby="emailHelp"
                            class="p-2"
                            formControlName="userLogin"
                            #login>
-                    <!--                    formControlName="userLogin" #login-->
                   </div>
                   <div class="form-froup m-3">
                     <label>Password*</label>
@@ -117,9 +106,10 @@
                   </div>
 
                   <a routerLink="/">
-                    <button class="btn btn-outline-primary my-2 my-sn-0"
+                    <button
+                      class="btn btn-outline-primary my-2 my-sn-0"
                             style="margin-right: 10px; margin-left: 80px;"
-                            (click)="getCustomerProfileInfo(login.value, password.value)">
+                            (click)="getUserInfo(login.value, password.value)">
                       <!--                    (click)="getUserByLogin(login.value)" [disabled]="loginForm.invalid"-->
                       Login
                     </button>

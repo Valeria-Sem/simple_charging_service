@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import {APP_INITIALIZER, NgModule} from "@angular/core";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { TooltipModule } from "ngx-bootstrap/tooltip";
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -9,7 +9,7 @@ import { routing } from './app.routing';
 import { AppComponent } from "./app.component";
 import {HttpClientModule} from "@angular/common/http";
 import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
-import {RouterModule, Routes} from "@angular/router";
+import {Router, RouterModule, Routes} from "@angular/router";
 import { NavComponent } from "./components/nav/nav.component";
 import {HomeComponent} from "./components/home/home.component";
 import { CarouselComponent } from "./components/carousel/carousel.component";
@@ -17,7 +17,7 @@ import {ButtonsModule, CarouselModule} from "ngx-bootstrap";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AboutComponent} from "./components/about/about.component";
 import {User} from "./modules/user";
-import {UserRegComponent} from "./components/registration/userReg/user.registration.component";
+import {UserRegComponent} from "./components/registration/customerReg/customer.registration.component";
 import {OrganisationRegComponent} from "./components/registration/organisationReg/org.registration.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {FilmsComponent} from "./components/categories/films/films.component";
@@ -25,9 +25,13 @@ import {AppsComponent} from "./components/categories/apps/apps.component";
 import {GamesComponent} from "./components/categories/games/game.component";
 import {MusicComponent} from "./components/categories/music/music.component";
 import {SitesComponent} from "./components/categories/sites/sites.component";
-import {CustomerProfileComponent} from "./components/profile/customer/customer.component";
+import {UserComponent} from "./components/profile/user.component";
 import {CustomerService} from "./services/customer.sevice";
-import {OrganisationProfileComponent} from "./components/profile/organisation/organisation.component";
+import {initApp} from "./services/app.initializer";
+import {UserService} from "./services/user.service";
+import {RoleGuard} from "./services/role-guard.service";
+import {SubComponent} from "./components/subscription/sub.component";
+import {ConstructorComponent} from "./components/constructor/constructor.component";
 // import {WalletComponent} from "./wallet/wallet.component";
 
 
@@ -54,8 +58,9 @@ import {OrganisationProfileComponent} from "./components/profile/organisation/or
     GamesComponent,
     MusicComponent,
     SitesComponent,
-    CustomerProfileComponent,
-    OrganisationProfileComponent
+    UserComponent,
+    SubComponent,
+    ConstructorComponent
     //WalletComponent
   ],
   imports: [
@@ -74,7 +79,16 @@ import {OrganisationProfileComponent} from "./components/profile/organisation/or
     ButtonsModule.forRoot()
 
   ],
-  providers: [],
+  providers: [
+    RoleGuard,
+    UserService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initApp,
+      deps: [UserService],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

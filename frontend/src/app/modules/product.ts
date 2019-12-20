@@ -1,27 +1,27 @@
+import {Status} from "./wallet";
+import {Role} from "./user";
+
 export class Product {
-  id: string;
-  idCategory: string;
+  idProduct: string;
+  idCategory: number;
   description: string;
-  idOrganisation: string;
-  monthPrise: string;
+  idOrganisation: number;
+  monthPrise: number;
   name: string;
   img: string;
 
 
-  static cloneBase(product: Product): Product{
-    const cloneProduct: Product = new Product();
-    cloneProduct.id = product.id;
-    cloneProduct.name = product.name;
-    cloneProduct.idCategory = product.idCategory;
-    cloneProduct.description = product.description;
-    cloneProduct.idOrganisation = product.idOrganisation;
-    cloneProduct.monthPrise = product.monthPrise;
-    cloneProduct.img = product.img;
-    return cloneProduct;
+  constructor(idOrganisation: number, name: string,
+               description: string,
+               monthPrise: number,idCategory: number,
+               img: string) {
+    this.idCategory = idCategory;
+    this.description = description;
+    this.idOrganisation = idOrganisation;
+    this.name = name;
+    this.monthPrise = monthPrise;
+    this.img = img;
   }
 
 }
 
-export class ProductStr{
-
-}

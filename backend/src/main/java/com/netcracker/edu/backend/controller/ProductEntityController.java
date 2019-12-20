@@ -24,17 +24,11 @@ public class ProductEntityController {
         return productEntityService.getAllProducts();
     }
 
-//    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-//    public ResponseEntity<ProductEntity> getProductById(@PathVariable(name ="id") Integer id) {
-////        Optional<ProductEntity> product = productEntityService.getProductById(id);
-////        if (product.isPresent()) {
-////            return ResponseEntity.ok(product.get());
-////        } else {
-////            return  ResponseEntity.notFound().build();
-////        }
-//        ProductEntity products = productEntityService.getProductById(id);
-//        return ResponseEntity.ok(products);
-//    }
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<ProductEntity> getProductById(@PathVariable(name ="id") Integer id) {
+        ProductEntity products = productEntityService.getProductById(id);
+        return ResponseEntity.ok(products);
+    }
 
     @RequestMapping(method = RequestMethod.POST)
     public ProductEntity saveProduct(@RequestBody ProductEntity productEntity){

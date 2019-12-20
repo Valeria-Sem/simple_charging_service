@@ -5,6 +5,7 @@ import com.netcracker.edu.backend.entity.ProductEntity;
 import com.netcracker.edu.backend.entity.SubscriptionEntity;
 import com.netcracker.edu.backend.service.SubscriptionEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -29,4 +30,10 @@ public class SubscriptionEntityController {
             @RequestBody SubscriptionEntity subscriptionEntity){
         return subscriptionEntityService.subscribeUser(subscriptionEntity, idCustomer, idProduct);
     }
+
+//    @RequestMapping(value = "/cust/{idCust}", method = RequestMethod.GET)
+//    public ResponseEntity<SubscriptionEntity[]> CustSubscription(@PathVariable(name = "idCust") Integer idCust) {
+//        SubscriptionEntity[] information =  subscriptionEntityService.getCustomerSub(idCust);
+//        return ResponseEntity.ok(information);
+//    }
 }

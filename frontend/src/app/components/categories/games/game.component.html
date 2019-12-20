@@ -21,18 +21,20 @@
             <p class="card-text">
               {{choice.description}}
             </p>
-            <a class="btn btn-outline-primary" (click)="payAndSub(choice.monthPrise, template)" routerLink="/">Get started</a>
+            <a class="btn btn-outline-primary" (click)="payAndSub(choice.monthPrise, template, choice.idProduct)">Subscribe</a>
 
             <ng-template #template>
               <div class="modal-header">
-                <h4 class="modal-title pull-left">Payment</h4>
+                <h4 class="modal-title pull-left">Bill</h4>
                 <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
 
-                Your account has been charged: ${{choice.monthPrise}}
+                <p>You have subscribed to the product "{{choice.name}}"</p>
+                <p>Day of subscribe {{dateOfSub}}</p>
+                <p>Your account has been charged: ${{choice.monthPrise}}</p>
 
               </div>
 
