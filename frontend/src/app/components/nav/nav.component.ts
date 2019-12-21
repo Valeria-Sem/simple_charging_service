@@ -65,7 +65,6 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.loaded = true;
     this.categoryService.getCategories().subscribe((data) => {
       this.categories = data as Category[];
@@ -93,7 +92,6 @@ export class NavComponent implements OnInit {
     )
   }
 
-
   onHidden(): void {
     console.log('Dropdown is hidden');
   }
@@ -111,6 +109,10 @@ export class NavComponent implements OnInit {
     this.userService.setUser(null);
     localStorage.removeItem("user");
     this.router.navigate(['/']);
+  }
+
+  public onCategoriesClickHandler(event: any){
+    let files = event.target;
   }
 
 }

@@ -22,7 +22,7 @@
             <p class="card-text">
               {{choice.description}}
             </p>
-            <a class="btn btn-outline-primary" (click)="payAndSub(choice.monthPrise, template, choice.idProduct)">Subscribe</a>
+            <a class="btn btn-outline-primary" id="{{choice.name}}" (click)="payAndSub(choice.monthPrise, template, choice.idProduct, choice.idOrganisation)">Subscribe</a>
 
             <ng-template #template>
               <div class="modal-header">

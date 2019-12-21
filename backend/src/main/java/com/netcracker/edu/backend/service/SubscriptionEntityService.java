@@ -9,5 +9,6 @@ public interface SubscriptionEntityService {
     SubscriptionEntity subscribeUser(SubscriptionEntity subscriptionEntity, int idCus, int idProd);
     void deleteSub(Integer id);
     List<SubscriptionEntity> getCustomerSub(int idCust);
+    List<SubscriptionEntity> getAllSubs();
 
 }

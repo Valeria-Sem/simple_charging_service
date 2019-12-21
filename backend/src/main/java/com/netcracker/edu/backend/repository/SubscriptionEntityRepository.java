@@ -10,4 +10,5 @@ import java.util.List;
 public interface SubscriptionEntityRepository extends CrudRepository<SubscriptionEntity, Integer> {
     List<SubscriptionEntity> getSubscriptionEntitiesByCustomerByIdCustomers(CustomerEntity customer);
     List<SubscriptionEntity> getSubscriptionEntitiesByProductByIdProduct(ProductEntity product);
+    List<SubscriptionEntity> findAll();
 }

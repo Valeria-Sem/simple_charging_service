@@ -73,4 +73,9 @@ public class SubscriptionEntityServiceImpl implements SubscriptionEntityService 
         return subscriptionEntityRepository.getSubscriptionEntitiesByCustomerByIdCustomers(customer);
     }
 
+    @Override
+    public List<SubscriptionEntity> getAllSubs() {
+        return subscriptionEntityRepository.findAll();
+    }
+
 }

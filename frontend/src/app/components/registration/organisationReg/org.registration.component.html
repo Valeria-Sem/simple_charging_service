@@ -27,7 +27,7 @@
 
     <label for="inputPhone" class="sr-only">Phone</label>
     <input id="inputPhone" class="form-control" placeholder="+3754455677890" #phoneField="ngModel"
-           required [(ngModel)]="phone" name="phone" pattern="[+0-9]" minlength="7" maxlength="16">
+           required [(ngModel)]="phone" name="phone" pattern="[+0-9]{1,16}" maxlength="16">
     <div [hidden]="phoneField.valid || phoneField.untouched || !phoneField.value.trim().length" class="alert alert-danger">
       Incorrect Phone
     </div>

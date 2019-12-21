@@ -11,6 +11,8 @@ import {UserService} from "../../../services/user.service";
 import {Page} from "../../../modules/page";
 import {OrganisationService} from "../../../services/organisation.service";
 import {CustProd} from "../../../modules/CustProd";
+import {forEach} from "@angular/router/src/utils/collection";
+import {async} from "@angular/core/testing";
 
 
 @Component({
@@ -57,38 +59,49 @@ export class AppsComponent {
 
   }
 
+  public getCustomerSubs(){
+    this.subService.getSub(this.user.idCustomer).subscribe((dataProd) => {
+      this.custProd = dataProd;
+
+      this.products.productEntities.forEach((product) => {
+
+        this.custProd.forEach((subscription) => {
+          if (product.name == subscription.name) {
+            let element: HTMLElement = document.getElementById(subscription.name);
+            element.classList.add('disabled');
+          }
+        })
+      })
+    });
+  }
+
   ngOnInit(){
     this.productService.getProductsByIdCategory('2',this.currentPage,6).subscribe((data) => {
       this.products = data as Page;
-      this.cdr.detectChanges();
+      this.getCustomerSubs();
     });
   }
 
   public payAndSub (monthPrise, template: TemplateRef<any>, idProd, idOrg): void {
-    if(this.user.balance < monthPrise){
+    if (this.user.balance < monthPrise) {
       this.childModal.show();
     } else {
       this.modalRef = this.modalService.show(template, Object.assign({}, {class: 'gray modal-sm'}));
-    this.balance = (+this.user.balance) - (+monthPrise);
-    this.wallet = new Wallet(this.user.idWallet, this.balance, this.walletStatus);
-    this.walletService.payment(this.wallet).subscribe( () =>{
-      this.userService.currentUser.balance = this.balance;
-      localStorage.setItem("user", JSON.stringify(this.userService.currentUser));
-    });
+      this.balance = (+this.user.balance) - (+monthPrise);
+      this.wallet = new Wallet(this.user.idWallet, this.balance, this.walletStatus);
+      this.walletService.payment(this.wallet).subscribe(() => {
+        this.userService.currentUser.balance = this.balance;
+        localStorage.setItem("user", JSON.stringify(this.userService.currentUser));
+      });
 
-    this.dateOfSub = new Date();
-    this.subscription = new Subscription(idProd, this.user.idCustomer, this.subscriptionStatus, this.dateOfSub);
-    this.subService.subscribeCustomer(this.subscription, this.user.idCustomer, idProd).subscribe();
+      this.dateOfSub = new Date();
+      this.subscription = new Subscription(idProd, this.user.idCustomer, this.subscriptionStatus, this.dateOfSub);
+      this.subService.subscribeCustomer(this.subscription, this.user.idCustomer, idProd).subscribe();
 
-    this.walletService.balanceReplenishmentByOrg(idOrg, monthPrise).subscribe();
+      this.walletService.balanceReplenishmentByOrg(idOrg, monthPrise).subscribe( () =>{
+        this.getCustomerSubs();
+      });
     }
   }
 
-  select: boolean = false;
-
-  public checkProduct(product: Product) { console.log(product.idProduct);
-    if(this.custProd.filter(f => f.idProduct == product.idProduct)){
-      this.select = false ;
-    } else {this.select = true;}
-  }
 }

@@ -4,7 +4,7 @@ import {CustProd} from "./CustProd";
 export class Page {
   countOfElements: number;
   productEntities: Product[];
-  productEntities1: CustProd[];
+  // productEntities1: CustProd[];
 
 
 

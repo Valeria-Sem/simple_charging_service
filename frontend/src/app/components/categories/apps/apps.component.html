@@ -17,14 +17,14 @@
               ${{choice.monthPrise}}
               <small class="text-muted">/ mo</small>
             </h1>
-            <h4 class="card-title">{{choice.name}}</h4>
+            <h4 class="card-title" >{{choice.name}}</h4>
             <p class="card-text">
               {{choice.description}}
             </p>
 
 
-            <div class="subButton" *ngIf="select">
-              <a class="{{checkProduct{}btn btn-outline-primary" (click)="payAndSub(choice.monthPrise, template, choice.idProduct, choice.idOrganisation)">Subscribe</a>
+            <div class="subButton" >
+              <a class="btn btn-outline-primary" id="{{choice.name}}" (click)="payAndSub(choice.monthPrise, template, choice.idProduct, choice.idOrganisation)">Subscribe</a>
             </div>
 
             <ng-template #template>

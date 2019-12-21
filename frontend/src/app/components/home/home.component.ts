@@ -10,6 +10,7 @@ import {User} from "../../modules/user";
 })
 export class HomeComponent implements OnInit {
   public currentUser: User = this.userService.currentUser;
+  user$ = this.userService.currentUser$;
 
   constructor(private router: Router, private userService: UserService) {
   }

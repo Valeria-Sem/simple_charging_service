@@ -29,7 +29,7 @@
             <p class="card-text">There are favorite applications, but no additions to them? In this category you can
               find your application and buy a subscription to it.</p>
             <a class="btn btn-outline-primary"
-               [class.disabled]="!currentUser || (currentUser && currentUser.role === 'ORGANISATION')"
+               [class.disabled]="!(user$ | async) || (currentUser && currentUser.role === 'ORGANISATION')"
                routerLink="/app">Go</a>
           </div>
         </div>
@@ -42,7 +42,7 @@
             <p class="card-text">Are you a movie fan, but your favorite movie isn’t online? In this category you can
               choose any movie you like and buy a subscription to it.</p>
             <a class="btn btn-outline-primary"
-               [class.disabled]="!currentUser || (currentUser && currentUser.role === 'ORGANISATION')"
+               [class.disabled]="!(user$ | async) || (currentUser && currentUser.role === 'ORGANISATION')"
                routerLink="/films">Go</a>
           </div>
         </div>
@@ -54,7 +54,7 @@
             <h4 class="card-title">Games</h4>
             <p class="card-text">Want to find rare additions to your game? In this category you can find your game and
               buy an additional subscription to it.</p>
-            <a class="btn btn-outline-primary" [class.disabled]="!currentUser || (currentUser && currentUser.role === 'ORGANISATION')"
+            <a class="btn btn-outline-primary" [class.disabled]="!(user$ | async) || (currentUser && currentUser.role === 'ORGANISATION')"
                routerLink="/games">Go</a>
           </div>
         </div>
@@ -67,7 +67,7 @@
             <p class="card-text">Subscription ended in Yandex or Apple music, well, or is there a song you like, but is
               it paid? In this category you can renew or buy a new subscription to it.</p>
             <a class="btn btn-outline-primary"
-               [class.disabled]="!currentUser || (currentUser && currentUser.role === 'ORGANISATION')"
+               [class.disabled]="!(user$ | async) || (currentUser && currentUser.role === 'ORGANISATION')"
                routerLink="/music">
               Go
             </a>
@@ -82,7 +82,7 @@
             <p class="card-text">There are favorite sites, but are they paid? In this category you can buy a
               subscription to any site with any age restrictions.</p>
             <a class="btn btn-outline-primary"
-               [class.disabled]="!currentUser || (currentUser && currentUser.role === 'ORGANISATION')"
+               [class.disabled]="!(user$ | async) || (currentUser && currentUser.role === 'ORGANISATION')"
                routerLink="/sites">Go</a>
           </div>
         </div>
