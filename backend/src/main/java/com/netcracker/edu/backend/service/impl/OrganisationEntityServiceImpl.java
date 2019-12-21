@@ -44,6 +44,11 @@ public class OrganisationEntityServiceImpl implements OrganisationEntityService 
     }
 
     @Override
+    public OrganisationEntity getOrganisationByIdOrganisation(int idOrg) {
+        return repository.getOrganisationByIdOrganisation(idOrg);
+    }
+
+    @Override
     public void deleteCategory(int id) {
         repository.deleteById(id);
     }

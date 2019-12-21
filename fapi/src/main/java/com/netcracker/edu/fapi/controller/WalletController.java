@@ -36,6 +36,14 @@ public class WalletController {
         return null;
     }
 
+    @RequestMapping(value = "/organisation/{idOrg}")
+    public ResponseEntity<WalletModel> getWalletByOrg (@PathVariable Integer idOrg){
+        if(idOrg != null) {
+            return ResponseEntity.ok(walletService.getWalletByOrg(idOrg));
+        }
+        return null;
+    }
+
     @RequestMapping(value = "/payment",method = RequestMethod.POST)
     public ResponseEntity<WalletModel> balancePayment (@RequestBody WalletModel wallet){
         if(wallet != null) {

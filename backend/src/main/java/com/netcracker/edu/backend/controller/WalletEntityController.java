@@ -39,4 +39,9 @@ public class WalletEntityController {
     public void deleteWallet(@PathVariable(name = "id") Integer id) {
         walletEntityService.deleteWallet(id);
     }
+
+    @RequestMapping(value = "organisation/{idOrg}", method = RequestMethod.GET)
+    public WalletEntity getWalletByIdOrg(@PathVariable(name = "idOrg") Integer idOrg){
+        return walletEntityService.getWalletByIdOrg(idOrg);
+    }
 }

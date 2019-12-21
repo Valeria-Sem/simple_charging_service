@@ -10,6 +10,6 @@ public interface WalletService {
     WalletModel saveWallet(WalletModel wallet);
     WalletModel payment(WalletModel wallet);
     WalletModel balanceReplenishment(WalletModel wallet);
-    WalletModel balanceReplenishmentByIdOrg(int idOrganisation);
+    WalletModel getWalletByOrg(int idOrganisation);
     void deleteWallet(Long idDelete);
 }

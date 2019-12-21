@@ -11,5 +11,6 @@ public interface OrganisationEntityService {
     Optional<OrganisationEntity> getOrganisationById(int id);
     Iterable<OrganisationEntity> getAllOrganisations();
     OrganisationEntity getOrganisationByIdUser(UsersEntity usersEntity);
+    OrganisationEntity getOrganisationByIdOrganisation(int idOrg);
     void deleteCategory(int id);
 }

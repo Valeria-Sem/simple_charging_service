@@ -29,4 +29,8 @@ export class WalletService {
   payment(information: Wallet): Observable<Wallet> {
     return this.http.post<Wallet>('/api/wallet/payment', information);
   }
+
+  getWalletByOrg(idOrg: number): Observable<Wallet> {
+    return this.http.get<Wallet>('/api/wallet/organisation/' + idOrg);
+  }
 }

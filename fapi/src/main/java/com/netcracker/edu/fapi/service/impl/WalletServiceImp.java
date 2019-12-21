@@ -49,8 +49,9 @@ public class WalletServiceImp implements WalletService {
     }
 
     @Override
-    public WalletModel balanceReplenishmentByIdOrg(int idOrganisation) {
-        return null;
+    public WalletModel getWalletByOrg(int idOrganisation) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(backendServerUrl + "/api/wallet/organisation/" + idOrganisation, WalletModel.class);
     }
 
     @Override
