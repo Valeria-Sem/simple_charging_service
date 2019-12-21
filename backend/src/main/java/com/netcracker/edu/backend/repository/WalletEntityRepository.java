@@ -5,5 +5,4 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface WalletEntityRepository extends CrudRepository<WalletEntity, Integer> {
     WalletEntity getBalanceByIdWallet(WalletEntity wallet);
-//    WalletEntity saveBalance(int balance);
 }

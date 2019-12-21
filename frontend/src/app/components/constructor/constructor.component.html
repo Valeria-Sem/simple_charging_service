@@ -5,8 +5,8 @@
 
     <label for="inputName" class="sr-only">Name</label>
     <input id="inputName" class="form-control" placeholder="Name" #nameField="ngModel" required autofocus
-           [(ngModel)]="name" name="name" >
-    <div [hidden]="nameField.valid || nameField.untouched" class="alert alert-danger">
+           [(ngModel)]="name" name="name" minlength="3" maxlength="16">
+    <div [hidden]="nameField.valid || nameField.untouched || !nameField.value.trim().length" class="alert alert-danger">
       Missing Name
     </div>
 
@@ -27,22 +27,22 @@
     <label for="inputDesc" class="sr-only">Description</label>
     <textarea id="inputDesc" class="form-control" placeholder="description" #descField="ngModel"
            required [(ngModel)]="description"
-              name="description" ></textarea>
-    <div [hidden]="descField.valid || descField.untouched" class="alert alert-danger">
+              name="description" minlength="10" maxlength="453"></textarea>
+    <div [hidden]="descField.valid || descField.untouched || !descField.value.trim().length" class="alert alert-danger">
       Missing Description
     </div>
 
     <label for="inputPrise" class="sr-only">Month prise</label>
     <input id="inputPrise" class="form-control" placeholder="Prise" #priseField="ngModel" required [(ngModel)]="monthPrise"
-           name="monthPrise" >
-    <div [hidden]="priseField.valid || priseField.untouched" class="alert alert-danger">
+           name="monthPrise" pattern="[0-9]{1,4}" maxlength="4">
+    <div [hidden]="priseField.valid || priseField.untouched || !priseField.value.trim().length" class="alert alert-danger">
       Missing Prise
     </div>
 
     <label for="inputImg" class="sr-only">Linc of img</label>
     <input id="inputImg" class="form-control" placeholder="http//img/img.com" #imgField="ngModel" required
            [(ngModel)]="img" name="img">
-    <div [hidden]="imgField.valid || imgField.untouched" class="alert alert-danger">
+    <div [hidden]="imgField.valid || imgField.untouched || !priseField.value.trim().length" class="alert alert-danger">
       Missing Password
     </div>
 

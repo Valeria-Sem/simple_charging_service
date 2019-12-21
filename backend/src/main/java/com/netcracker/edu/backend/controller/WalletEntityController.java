@@ -40,8 +40,8 @@ public class WalletEntityController {
         walletEntityService.deleteWallet(id);
     }
 
-    @RequestMapping(value = "organisation/{idOrg}", method = RequestMethod.GET)
-    public WalletEntity getWalletByIdOrg(@PathVariable(name = "idOrg") Integer idOrg){
-        return walletEntityService.getWalletByIdOrg(idOrg);
-    }
+//    @RequestMapping(value = "organisation/{idOrg}", method = RequestMethod.GET)
+//    public WalletEntity getWalletByIdOrg(@PathVariable(name = "idOrg") Integer idOrg){
+//        return walletEntityService.getWalletByIdOrg(idOrg);
+//    }
 }

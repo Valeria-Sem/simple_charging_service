@@ -4,7 +4,7 @@ export class Wallet {
   walletStatus: Status;
 
 
-  constructor(  idWallet: string, balance: number, walletStatus: Status) {
+  constructor( idWallet: string, balance: number, walletStatus: Status) {
     this.idWallet = idWallet;
     this.balance = balance;
     this.walletStatus = walletStatus;

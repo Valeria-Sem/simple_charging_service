@@ -76,9 +76,6 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            {{!loginForm.valid}}
-            {{!!login.value.trim().length}}
-            {{!loginForm.valid && !login.value.trim().length}}
             <div class="modal-body">
               <div class="container-fluid">
                 <form [formGroup]="loginForm">
@@ -89,7 +86,7 @@
                            placeholder="Login"
                            class="p-2"
                            formControlName="userLogin"
-                           #login>
+                           #login required minlength="3" maxlength="16">
                   </div>
                   <div class="form-froup m-3">
                     <label>Password*</label>
@@ -98,20 +95,18 @@
                            placeholder="Password"
                            class="p-2"
                            formControlName="userPassword"
-                           #password>
-                    <!--                    formControlName="userPassword" #password-->
+                           #password required minlength="6" maxlength="16">
                     <small id="passwordHelp"
                            class="form-text text-muted">
-                      Password must be at least 8 characters
+                      Password must be from 6 to 16 characters
                     </small>
                   </div>
                   <a routerLink="/">
                     <button
-                      [disabled]="!loginForm.valid || !login.value.trim().length"
+                      [disabled]="!loginForm.valid || !login.value.trim().length || !password.value.trim().length"
                       class="btn btn-outline-primary my-2 my-sn-0"
                       style="margin-right: 10px; margin-left: 80px;"
                       (click)="getUserInfo(login.value, password.value)">
-                      <!--                    (click)="getUserByLogin(login.value)" [disabled]="loginForm.invalid"-->
                       Login
                     </button>
                   </a>
@@ -130,7 +125,7 @@
         <ng-template #templateNested>
           <div class="modal-content" style="margin: auto;">
             <div class="modal-header">
-              <h4 class="modal-title pull-left" style="margin: auto; padding-left: 70px">CusRegistration</h4>
+              <h4 class="modal-title pull-left" style="margin: auto; padding-left: 70px">Registration</h4>
               <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -142,7 +137,6 @@
                     <p>You are Organisation or Customer ?</p>
                   </div>
                   <div class="form-froup m-3">
-                    <!--                    <pre class="card card-block card-header">{{ myForm.value | json }}</pre>-->
                     <form [formGroup]="myForm" class="form-inline">
                       <div class="form-group">
                         <div class="btn-group" btnRadioGroup formControlName="radio">
@@ -154,10 +148,6 @@
                       </div>
                     </form>
                   </div>
-                  <!--                  <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 100px;"-->
-                  <!--                          routerLink="/userReg">-->
-                  <!--                    Next-->
-                  <!--                  </button>-->
                 </form>
               </div>
             </div>

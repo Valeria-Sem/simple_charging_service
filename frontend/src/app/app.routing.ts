@@ -15,6 +15,8 @@ import {RoleGuard} from "./services/role-guard.service";
 import {Role} from "./modules/user";
 import {SubComponent} from "./components/subscription/sub.component";
 import {ConstructorComponent} from "./components/constructor/constructor.component";
+import {NotFoundComponent} from "./notFound/notFound.component";
+import {NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR} from "@angular/core/src/view/provider";
 
 
 const appRoutes: Routes = [
@@ -30,6 +32,7 @@ const appRoutes: Routes = [
   , {path: 'profile', component: UserComponent}
   , {path: 'sub', component: SubComponent}
   , {path: 'constructor', component: ConstructorComponent, canActivate: [RoleGuard], data: {role: Role.ORGANISATION}}
+  // , {path: '*', component: NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

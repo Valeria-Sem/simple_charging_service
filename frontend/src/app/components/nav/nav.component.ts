@@ -34,13 +34,11 @@ export class NavComponent implements OnInit {
   loginForm: FormGroup;
   public user: User = this.userService.currentUser;
   user$ = this.userService.currentUser$;
-  //customer$ = this.customerService.currentCustomer$;
   products: Product[];
   organisation: Organisation;
   public login: string;
   public password: string;
 
- // unauthorizedError: string = null;
 
   constructor(private modalService: BsModalService,
               private organisationService: OrganisationService,

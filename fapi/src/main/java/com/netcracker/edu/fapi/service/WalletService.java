@@ -1,5 +1,6 @@
 package com.netcracker.edu.fapi.service;
 
+import com.netcracker.edu.fapi.models.OrganisationModel;
 import com.netcracker.edu.fapi.models.WalletModel;
 
 import java.util.List;
@@ -10,6 +11,6 @@ public interface WalletService {
     WalletModel saveWallet(WalletModel wallet);
     WalletModel payment(WalletModel wallet);
     WalletModel balanceReplenishment(WalletModel wallet);
-    WalletModel getWalletByOrg(int idOrganisation);
+    OrganisationModel balanceReplenishmentByOrg(int idOrg, int balance);
     void deleteWallet(Long idDelete);
 }

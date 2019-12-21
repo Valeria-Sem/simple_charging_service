@@ -30,7 +30,8 @@ export class WalletService {
     return this.http.post<Wallet>('/api/wallet/payment', information);
   }
 
-  getWalletByOrg(idOrg: number): Observable<Wallet> {
-    return this.http.get<Wallet>('/api/wallet/organisation/' + idOrg);
+  balanceReplenishmentByOrg(idOrg: number, balance: number): Observable<Wallet> {
+    return this.http.post<Wallet>('/api/wallet/replenishment/organisation/' + idOrg + '/balance/' + balance, idOrg);
   }
+
 }

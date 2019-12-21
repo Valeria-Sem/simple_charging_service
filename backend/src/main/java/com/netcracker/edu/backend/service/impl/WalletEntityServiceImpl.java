@@ -38,10 +38,13 @@ public class WalletEntityServiceImpl implements WalletEntityService {
     }
 
     @Override
-    public WalletEntity getWalletByIdOrg(int idOrg) {
+    public OrganisationEntity balanceReplenishmentByIdOrg(int idOrg, int balance) {
         OrganisationEntity organisation = organisationEntityService.getOrganisationByIdOrganisation(idOrg);
         WalletEntity walletEntity = organisation.getWalletByIdWallet();
-        return walletEntity;
+        int newBalance = (int)walletEntity.getBalance() + balance;
+        walletEntity.setBalance(newBalance);
+        organisation.setWalletByIdWallet(walletEntity);
+        return organisationEntityService.saveOrganisation(organisation);
     }
 
     @Override

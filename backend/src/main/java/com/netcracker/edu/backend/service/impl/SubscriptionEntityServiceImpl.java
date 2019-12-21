@@ -35,24 +35,11 @@ public class SubscriptionEntityServiceImpl implements SubscriptionEntityService 
 
     @Override
     public SubscriptionEntity subscribeUser(SubscriptionEntity subscriptionEntity, int idCus, int idProd) {
-        CustomerEntity customer = customerEntityService.getCustomerById(idCus);        // getCustomer(subscriptionEntity);
-        ProductEntity product = productEntityService. getProductById(idProd);                      //getProduct(subscriptionEntity);
+        CustomerEntity customer = customerEntityService.getCustomerById(idCus);
+        ProductEntity product = productEntityService. getProductById(idProd);
         subscribe(subscriptionEntity, customer, product);
         return null;
     }
-
-//    private CustomerEntity getCustomer(SubscriptionEntity info){
-//        CustomerEntity customer = customerEntityService.getCustomer(info);
-//        customer.getIdCustomer();
-//        return customer;
-//    }
-//
-//    private ProductEntity getProduct(SubscriptionEntity info){
-//        ProductEntity product = productEntityService.getProduct(info);
-//        product.getIdProduct();
-//        return product;
-//    }
-
 
     private void subscribe(SubscriptionEntity subscriptionEntity, CustomerEntity customer, ProductEntity product) {
         SubscriptionEntity subscription = new SubscriptionEntity();
@@ -61,7 +48,18 @@ public class SubscriptionEntityServiceImpl implements SubscriptionEntityService 
         subscription.setProductByIdProduct(product);
         subscription.setSubscriptionStatus(subscriptionEntity.getSubscriptionStatus());
         subscription.setDateOfSubscription(subscriptionEntity.getDateOfSubscription());
-        subscriptionEntityRepository.save(subscription);
+
+        List<SubscriptionEntity> sub = subscriptionEntityRepository.getSubscriptionEntitiesByCustomerByIdCustomers(customer);
+        boolean save = true;
+        for (SubscriptionEntity subscr: sub){
+            if (subscr.getProductByIdProduct() == subscription.getProductByIdProduct()){
+                save = false;
+            }
+        }
+        if(save != false){
+            subscriptionEntityRepository.save(subscription);
+        }
+
     }
 
     @Override
@@ -75,14 +73,4 @@ public class SubscriptionEntityServiceImpl implements SubscriptionEntityService 
         return subscriptionEntityRepository.getSubscriptionEntitiesByCustomerByIdCustomers(customer);
     }
 
-//    @Override
-//    public SubscriptionEntity[] getCustomerSub(int idCust) {
-//        CustomerEntity customer = customerEntityService.getCustomerById(idCust);
-//        return subscriptionEntityRepository.getSubscriptionEntitiesByCustomerByIdCustomers(customer);
-//    }
-
-//    @Override
-//    public SubscriptionEntity[] getProductsByCust(int idCust) {
-//        return new SubscriptionEntity[0];
-//    }
 }

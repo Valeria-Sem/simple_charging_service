@@ -21,8 +21,10 @@
             <p class="card-text">
               {{choice.description}}
             </p>
-            <div class="subButton">
-              <a class="btn btn-outline-primary" (click)="payAndSub(choice.monthPrise, template, choice.idProduct)">Subscribe</a>
+
+
+            <div class="subButton" *ngIf="select">
+              <a class="{{checkProduct{}btn btn-outline-primary" (click)="payAndSub(choice.monthPrise, template, choice.idProduct, choice.idOrganisation)">Subscribe</a>
             </div>
 
             <ng-template #template>
@@ -33,13 +35,27 @@
                 </button>
               </div>
               <div class="modal-body">
-
                 <p>You have subscribed to the product "{{choice.name}}"</p>
                 <p>Your account has been charged: ${{choice.monthPrise}}</p>
-
               </div>
-
             </ng-template>
+
+            <div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1"
+                 role="dialog" aria-labelledby="dialog-child-name">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 id="dialog-child-name" class="modal-title pull-left">Error</h4>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    You are short of money. Top up your balance!
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

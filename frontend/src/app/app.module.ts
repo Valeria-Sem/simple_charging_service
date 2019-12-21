@@ -33,6 +33,7 @@ import {UserService} from "./services/user.service";
 import {RoleGuard} from "./services/role-guard.service";
 import {SubComponent} from "./components/subscription/sub.component";
 import {ConstructorComponent} from "./components/constructor/constructor.component";
+import {NotFoundComponent} from "./notFound/notFound.component";
 // import {WalletComponent} from "./wallet/wallet.component";
 
 
@@ -61,7 +62,8 @@ import {ConstructorComponent} from "./components/constructor/constructor.compone
     SitesComponent,
     UserComponent,
     SubComponent,
-    ConstructorComponent
+    ConstructorComponent,
+    NotFoundComponent
     //WalletComponent
   ],
   imports: [

@@ -1,9 +1,10 @@
 export class Organisation {
-  idOrganisation: string;
+  idOrganisation: number;
   name: string;
   eMail: string;
   linkOfSite: string;
   phone: string;
+  idWallet: string;
 
   constructor(name: string, eMail: string,
               linkOfSite: string, phone: string) {

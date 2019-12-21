@@ -1,5 +1,6 @@
 package com.netcracker.edu.fapi.controller;
 
+import com.netcracker.edu.fapi.models.OrganisationModel;
 import com.netcracker.edu.fapi.models.WalletModel;
 import com.netcracker.edu.fapi.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,11 @@ public class WalletController {
         return null;
     }
 
-    @RequestMapping(value = "/organisation/{idOrg}")
-    public ResponseEntity<WalletModel> getWalletByOrg (@PathVariable Integer idOrg){
+    @RequestMapping(value = "/replenishment/organisation/{idOrg}/balance/{balance}",method = RequestMethod.POST)
+    public ResponseEntity<OrganisationModel> balanceReplenishmentByOrg (@PathVariable(name = "idOrg") Integer idOrg,
+                                                                        @PathVariable(name = "balance") int balance){
         if(idOrg != null) {
-            return ResponseEntity.ok(walletService.getWalletByOrg(idOrg));
+            return ResponseEntity.ok(walletService.balanceReplenishmentByOrg(idOrg, balance));
         }
         return null;
     }

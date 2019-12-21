@@ -1,32 +1,19 @@
 package com.netcracker.edu.backend.model;
 
-import com.netcracker.edu.backend.entity.ProductEntity;
 import com.netcracker.edu.backend.transferOfObjects.CustomerProductModel;
 
 import java.util.List;
 
-public class PageProductModel {
+public class PageSubModel {
     private int countOfElements;
-    private List<ProductEntity> productEntities;
     private List<CustomerProductModel> customerProductModels;
 
-    public PageProductModel(){
+    public PageSubModel(){
     }
 
-    public PageProductModel(int countOfElements, List<ProductEntity> productEntities){
+    public PageSubModel(int countOfElements, List<CustomerProductModel> customerProductModels){
         this.countOfElements = countOfElements;
-        this.productEntities = productEntities;
-    }
-
-
-
-
-    public List<ProductEntity> getProductEntities() {
-        return productEntities;
-    }
-
-    public void setProductEntities(List<ProductEntity> productEntities) {
-        this.productEntities = productEntities;
+        this.customerProductModels = customerProductModels;
     }
 
     public int getCountOfElements() {

@@ -7,6 +7,7 @@ import java.util.List;
 public interface OrganisationService {
     List<OrganisationModel> getAll();
     OrganisationModel getOrganisationById(Long id);
+//    OrganisationModel getWalletById(Long id);
     OrganisationModel saveOrganisation(OrganisationModel organisation);
     void deleteOrganisation(Long id);
 }

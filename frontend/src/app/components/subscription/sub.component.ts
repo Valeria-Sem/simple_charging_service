@@ -39,14 +39,18 @@ export class SubComponent {
               private subService: SubService,
               private userService: UserService) {}
 
+
   pageChanged(event: any): void {
     this.currentPage = event.page - 1;
-    this.productService.getProductsByIdOrganisation(this.user.idOrganisation,this.currentPage,6).subscribe((data) => {
-      this.products = data as Page;
-      this.cdr.detectChanges();
-    });
-
-    // this.page = event.page;
+    if(this.user.role !== this.cust) {
+      this.productService.getProductsByIdOrganisation(this.user.idOrganisation, this.currentPage, 6).subscribe((data) => {
+        this.products = data as Page;
+        this.cdr.detectChanges();
+      });
+    } else {
+      this.subService.getSub(this.user.idCustomer).subscribe((data) => {
+        this.custProd = data as CustProd[];
+      });}
   }
 
   ngOnInit(){
@@ -55,35 +59,15 @@ export class SubComponent {
         this.products = data as Page;
         this.cdr.detectChanges();
       });
-        // this.cdr.detectChanges();
     } else {
       this.subService.getSub(this.user.idCustomer).subscribe((data) => {
       this.custProd = data as CustProd[];
-      // this.cdr.detectChanges();
     });
 
-
     }
-
-
     this.isCust = this.user.role == this.cust;
-
   }
 
-  public payAndSub (monthPrise, idProd): void {
-    this.balance = (+this.user.balance) - (+monthPrise);
-    this.wallet = new Wallet(this.user.idWallet, this.balance, this.walletStatus);
-    this.walletService.payment(this.wallet).subscribe();
-
-    this.balance = (+this.user.balance) - (+monthPrise);
-
-    this.dateOfSub = new Date();
-    this.subscription = new Subscription(idProd, this.user.idCustomer, this.subscriptionStatus, this.dateOfSub);
-    this.subService.subscribeCustomer(this.subscription, this.user.idCustomer, idProd).subscribe();
-
-    // todo добавление денег организации
-    // this.wallet = new Wallet(this.user.idWallet, this.balance, this.walletStatus);
-  }
 
   public unsubscribe(idSub){
     this.subService.unsubscribe(idSub).subscribe(() => {
