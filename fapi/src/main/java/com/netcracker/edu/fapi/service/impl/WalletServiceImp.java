@@ -49,6 +49,11 @@ public class WalletServiceImp implements WalletService {
     }
 
     @Override
+    public WalletModel balanceReplenishmentByIdOrg(int idOrganisation) {
+        return null;
+    }
+
+    @Override
     public void deleteWallet(Long idDelete) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/api/wallet/delete/" + idDelete);
