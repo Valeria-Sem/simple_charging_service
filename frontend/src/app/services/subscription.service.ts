@@ -19,4 +19,8 @@ export class SubService {
   getSub(idCust: string): Observable<CustProd[]> {
     return this.http.get<CustProd[]>('/api/customerSub/customer/' + idCust);
   }
+
+  unsubscribe(idSub: string): Observable<void> {
+    return this.http.delete<void>('/api/subscription/delete/' + idSub);
+  }
 }

@@ -2,11 +2,16 @@ package com.netcracker.edu.backend.service.impl;
 
 import com.netcracker.edu.backend.entity.ProductEntity;
 import com.netcracker.edu.backend.entity.SubscriptionEntity;
+import com.netcracker.edu.backend.model.PageProductModel;
 import com.netcracker.edu.backend.repository.ProductEntityRepository;
 import com.netcracker.edu.backend.service.ProductEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,13 +39,17 @@ public class ProductEntityServiceImpl implements ProductEntityService {
     }
 
     @Override
-    public ProductEntity[] getProductByCategory(Integer idCategory) {
-        return repository.findByIdCategory(idCategory);
+    public PageProductModel getProductByCategory(int idCategory, int pageNum, int pageSize) {
+        Pageable pageable =  PageRequest.of( pageNum, pageSize, Sort.by("name"));
+        Page<ProductEntity> page = repository.findByIdCategory(idCategory, pageable);
+        return new PageProductModel((int)page.getTotalElements(), page.getContent());
     }
 
     @Override
-    public ProductEntity[] getProductByOrganisation(Integer idOrganisation) {
-        return repository.findByIdOrganisation(idOrganisation);
+    public PageProductModel getProductByOrganisation(int idOrganisation, int pageNum, int pageSize) {
+        Pageable pageable =  PageRequest.of( pageNum, pageSize, Sort.by("name"));
+        Page<ProductEntity> page = repository.findByIdOrganisation(idOrganisation, pageable);
+        return new PageProductModel((int)page.getTotalElements(), page.getContent());
     }
 
     @Override

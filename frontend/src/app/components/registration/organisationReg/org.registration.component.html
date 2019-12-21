@@ -19,7 +19,7 @@
     <label for="inputLink" class="sr-only">Link of site</label>
     <input id="inputLink" class="form-control" placeholder="example.com" #linkField="ngModel"
            required [(ngModel)]="linkOfSite" name="linkOfSite"
-           pattern="[a-zA-Z_].[a-zA-Z]{3}">
+           pattern="[a-zA-Z_]+.+[a-zA-Z]">
     <div [hidden]="linkField.valid || linkField.untouched" class="alert alert-danger">
       Incorrect Link of site
     </div>

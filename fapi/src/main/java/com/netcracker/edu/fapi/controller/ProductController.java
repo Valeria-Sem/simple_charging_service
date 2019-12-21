@@ -1,5 +1,6 @@
 package com.netcracker.edu.fapi.controller;
 
+import com.netcracker.edu.fapi.models.PageProductModel;
 import com.netcracker.edu.fapi.models.ProductModel;
 import com.netcracker.edu.fapi.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,14 +47,18 @@ public class ProductController {
 //    }
 
     @RequestMapping(value = "/category/{idCategory}")
-    public ProductModel[] getProductByIdCategory(@PathVariable String idCategory) throws InterruptedException {
-        Long productIdCategory = Long.valueOf(idCategory);
-        return productService.getProductByIdCategory(productIdCategory);
+    public ResponseEntity<PageProductModel> getProductByCategory(@PathVariable(name = "idCategory") int idCategory,
+                                                                     @RequestParam(name = "offset") int offset,
+                                                                     @RequestParam(name = "limit") int limit) {
+        PageProductModel products = productService.getProductByCategory(idCategory, offset, limit);
+        return ResponseEntity.ok(products);
     }
 
     @RequestMapping(value = "/organisation/{idOrganisation}")
-    public ProductModel[] getProductByIdOrganisation(@PathVariable String idOrganisation) throws InterruptedException {
-        Long productIdOrganisation = Long.valueOf(idOrganisation);
-        return productService.getProductByIdOrganisation(productIdOrganisation);
+    public ResponseEntity<PageProductModel> getProductByOrganisation(@PathVariable(name = "idOrganisation") int idOrganisation,
+                                                                     @RequestParam(name = "offset") int offset,
+                                                                     @RequestParam(name = "limit") int limit) {
+        PageProductModel products = productService.getProductByOrganisation(idOrganisation, offset, limit);
+        return ResponseEntity.ok(products);
     }
 }

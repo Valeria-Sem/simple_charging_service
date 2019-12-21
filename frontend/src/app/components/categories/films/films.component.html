@@ -10,8 +10,8 @@
 <div class="container-fluid mt-5" style="background-color: #eeeeee">
   <div class="container p-5">
     <div class="row justify-content-center">
-      <div class="col col-lg-4" *ngFor="let choice of products">
-        <div class="card text-center mt-5">
+      <div class="col col-lg-4 description" *ngFor="let choice of products?.productEntities">
+        <div class="card text-center mt-5 description-container">
           <img src={{choice.img}} alt="" class="card-img-top">
           <div class="card-body" >
             <h1 class="card-title pricing-card-title" >
@@ -34,7 +34,6 @@
               <div class="modal-body">
 
                 <p>You have subscribed to the product "{{choice.name}}"</p>
-                <p>Day of subscribe {{dateOfSub}}</p>
                 <p>Your account has been charged: ${{choice.monthPrise}}</p>
 
               </div>
@@ -47,4 +46,8 @@
   </div>
 </div>
 
+<div class="pagin">
+  <pagination  [totalItems]="products?.countOfElements" itemsPerPage="6"
+               (pageChanged)="pageChanged($event)"></pagination>
+</div>
 <app-footer></app-footer>

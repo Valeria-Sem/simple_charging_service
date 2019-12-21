@@ -1,3 +1,25 @@
-/*.row {*/
-/*  display:flex !important;*/
-/*}*/
+.subButton {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.card-body {
+  padding-bottom: 50px;
+}
+
+.description-container {
+  height: 100%;
+}
+
+.description {
+  margin-bottom: 30px;
+}
+
+.pagin {
+  display: flex;
+  justify-content: center;
+}
+

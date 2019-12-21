@@ -9,6 +9,7 @@ import {BsModalService} from "ngx-bootstrap";
 import {SubService} from "../../services/subscription.service";
 import {UserService} from "../../services/user.service";
 import {CustProd} from "../../modules/CustProd";
+import {Page} from "../../modules/page";
 
 @Component({
   selector: "app-sub",
@@ -16,7 +17,7 @@ import {CustProd} from "../../modules/CustProd";
   styleUrls: ['./sub.component.css']
 })
 export class SubComponent {
-  products: Product[];
+  products: Page;
   public wallet: Wallet;
   public user: User = this.userService.currentUser;
   public newBalance: number;
@@ -29,6 +30,8 @@ export class SubComponent {
   isCust: boolean = false;
   cust: string = Role.CUSTOMER;
   custProd: CustProd[];
+  currentPage: number = 0;
+  page: number;
 
   constructor(private productService: ProductService,
               private walletService: WalletService,
@@ -36,16 +39,32 @@ export class SubComponent {
               private subService: SubService,
               private userService: UserService) {}
 
-  ngOnInit(){
-    this.productService.getProductsByIdOrganisation(this.user.idOrganisation).subscribe((data) => {
-      this.products = data as Product[];
+  pageChanged(event: any): void {
+    this.currentPage = event.page - 1;
+    this.productService.getProductsByIdOrganisation(this.user.idOrganisation,this.currentPage,6).subscribe((data) => {
+      this.products = data as Page;
       this.cdr.detectChanges();
     });
 
-    this.subService.getSub(this.user.idCustomer).subscribe((data) => {
+    // this.page = event.page;
+  }
+
+  ngOnInit(){
+    if(this.user.role !== this.cust){
+      this.productService.getProductsByIdOrganisation(this.user.idOrganisation,this.currentPage,6).subscribe((data) => {
+        this.products = data as Page;
+        this.cdr.detectChanges();
+      });
+        // this.cdr.detectChanges();
+    } else {
+      this.subService.getSub(this.user.idCustomer).subscribe((data) => {
       this.custProd = data as CustProd[];
-      this.cdr.detectChanges();
+      // this.cdr.detectChanges();
     });
+
+
+    }
+
 
     this.isCust = this.user.role == this.cust;
 
@@ -64,5 +83,13 @@ export class SubComponent {
 
     // todo добавление денег организации
     // this.wallet = new Wallet(this.user.idWallet, this.balance, this.walletStatus);
+  }
+
+  public unsubscribe(idSub){
+    this.subService.unsubscribe(idSub).subscribe(() => {
+      this.custProd = this.custProd.filter(product => {
+        return product.idSubscription !== idSub;
+      })
+    });
   }
 }

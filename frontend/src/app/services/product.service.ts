@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Product} from "../modules/product";
 import {OrgRegistration} from "../modules/orgRegistration";
+import {Page} from "../modules/page";
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,12 @@ export class ProductService {
 
   constructor(private http : HttpClient) { }
 
-  getProductsByIdCategory(idCategory: string): Observable<Product[]>{
-    return this.http.get<Product[]>('/api/product/category/' + idCategory)
+  getProductsByIdCategory(idCategory: string, pageNum: number, pageSize: number): Observable<Page>{
+    return this.http.get<Page>('/api/product/category/' + idCategory + '?offset='+ pageNum +'&limit=' + pageSize)
   }
 
-  getProductsByIdOrganisation(idOrganisation: number): Observable<Product[]>{
-    return this.http.get<Product[]>('/api/product/organisation/' + idOrganisation)
+  getProductsByIdOrganisation(idOrganisation: number, pageNum: number, pageSize: number): Observable<Page>{
+    return this.http.get<Page>('/api/product/organisation/' + idOrganisation + '?offset='+ pageNum +'&limit=' + pageSize)
   }
 
   createProd(information: Product): Observable<Product> {

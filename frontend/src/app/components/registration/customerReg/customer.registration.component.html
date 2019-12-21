@@ -9,6 +9,7 @@
     <div [hidden]="nameField.valid || nameField.untouched" class="alert alert-danger">
       Missing Name
     </div>
+
     <label for="inputSurname" class="sr-only">Surname</label>
     <input id="inputSurname" class="form-control" placeholder="Surname" #surnameField="ngModel" required [(ngModel)]="surname"
            name="surname">
@@ -18,7 +19,7 @@
 
     <label for="inputEmail" class="sr-only">Email address</label>
     <input type="email" id="inputEmail" class="form-control" placeholder="example@email.com" #emailField="ngModel" required [(ngModel)]="eMail"
-           name="email" pattern="[a-zA-Z_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}">
+           name="email" pattern="[a-zA-Z_.0-9]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}">
     <div [hidden]="emailField.valid || emailField.untouched" class="alert alert-danger">
       Incorrect Email
     </div>

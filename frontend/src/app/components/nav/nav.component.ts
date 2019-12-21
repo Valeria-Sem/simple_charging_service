@@ -78,13 +78,14 @@ export class NavComponent implements OnInit {
       radio: ''
     });
 
-    // this.loginForm = new FormGroup({
-    //   "userLogin": new FormControl("", [Validators.required, Validators.pattern("[a-zA-Z_.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}")]),
-    //   "userPassword": new FormControl("", Validators.required)
-    // });
+    this.loginForm = new FormGroup({
+      "userLogin": new FormControl("", [Validators.required]),
+      "userPassword": new FormControl("", Validators.required)
+    });
   }
 
   public getUserInfo(login, password): void {
+    // console.log(this.loginForm);
     this.subscriptions.push(
       this.userService.getUserInfo(login, password)
         .subscribe(() => {

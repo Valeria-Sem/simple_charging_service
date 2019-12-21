@@ -8,6 +8,7 @@ import {Subscription, SubStatus} from "../../../modules/subscription";
 import {SubService} from "../../../services/subscription.service";
 import {User} from "../../../modules/user";
 import {UserService} from "../../../services/user.service";
+import {Page} from "../../../modules/page";
 
 @Component({
   selector: "app-films",
@@ -15,10 +16,8 @@ import {UserService} from "../../../services/user.service";
   styleUrls: ['./films.component.css']
 })
 export class FilmsComponent {
-  products: Product[];
   public wallet: Wallet;
   public user: User = this.userService.currentUser;
-  public newBalance: number;
   public walletStatus: Status = 0;
   public balance: number;
   product: Product;
@@ -26,6 +25,9 @@ export class FilmsComponent {
   subscription: Subscription;
   public subscriptionStatus: SubStatus = 0;
   dateOfSub: Date;
+  currentPage: number = 0;
+  page: number;
+  products: Page;
 
   constructor(private productService: ProductService,
               private walletService: WalletService,
@@ -34,9 +36,17 @@ export class FilmsComponent {
               private subService: SubService,
               private userService: UserService) {}
 
+  pageChanged(event: any): void {
+    this.currentPage = event.page - 1;
+    this.productService.getProductsByIdCategory('1',this.currentPage,6).subscribe((data) => {
+      this.products = data as Page;
+      this.cdr.detectChanges();
+    });
+  }
+
   ngOnInit(){
-    this.productService.getProductsByIdCategory('1').subscribe((data) => {
-      this.products = data as Product[];
+    this.productService.getProductsByIdCategory('1',this.currentPage,6).subscribe((data) => {
+      this.products = data as Page;
       this.cdr.detectChanges();
     });
   }
@@ -44,7 +54,9 @@ export class FilmsComponent {
   public payAndSub (monthPrise, template: TemplateRef<any>, idProd): void {
     this.balance = (+this.user.balance) - (+monthPrise);
     this.wallet = new Wallet(this.user.idWallet, this.balance, this.walletStatus);
-    this.walletService.payment(this.wallet).subscribe();
+    this.walletService.payment(this.wallet).subscribe( () =>{
+      this.userService.currentUser.balance = this.balance;
+    });
 
     this.balance = (+this.user.balance) - (+monthPrise);
     this.modalRef = this.modalRef = this.modalService.show(template, Object.assign({}, {class: 'gray modal-sm'}));;

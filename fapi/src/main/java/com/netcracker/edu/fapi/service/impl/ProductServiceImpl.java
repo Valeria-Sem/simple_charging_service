@@ -1,5 +1,6 @@
 package com.netcracker.edu.fapi.service.impl;
 
+import com.netcracker.edu.fapi.models.PageProductModel;
 import com.netcracker.edu.fapi.models.ProductModel;
 import com.netcracker.edu.fapi.service.ProductService;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,18 +31,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductModel[] getProductByIdCategory(Long idCategory) {
+    public PageProductModel getProductByCategory(int idCategory, int pageNum, int pageSize) {
         RestTemplate restTemplate = new RestTemplate();
-        ProductModel[] products = restTemplate.getForObject(backendServerUrl + "/api/product/category/" + idCategory, ProductModel[].class);
+        PageProductModel products = restTemplate.getForObject(backendServerUrl + "/api/product/category/" + idCategory + "?offset="+ pageNum +"&limit=" + pageSize, PageProductModel.class);
         return products;
     }
 
     @Override
-    public ProductModel[] getProductByIdOrganisation(Long IdOrganisation) {
+    public PageProductModel getProductByOrganisation(int idOrganisation, int pageNum, int pageSize) {
         RestTemplate restTemplate = new RestTemplate();
-        ProductModel[] products = restTemplate.getForObject(backendServerUrl + "/api/product/organisation/" + IdOrganisation, ProductModel[].class);
+        PageProductModel products = restTemplate.getForObject(backendServerUrl + "/api/product/organisation/" + idOrganisation + "?offset="+ pageNum +"&limit=" + pageSize, PageProductModel.class);
         return products;
     }
+
 
     @Override
     public ProductModel saveProduct(ProductModel product) {

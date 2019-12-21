@@ -18,7 +18,7 @@
         <li class="nav-item">
           <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
             <a id="basic-link" dropdownToggle (click)="false" class="nav-link"
-               [class.disabled]="!user || (user && user.role === 'ORGANISATION')"
+               [class.disabled]="!(user$ | async) || ((user$ | async) && (user$ | async).role === 'ORGANISATION')"
             >Categories</a>
             <ul id="basic-link-dropdown" *dropdownMenu class="dropdown-menu"
                 role="menu" aria-labelledby="basic-link">
@@ -43,23 +43,23 @@
         <strong [style.color]="'#ffffff'"
                 *ngIf="user$| async as user">
           <div class="btn-group" dropdown>
-          <button dropdownToggle type="button"
-                  class="btn btn-outline-primary dropdown-toggle"
-                  aria-controls="dropdown-basic"  >
-            {{user.name}}
-            <span class="caret"></span>
-          </button>
+            <button dropdownToggle type="button"
+                    class="btn btn-outline-primary dropdown-toggle"
+                    aria-controls="dropdown-basic">
+              {{user.name}}
+              <span class="caret"></span>
+            </button>
 
-          <ul id="dropdown-animated"
-              *dropdownMenu class="dropdown-menu"
-              role="menu"
-              aria-labelledby="button-animated">
-            <li role="menuitem"><a class="dropdown-item" routerLink="/profile">Profile</a></li>
-            <li role="menuitem"><a class="dropdown-item" routerLink="/sub">Subscription</a></li>
+            <ul id="dropdown-animated"
+                *dropdownMenu class="dropdown-menu"
+                role="menu"
+                aria-labelledby="button-animated">
+              <li role="menuitem"><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+              <li role="menuitem"><a class="dropdown-item" routerLink="/sub">Subscription</a></li>
 
-          </ul>
+            </ul>
           </div>
-          <button class="btn btn-outline-primary"  (click)="logout()">Log out</button>
+          <button class="btn btn-outline-primary" (click)="logout()">Log out</button>
         </strong>
 
         <ng-template #template>
@@ -76,16 +76,17 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+            {{!loginForm.valid}}
+            {{!!login.value.trim().length}}
+            {{!loginForm.valid && !login.value.trim().length}}
             <div class="modal-body">
               <div class="container-fluid">
                 <form [formGroup]="loginForm">
                   <div class="form-froup m-3">
                     <label>Login*</label>
                     <input autofocus
-                           type="E-mail"
                            name="form-control"
                            placeholder="Login"
-                           aria-describdby="emailHelp"
                            class="p-2"
                            formControlName="userLogin"
                            #login>
@@ -104,21 +105,21 @@
                       Password must be at least 8 characters
                     </small>
                   </div>
-
                   <a routerLink="/">
                     <button
+                      [disabled]="!loginForm.valid || !login.value.trim().length"
                       class="btn btn-outline-primary my-2 my-sn-0"
-                            style="margin-right: 10px; margin-left: 80px;"
-                            (click)="getUserInfo(login.value, password.value)">
+                      style="margin-right: 10px; margin-left: 80px;"
+                      (click)="getUserInfo(login.value, password.value)">
                       <!--                    (click)="getUserByLogin(login.value)" [disabled]="loginForm.invalid"-->
                       Login
                     </button>
                   </a>
                 </form>
-<!--                //todo style and cursor pointer, and hide modal-->
+                <!--                //todo style and cursor pointer, and hide modal-->
                 <span class="link"
-                   style="margin-left: 40px"
-                   (click)="openModal2(templateNested)">
+                      style="margin-left: 40px"
+                      (click)="openModal2(templateNested)">
                   Register a new profile
                 </span>
               </div>
@@ -153,10 +154,10 @@
                       </div>
                     </form>
                   </div>
-<!--                  <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 100px;"-->
-<!--                          routerLink="/userReg">-->
-<!--                    Next-->
-<!--                  </button>-->
+                  <!--                  <button class="btn btn-outline-primary my-2 my-sn-0" style="margin-right: 10px; margin-left: 100px;"-->
+                  <!--                          routerLink="/userReg">-->
+                  <!--                    Next-->
+                  <!--                  </button>-->
                 </form>
               </div>
             </div>

@@ -5,6 +5,7 @@ import { TooltipModule } from "ngx-bootstrap/tooltip";
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { routing } from './app.routing';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 import { AppComponent } from "./app.component";
 import {HttpClientModule} from "@angular/common/http";
@@ -76,7 +77,8 @@ import {ConstructorComponent} from "./components/constructor/constructor.compone
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     ReactiveFormsModule,
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    PaginationModule.forRoot()
 
   ],
   providers: [

@@ -26,6 +26,7 @@ export class UserComponent implements OnInit {
   //custDiv: boolean = false;
   isCust: boolean = false;
   cust: string = Role.CUSTOMER;
+  user$ = this.userService.currentUser$;
 
   constructor(private userService: UserService,
               private modalService: BsModalService,
@@ -40,23 +41,19 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.userService.currentUser$
       .pipe(tap(currentUser => this.user = currentUser))
-      .subscribe()
-     console.log("user role", this.user.role === Role.CUSTOMER);
-    // console.log("user role", Role.1);
+      .subscribe();
     this.isCust = this.user.role == this.cust;
-    console.log(this.user);
-    console.log(Role.CUSTOMER);
-    console.log(typeof this.user.role);
-    console.log(typeof this.isCust);
-
-
-
   }
 
   public replenishBalance (): void {
     this.balance = (+this.user.balance) + (+this.newBalance);
     this.wallet = new Wallet(this.user.idWallet, this.balance, this.walletStatus);
-    this.walletService.balanceReplenishment(this.wallet).subscribe();
+    this.walletService.balanceReplenishment(this.wallet).subscribe( () =>{
+      this.userService.currentUser.balance = this.balance;
+      localStorage.setItem("user", JSON.stringify(this.userService.currentUser));
+    });
+    // this.userService.currentUser.balance = this.balance;
+    this.modalRef.hide();
   }
 
 }

@@ -5,8 +5,8 @@ import com.netcracker.edu.backend.entity.SubscriptionEntity;
 
 public class CustomerProductModel {
     private int idSubscription;
-    private int idCustomer;
-    private int idProduct;
+//    private int idCustomer;
+//    private int idProduct;
     private String name;
     private String description;
     private int monthPrise;
@@ -15,11 +15,11 @@ public class CustomerProductModel {
     public CustomerProductModel(){
     }
 
-    public CustomerProductModel( int idCustomer, int idSubscription, int idProduct, String name,
+    public CustomerProductModel(  int idSubscription, String name,
                                 String description, int monthPrise, String img){
         this.idSubscription = idSubscription;
-        this.idCustomer = idCustomer;
-        this.idProduct = idProduct;
+//        this.idCustomer = idCustomer;
+//        this.idProduct = idProduct;
         this.name = name;
         this.description = description;
         this.monthPrise = monthPrise;
@@ -35,21 +35,21 @@ public class CustomerProductModel {
         this.idSubscription = idSubscription;
     }
 
-    public int getIdCustomer() {
-        return idCustomer;
-    }
-
-    public void setIdCustomer(int idCustomer) {
-        this.idCustomer = idCustomer;
-    }
-
-    public int getIdProduct() {
-        return idProduct;
-    }
-
-    public void setIdProduct(int idProduct) {
-        this.idProduct = idProduct;
-    }
+//    public int getIdCustomer() {
+//        return idCustomer;
+//    }
+//
+//    public void setIdCustomer(int idCustomer) {
+//        this.idCustomer = idCustomer;
+//    }
+//
+//    public int getIdProduct() {
+//        return idProduct;
+//    }
+//
+//    public void setIdProduct(int idProduct) {
+//        this.idProduct = idProduct;
+//    }
 
     public String getName() {
         return name;

@@ -6,8 +6,8 @@
 <div class="container-fluid mt-5" style="background-color: lavender">
   <div class="container p-5">
     <div class="row justify-content-center">
-      <div class="col col-lg-4" *ngFor="let choice of custProd">
-        <div class="card text-center mt-5">
+      <div class="col col-lg-4 description" *ngFor="let choice of custProd">
+        <div class="card text-center mt-5 description-container">
           <img src={{choice.img}} alt="" class="card-img-top">
           <div class="card-body" >
             <h1 class="card-title pricing-card-title" >
@@ -18,8 +18,9 @@
             <p class="card-text">
               {{choice.description}}
             </p>
-<!--            <a class="btn btn-outline-primary" (click)="unsubscribe(choice.monthPrise, choice.idProduct)">Unsubscribe</a>-->
-
+            <div class="subButton">
+            <button class="btn btn-outline-primary" (click)="unsubscribe(choice.idSubscription)" action="java script:document.location.reload()">Unsubscribe</button>
+            </div>
           </div>
         </div>
       </div>
@@ -37,8 +38,8 @@
 <div class="container-fluid mt-5" style="background-color: lavender">
   <div class="container p-5">
     <div class="row justify-content-center">
-      <div class="col col-lg-4" *ngFor="let choice of products">
-        <div class="card text-center mt-5">
+      <div class="col col-lg-4 description" *ngFor="let choice of products?.productEntities">
+        <div class="card text-center mt-5 description-container">
           <img src={{choice.img}} alt="" class="card-img-top">
           <div class="card-body" >
             <h1 class="card-title pricing-card-title" >
@@ -59,4 +60,8 @@
 </div>
 </div>
 
-<app-footer></app-footer>
+<div class="pagin">
+  <pagination  [totalItems]="products?.countOfElements" itemsPerPage="6"
+               (pageChanged)="pageChanged($event)"></pagination>
+</div>
+<!--<app-footer></app-footer>-->

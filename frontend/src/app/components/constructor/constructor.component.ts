@@ -9,6 +9,7 @@ import {Product} from "../../modules/product";
 import {UserService} from "../../services/user.service";
 import {Category} from "../../modules/category";
 import {CategoryService} from "../../services/category.service";
+import {Page} from "../../modules/page";
 
 @Component({
   selector: "app-cunst",
@@ -27,6 +28,9 @@ export class ConstructorComponent implements OnInit{
   img: string;
   categories: Category[];
   category: number;
+  currentPage: number = 0;
+  page: number;
+  products: Page;
 
   constructor(private productService : ProductService,
               private userService: UserService,
@@ -37,20 +41,25 @@ export class ConstructorComponent implements OnInit{
   ngOnInit(){
     this.categoryService.getCategories().subscribe((data) => {
       this.categories = data as Category[];
-      this.cdr.detectChanges();
+      // this.cdr.detectChanges();
     });
   }
 
   public getCatId(category){
     this.idCategory = category;
-    console.log(category);
   }
 
   public createProd(information): void {
     this.information = new Product(this.user.idOrganisation, this.name,
       this.description,  (+this.monthPrise), (+this.idCategory),
       this.img);
-    console.log(information);
     this.productService.createProd(this.information).subscribe();
+
+    this.productService.getProductsByIdOrganisation(this.user.idOrganisation,this.currentPage,6).subscribe((data) => {
+      this.products = data as Page;
+      this.cdr.detectChanges();
+    });
+
+
   }
 }
