@@ -23,7 +23,7 @@
                   {{user.walletStatus}}
                 </p>
                 <button class="btn btn-outline-primary" (click)="clickBalance(template)" id="repButton1">Replenish balance</button>
-                <button class="btn btn-outline-primary" (click)="deleteAcc()">Delete account</button>
+                <button class="btn btn-outline-primary del" (click)="deleteAcc()">Delete account</button>
 
                 <ng-template #template>
                   <div class="modal-header">
@@ -107,7 +107,7 @@
                 <p class="card-text">wallet status:
                   {{user.walletStatus}}
                 </p>
-                
+
                 <button class="btn btn-outline-primary" (click)="deleteAcc()">Delete account</button>
 
               </div>
