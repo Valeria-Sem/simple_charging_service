@@ -37,4 +37,10 @@ public class RegistrationController {
     public AbstractRegistrationModel registerOrg(@RequestBody OrganisationRegistration organisationRegistration){
         return registrationService.registerUser(organisationRegistration);
     }
+
+    @RequestMapping(value = "/user/delete/{idUser}/{idWallet}", method = RequestMethod.DELETE)
+    public void deleteUser(@PathVariable(name = "idUser") Integer idUser,
+                           @PathVariable(name = "idWallet") Integer idWallet) {
+        registrationService.deleteUserProfile(idUser, idWallet);
+    }
 }

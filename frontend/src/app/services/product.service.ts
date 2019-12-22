@@ -24,4 +24,8 @@ export class ProductService {
     return this.http.post<Product>('/api/product', information);
   }
 
+  deleteProduct(idProd: string): Observable<void>{
+    return this.http.delete<void>('api/product/delete/' + idProd);
+  }
+
 }

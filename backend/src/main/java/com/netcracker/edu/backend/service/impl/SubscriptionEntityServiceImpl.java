@@ -20,8 +20,6 @@ import java.util.Optional;
 @Service
 public class SubscriptionEntityServiceImpl implements SubscriptionEntityService {
     private SubscriptionEntityRepository subscriptionEntityRepository;
-//    private CustomerEntityRepository customerEntityRepository;
-//    private ProductEntityRepository productEntityRepository;
     private CustomerEntityService customerEntityService;
     private ProductEntityService productEntityService;
 
@@ -78,4 +76,8 @@ public class SubscriptionEntityServiceImpl implements SubscriptionEntityService 
         return subscriptionEntityRepository.findAll();
     }
 
+    @Override
+    public SubscriptionEntity saveSub(SubscriptionEntity sub) {
+        return subscriptionEntityRepository.save(sub);
+    }
 }

@@ -10,5 +10,6 @@ public interface SubscriptionEntityService {
     void deleteSub(Integer id);
     List<SubscriptionEntity> getCustomerSub(int idCust);
     List<SubscriptionEntity> getAllSubs();
+    SubscriptionEntity saveSub(SubscriptionEntity sub);
 
 }

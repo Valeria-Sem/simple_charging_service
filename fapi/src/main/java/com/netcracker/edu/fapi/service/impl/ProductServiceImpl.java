@@ -54,6 +54,6 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProduct(Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete(backendServerUrl + "/api/product/delete" + id);
+        restTemplate.delete(backendServerUrl + "/api/product/delete/" + id);
     }
 }

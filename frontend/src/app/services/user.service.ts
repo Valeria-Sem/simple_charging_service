@@ -28,4 +28,8 @@ export class UserService {
     this.currentUser$.next(user);
     this.currentUser = user;
   }
+
+  deleteUser(idUser: number, idWallet: string): Observable<void> {
+    return this.http.delete<void>('/api/registration/user/delete/' + idUser + "/" + idWallet)
+  }
 }

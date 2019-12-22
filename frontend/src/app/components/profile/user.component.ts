@@ -1,5 +1,5 @@
-import {Component, OnInit, TemplateRef} from "@angular/core";
-import {BsModalRef, BsModalService} from "ngx-bootstrap";
+import {Component, OnInit, TemplateRef, ViewChild} from "@angular/core";
+import {BsModalRef, BsModalService, ModalDirective} from "ngx-bootstrap";
 import {Status, Wallet} from "../../modules/wallet";
 import {WalletService} from "../../services/wallet.service";
 import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
@@ -7,6 +7,7 @@ import {UserService} from "../../services/user.service";
 import {Role, User} from "../../modules/user";
 import {Observable, of} from "rxjs";
 import {tap} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Component({
   selector: "app-cusProf",
@@ -14,6 +15,7 @@ import {tap} from "rxjs/operators";
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  @ViewChild('childModal', {read: false}) childModal: ModalDirective;
   public wallet: Wallet;
   public user: User = this.userService.currentUser;
   // public user$: Observable<User> = this.userService.currentUser$
@@ -27,15 +29,21 @@ export class UserComponent implements OnInit {
   isCust: boolean = false;
   cust: string = Role.CUSTOMER;
   user$ = this.userService.currentUser$;
+  normalBalance: number = 5000;
 
   constructor(private userService: UserService,
               private modalService: BsModalService,
               private walletService: WalletService,
-              private loadingService: Ng4LoadingSpinnerService) {
+              private loadingService: Ng4LoadingSpinnerService,
+              private router: Router) {
   }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, Object.assign({}, {class: 'gray modal-sm'}));
+  }
+
+  hideChildModal(): void {
+    this.childModal.hide();
   }
 
   ngOnInit() {
@@ -46,14 +54,34 @@ export class UserComponent implements OnInit {
   }
 
   public replenishBalance (): void {
-    this.balance = (+this.user.balance) + (+this.newBalance);
-    this.wallet = new Wallet(this.user.idWallet, this.balance, this.walletStatus);
-    this.walletService.balanceReplenishment(this.wallet).subscribe( () =>{
-      this.userService.currentUser.balance = this.balance;
-      localStorage.setItem("user", JSON.stringify(this.userService.currentUser));
+    if (+this.user.balance >= +this.normalBalance){
+      this.childModal.show();
+    } else {
+      this.balance = (+this.user.balance) + (+this.newBalance);
+      this.wallet = new Wallet(this.user.idWallet, this.balance, this.walletStatus);
+      this.walletService.balanceReplenishment(this.wallet).subscribe( () =>{
+        this.userService.currentUser.balance = this.balance;
+        localStorage.setItem("user", JSON.stringify(this.userService.currentUser));
+      });
+      // this.userService.currentUser.balance = this.balance;
+      this.modalRef.hide();
+    }
+  }
+
+  public clickBalance(template: TemplateRef<any>){
+    if (+this.user.balance >= +this.normalBalance){
+      this.childModal.show();
+    } else {
+      this.openModal(template)
+    }
+  }
+
+  public deleteAcc(){
+    this.userService.deleteUser(+this.user.idUser, this.user.idWallet).subscribe(() => {
+      this.userService.setUser(null);
+      localStorage.removeItem("user");
+      this.router.navigate(['/']);
     });
-    // this.userService.currentUser.balance = this.balance;
-    this.modalRef.hide();
   }
 
 }

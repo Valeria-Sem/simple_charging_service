@@ -18,13 +18,15 @@ public class RegistrationServiceImpl implements RegistrationService {
     private WalletEntityService walletEntityService;
     private UsersEntityService usersEntityService;
     private CustomerEntityService customerEntityService;
+    private ProductEntityService productEntityService;
 
     @Autowired
-    public RegistrationServiceImpl(OrganisationEntityService organisationEntityService, WalletEntityService walletEntityService, UsersEntityService usersEntityService, CustomerEntityService customerEntityService) {
+    public RegistrationServiceImpl(OrganisationEntityService organisationEntityService, WalletEntityService walletEntityService, UsersEntityService usersEntityService, CustomerEntityService customerEntityService, ProductEntityService productEntityService) {
         this.organisationEntityService = organisationEntityService;
         this.walletEntityService = walletEntityService;
         this.usersEntityService = usersEntityService;
         this.customerEntityService = customerEntityService;
+        this.productEntityService = productEntityService;
     }
 
 
@@ -112,5 +114,11 @@ public class RegistrationServiceImpl implements RegistrationService {
                     walletEntity.getBalance(),
                     walletEntity.getWalletStatus());
         }
+    }
+
+    @Override
+    public void deleteUserProfile(int idUser, int idWallet) {
+        usersEntityService.delete(idUser);
+        walletEntityService.deleteWallet(idWallet);
     }
 }

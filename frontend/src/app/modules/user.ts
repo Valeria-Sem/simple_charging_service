@@ -2,7 +2,7 @@ import {Status} from "./wallet";
 
 export class User {
 
-  idUser: string;
+  idUser: number;
   login: string;
   password: string;
   role: Role;

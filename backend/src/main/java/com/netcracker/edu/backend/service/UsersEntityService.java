@@ -10,5 +10,5 @@ public interface UsersEntityService {
     UsersEntity findByLogin(String login);
     UsersEntity save(UsersEntity usersEntity);
     UsersEntity getUserIdByLoginAndPassword(String login, String password);
-    void delete(long id);
+    void delete(int id);
 }

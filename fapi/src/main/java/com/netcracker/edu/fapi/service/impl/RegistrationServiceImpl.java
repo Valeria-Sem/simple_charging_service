@@ -44,6 +44,12 @@ public class RegistrationServiceImpl implements RegistrationService {
         }
     }
 
+    @Override
+    public void deleteUserProfile(int idUser, int idWallet) {
+       RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(backendServerUrl + "/api/registration/user/delete/" + idUser+ "/"+ idWallet);
+    }
+
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;

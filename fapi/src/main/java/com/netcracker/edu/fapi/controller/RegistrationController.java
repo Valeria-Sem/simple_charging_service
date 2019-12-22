@@ -46,4 +46,10 @@ public class RegistrationController {
 //    public AbstractRegModel getCustProfile(@PathVariable String log, @PathVariable String pass) {
 //        return registrationService.getCustProfile(log, pass);
 //    }
+
+    @RequestMapping(value = "/user/delete/{idUser}/{idWallet}", method = RequestMethod.DELETE)
+    public void deleteUser(@PathVariable Integer idUser,
+                           @PathVariable Integer idWallet) {
+        registrationService.deleteUserProfile(idUser, idWallet);
+    }
 }

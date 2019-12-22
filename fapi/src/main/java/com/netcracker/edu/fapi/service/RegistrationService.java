@@ -9,4 +9,5 @@ public interface RegistrationService {
     AbstractRegModel registerCustomer(CustomerRegistrationModel newCustomer);
     AbstractRegModel getUserProfile(String log, String pass);
     //AbstractRegModel getCustProfile(String log, String pass);
+    void deleteUserProfile(int idUser, int idWallet);
 }

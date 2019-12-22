@@ -76,4 +76,13 @@ export class SubComponent {
       })
     });
   }
+
+  public deleteProduct(idProd: string){
+    this.productService.deleteProduct(idProd).subscribe(() => {
+      this.productService.getProductsByIdOrganisation(this.user.idOrganisation,this.currentPage,6).subscribe((data) => {
+        this.products = data as Page;
+        this.cdr.detectChanges();
+      });
+    });
+  }
 }

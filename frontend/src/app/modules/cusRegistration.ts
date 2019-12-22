@@ -7,7 +7,7 @@ export class CusRegistration {
   surname: string;
   eMail: string;
 
-  idUser: string;
+  idUser: number;
   login: string;
   password: string;
   role: Role;

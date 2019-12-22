@@ -8,7 +8,7 @@ export class OrgRegistration {
   linkOfSite: string;
   phone: string;
 
-  idUser: string;
+  idUser: number;
   login: string;
   password: string;
   role: Role;

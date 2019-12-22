@@ -57,6 +57,7 @@ public class CustProdConverter {
                     custProd.setImg(prodItem.getImg());
                 }
             }
+            custProd.setSubscriptionStatus(subsItem.getSubscriptionStatus());
             convertSubscription.add(custProd);
         }
         return convertSubscription;

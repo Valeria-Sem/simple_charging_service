@@ -1,22 +1,27 @@
 package com.netcracker.edu.fapi.models;
 
+import com.netcracker.edu.fapi.models.enums.SubStatus;
+
 public class CustProdModel {
         private int idSubscription;
         private String name;
         private String description;
         private int monthPrise;
         private String img;
+        private SubStatus subscriptionStatus;
 
         public CustProdModel(){
         }
 
         public CustProdModel(  int idSubscription, String name,
-                                      String description, int monthPrise, String img){
+                               String description, int monthPrise,
+                               String img, SubStatus subscriptionStatus){
             this.idSubscription = idSubscription;
             this.name = name;
             this.description = description;
             this.monthPrise = monthPrise;
             this.img = img;
+            this.subscriptionStatus = subscriptionStatus;
         }
 
 
@@ -60,4 +65,11 @@ public class CustProdModel {
             this.img = img;
         }
 
+    public SubStatus getSubscriptionStatus() {
+        return subscriptionStatus;
+    }
+
+    public void setSubscriptionStatus(SubStatus subscriptionStatus) {
+        this.subscriptionStatus = subscriptionStatus;
+    }
 }

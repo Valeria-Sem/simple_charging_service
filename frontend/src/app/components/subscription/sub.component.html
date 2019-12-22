@@ -18,6 +18,9 @@
             <p class="card-text">
               {{choice.description}}
             </p>
+            <p class="card-text">
+             Status: {{choice.subscriptionStatus}}
+            </p>
             <div class="subButton">
             <button class="btn btn-outline-primary" (click)="unsubscribe(choice.idSubscription)" action="java script:document.location.reload()">Unsubscribe</button>
             </div>
@@ -50,6 +53,9 @@
             <p class="card-text">
               {{choice.description}}
             </p>
+            <div class="subButton">
+              <button class="btn btn-outline-primary" (click)="deleteProduct(choice.idProduct)" action="java script:document.location.reload()">Delete</button>
+            </div>
           </div>
         </div>
       </div>
