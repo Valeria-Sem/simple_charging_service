@@ -16,6 +16,7 @@ import {Role} from "./modules/user";
 import {SubComponent} from "./components/subscription/sub.component";
 import {ConstructorComponent} from "./components/constructor/constructor.component";
 import {NotFoundComponent} from "./notFound/notFound.component";
+import {CustInfoComponent} from "./components/changeData/custInfo/custInfo.component";
 
 
 const appRoutes: Routes = [
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
   , {path: 'sites', component: SitesComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
   , {path: 'profile', component: UserComponent}
   , {path: 'sub', component: SubComponent}
+  // , {path: 'custInfo', component: CustInfoComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
   , {path: 'constructor', component: ConstructorComponent, canActivate: [RoleGuard], data: {role: Role.ORGANISATION}}
   , {path: '**', component: NotFoundComponent}
 ];

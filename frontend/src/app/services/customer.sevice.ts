@@ -5,6 +5,7 @@ import {Customer} from "../modules/customer";
 import {tap} from "rxjs/operators";
 import {User} from "../modules/user";
 import {CusRegistration} from "../modules/cusRegistration";
+import {UserInf} from "../modules/userInf";
 
 @Injectable()
 export class CustomerService {
@@ -31,4 +32,7 @@ export class CustomerService {
     this.subjectCustomer.next(customer);
   }
 
+  saveCust(customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>('/api/customer', customer);
+  }
 }

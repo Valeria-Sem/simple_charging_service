@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable, ReplaySubject, Subject} from "rxjs";
 import {User} from "../modules/user";
 import {tap} from "rxjs/operators";
+import {UserInf} from "../modules/userInf";
 
 @Injectable()
 export class UserService {
@@ -31,5 +32,9 @@ export class UserService {
 
   deleteUser(idUser: number, idWallet: string): Observable<void> {
     return this.http.delete<void>('/api/registration/user/delete/' + idUser + "/" + idWallet)
+  }
+
+  saveUser(user: UserInf): Observable<UserInf> {
+    return this.http.post<UserInf>('/api/user', user);
   }
 }
