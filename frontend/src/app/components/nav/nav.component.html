@@ -23,7 +23,7 @@
             <ul id="basic-link-dropdown" *dropdownMenu class="dropdown-menu"
                 role="menu" aria-labelledby="basic-link" (click)="onCategoriesClickHandler($event)">
               <li *ngFor="let choice of categories">
-                  <a class="dropdown-item" routerLink="/{{choice.name | lowercase}}">{{choice.name}}</a>
+                  <a class="dropdown-item" routerLink="/{{choice.name | lowercase}}">{{choice.name}} ({{countOfElements}})</a>
               </li>
             </ul>
           </span>
@@ -103,7 +103,7 @@
                   </div>
                   <a routerLink="/">
                     <button
-                      [disabled]="!loginForm.valid || !login.value.trim().length || !password.value.trim().length"
+                      [disabled]="!loginForm.valid || !login?.value?.trim().length || !password?.value?.trim().length"
                       class="btn btn-outline-primary my-2 my-sn-0"
                       style="margin-right: 10px; margin-left: 80px;"
                       (click)="getUserInfo(login.value, password.value)">

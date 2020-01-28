@@ -30,10 +30,5 @@ public class SubscriptionEntityController {
             @RequestBody SubscriptionEntity subscriptionEntity){
         return subscriptionEntityService.subscribeUser(subscriptionEntity, idCustomer, idProduct);
     }
-
-//    @RequestMapping(value = "/cust/{idCust}", method = RequestMethod.GET)
-//    public ResponseEntity<SubscriptionEntity[]> CustSubscription(@PathVariable(name = "idCust") Integer idCust) {
-//        SubscriptionEntity[] information =  subscriptionEntityService.getCustomerSub(idCust);
-//        return ResponseEntity.ok(information);
-//    }
+    
 }

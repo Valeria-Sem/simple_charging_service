@@ -34,7 +34,6 @@ import {RoleGuard} from "./services/role-guard.service";
 import {SubComponent} from "./components/subscription/sub.component";
 import {ConstructorComponent} from "./components/constructor/constructor.component";
 import {NotFoundComponent} from "./notFound/notFound.component";
-import {CustInfoComponent} from "./components/changeData/custInfo/custInfo.component";
 // import {WalletComponent} from "./wallet/wallet.component";
 
 
@@ -64,8 +63,7 @@ import {CustInfoComponent} from "./components/changeData/custInfo/custInfo.compo
     UserComponent,
     SubComponent,
     ConstructorComponent,
-    NotFoundComponent,
-    CustInfoComponent
+    NotFoundComponent
     //WalletComponent
   ],
   imports: [

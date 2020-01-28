@@ -25,7 +25,7 @@ export class AppsComponent {
   products: Page;
   public wallet: Wallet;
   public user: User = this.userService.currentUser;
-  public walletStatus: Status = 0;
+  public walletStatus: Status = Status.ACTIVE;
   public balance: number;
   product: Product;
   modalRef: BsModalRef;
@@ -36,6 +36,7 @@ export class AppsComponent {
   currentPage: number = 0;
   page: number;
   custProd: CustProd[];
+
 
   constructor(private productService: ProductService,
               private userService: UserService,

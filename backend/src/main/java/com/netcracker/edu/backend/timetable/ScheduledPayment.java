@@ -31,7 +31,7 @@ public class ScheduledPayment {
         this.subscriptionEntityService = subscriptionEntityService;
     }
 
-    @Scheduled(cron = "0 15 10 ? * *")
+    @Scheduled(cron = "0 15 10 25 * ?")
 //    @Scheduled(fixedRate = 10000)
     public void scheduledDebiting() {
         List<SubscriptionEntity> subscription = subscriptionEntityService.getAllSubs();
@@ -59,9 +59,9 @@ public class ScheduledPayment {
                 sub.setSubscriptionStatus(SubStatus.ACTIVE);
                 subscriptionEntityService.saveSub(sub);
 
-//                System.out.println("sub active! " + customer.getName() +
-//                        "buy sub " + product.getName() + " and pay " +
-//                        product.getMonthPrise() + " to " + organisation.getName());
+                System.out.println("sub active! " + customer.getName() +
+                        " buy sub " + product.getName() + " and pay " +
+                        product.getMonthPrise() + "$ to " + organisation.getName());
 
 
             } else {
@@ -71,7 +71,7 @@ public class ScheduledPayment {
                 sub.setSubscriptionStatus(SubStatus.FROZEN);
                 subscriptionEntityService.saveSub(sub);
 
-//                System.out.println("sub FROZEN!");
+                System.out.println(customer.getName() + " sub " + product.getName() + " FROZEN!");
             }
         }
 

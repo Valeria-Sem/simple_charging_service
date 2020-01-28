@@ -23,7 +23,7 @@ export class GamesComponent {
   products: Page;
   public wallet: Wallet;
   public user: User = this.userService.currentUser;
-  public walletStatus: Status = 0;
+  public walletStatus: Status = Status.ACTIVE;
   public balance: number;
   product: Product;
   modalRef: BsModalRef;

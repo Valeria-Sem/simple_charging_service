@@ -18,7 +18,7 @@ export class UserRegComponent implements OnInit{
   public surname: string;
   public eMail: string;
   public balance: number = 100;
-  public walletStatus: Status = 0;
+  public walletStatus: Status = Status.ACTIVE;
   public role: Role = Role.CUSTOMER;
 
   constructor(private registrationService:RegistrationService) {

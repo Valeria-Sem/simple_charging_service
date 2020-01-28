@@ -5,7 +5,7 @@
     <label for="inputName" class="sr-only">Name</label>
     <input id="inputName" class="form-control" placeholder="Name" #nameField="ngModel"
            required autofocus [(ngModel)]="name" name="name" minlength="3" maxlength="30">
-    <div [hidden]="nameField.valid || nameField.untouched || !nameField.value.trim().length" class="alert alert-danger">
+    <div [hidden]="nameField.valid || nameField.untouched || !nameField?.value?.trim().length" class="alert alert-danger">
       Missing Name
     </div>
 
@@ -13,7 +13,7 @@
     <input type="email" id="inputEmail" class="form-control" placeholder="example@email.com" #emailField="ngModel"
            required [(ngModel)]="eMail" name="eMail" pattern="[a-zA-Z_0-9]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}"
            minlength="3" maxlength="30">
-    <div [hidden]="emailField.valid || emailField.untouched || !emailField.value.trim().length" class="alert alert-danger">
+    <div [hidden]="emailField.valid || emailField.untouched || !emailField?.value?.trim().length" class="alert alert-danger">
       Incorrect Email
     </div>
 
@@ -21,14 +21,14 @@
     <input id="inputLink" class="form-control" placeholder="example.com" #linkField="ngModel"
            required [(ngModel)]="linkOfSite" name="linkOfSite"
            pattern="[a-zA-Z_]+.+[a-zA-Z]" minlength="3" maxlength="16">
-    <div [hidden]="linkField.valid || linkField.untouched || !linkField.value.trim().length" class="alert alert-danger">
+    <div [hidden]="linkField.valid || linkField.untouched || !linkField?.value?.trim().length" class="alert alert-danger">
       Incorrect Link of site
     </div>
 
     <label for="inputPhone" class="sr-only">Phone</label>
     <input id="inputPhone" class="form-control" placeholder="+3754455677890" #phoneField="ngModel"
            required [(ngModel)]="phone" name="phone" pattern="[+0-9]{1,16}" maxlength="16">
-    <div [hidden]="phoneField.valid || phoneField.untouched || !phoneField.value.trim().length" class="alert alert-danger">
+    <div [hidden]="phoneField.valid || phoneField.untouched || !phoneField?.value?.trim().length" class="alert alert-danger">
       Incorrect Phone
     </div>
 
@@ -36,14 +36,14 @@
     <label for="inputLogin" class="sr-only">Login</label>
     <input id="inputLogin" class="form-control" placeholder="Login" #loginField="ngModel"
            required [(ngModel)]="login" name="logg" minlength="3" maxlength="16">
-    <div [hidden]="loginField.valid || loginField.untouched || !loginField.value.trim().length" class="alert alert-danger">
+    <div [hidden]="loginField.valid || loginField.untouched || !loginField?.value?.trim().length" class="alert alert-danger">
       Incorrect Login
     </div>
 
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Password" #passwordField="ngModel"
            required [(ngModel)]="password" name="pass" minlength="6" maxlength="16">
-    <div [hidden]="passwordField.valid || passwordField.untouched || !passwordField.value.trim().length" class="alert alert-danger">
+    <div [hidden]="passwordField.valid || passwordField.untouched || !passwordField?.value?.trim().length" class="alert alert-danger">
       Missing Password
     </div>
 

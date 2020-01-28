@@ -13,8 +13,8 @@ export class Wallet {
 }
 
 export enum Status {
-  ACTIVE,
-  FROZEN,
-  BLOCKED
+  ACTIVE = "ACTIVE",
+  FROZEN = "FROZEN",
+  BLOCKED = "BLOCKED"
 }
 

@@ -18,7 +18,7 @@ export class OrganisationRegComponent implements OnInit{
   public linkOfSite: string;
   public phone: string;
   public balance: number = 0;
-  public walletStatus: Status = 0;
+  public walletStatus: Status = Status.ACTIVE;
   public role: Role = Role.ORGANISATION;
 
   constructor(private regService : RegistrationService) {

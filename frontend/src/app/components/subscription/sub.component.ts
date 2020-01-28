@@ -21,7 +21,7 @@ export class SubComponent {
   public wallet: Wallet;
   public user: User = this.userService.currentUser;
   public newBalance: number;
-  public walletStatus: Status = 0;
+  public walletStatus: Status = Status.ACTIVE;
   public balance: number;
   product: Product;
   subscription: Subscription;

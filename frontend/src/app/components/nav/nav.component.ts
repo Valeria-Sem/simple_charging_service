@@ -16,6 +16,7 @@ import {Product} from "../../modules/product";
 import {ProductService} from "../../services/product.service";
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import {Customer} from "../../modules/customer";
+import {Page} from "../../modules/page";
 
 @Component({
   selector: 'app-nav',
@@ -38,6 +39,10 @@ export class NavComponent implements OnInit {
   organisation: Organisation;
   public login: string;
   public password: string;
+  countOfElements: Page;
+  productEntities: Page;
+  currentPage: number = 0;
+
 
 
   constructor(private modalService: BsModalService,
@@ -79,6 +84,9 @@ export class NavComponent implements OnInit {
       "userLogin": new FormControl("", [Validators.required]),
       "userPassword": new FormControl("", Validators.required)
     });
+
+    // this.productService.getProductsByIdOrganisation('2', this.currentPage = 0,)
+    //this.countOfElements;
   }
 
   public getUserInfo(login, password): void {

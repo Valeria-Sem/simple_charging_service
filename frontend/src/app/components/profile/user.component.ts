@@ -5,7 +5,6 @@ import {WalletService} from "../../services/wallet.service";
 import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
 import {UserService} from "../../services/user.service";
 import {Role, User} from "../../modules/user";
-import {Observable, of} from "rxjs";
 import {tap} from "rxjs/operators";
 import {Router} from "@angular/router";
 
@@ -21,7 +20,7 @@ export class UserComponent implements OnInit {
   // public user$: Observable<User> = this.userService.currentUser$
   //   .pipe(tap(currentUser => this.user = currentUser));
   public newBalance: number;
-  public walletStatus: Status = 0;
+  public walletStatus: Status = Status.ACTIVE;
   public balance: number;
   modalRef: BsModalRef;
   //orgDiv: boolean = false;
@@ -61,6 +60,7 @@ export class UserComponent implements OnInit {
       this.wallet = new Wallet(this.user.idWallet, this.balance, this.walletStatus);
       this.walletService.balanceReplenishment(this.wallet).subscribe( () =>{
         this.userService.currentUser.balance = this.balance;
+        this.userService.currentUser.walletStatus = Status.ACTIVE;
         localStorage.setItem("user", JSON.stringify(this.userService.currentUser));
       });
       // this.userService.currentUser.balance = this.balance;
