@@ -82,7 +82,7 @@ public class OrganisationEntity {
         return Objects.hash(idOrganisation, name, eMail, linkOfSite, phone);
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_users", referencedColumnName = "id_users", nullable = false)
     public UsersEntity getUsersByIdUsers() {
         return usersByIdUsers;
@@ -92,7 +92,7 @@ public class OrganisationEntity {
         this.usersByIdUsers = usersByIdUsers;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_wallet", referencedColumnName = "id_wallet", nullable = false)
     public WalletEntity getWalletByIdWallet() {
         return walletByIdWallet;

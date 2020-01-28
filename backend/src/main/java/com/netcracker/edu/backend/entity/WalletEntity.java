@@ -59,20 +59,4 @@ public class WalletEntity {
     public int hashCode() {
         return Objects.hash(idWallet, balance, walletStatus);
     }
-
-//    public enum WalletStatus {
-//        ACTIVE("ACTIVE"),
-//        FROZEN("FROZEN"),
-//        BLOCKED("BLOCKED");
-//
-//        private String status;
-//
-//        WalletStatus(String status) {
-//            this.status = status;
-//        }
-//
-//        String getStatus(){
-//            return status;
-//        }
-//    }
 }

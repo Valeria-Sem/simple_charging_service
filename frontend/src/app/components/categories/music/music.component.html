@@ -1,0 +1,70 @@
+<div class="pricing-header px-3 py-3 pt-md-5 p-md-4 mx-auto text-center">
+  <h1 class="display-4">Music</h1>
+  <p class="lead">
+    "Various music subscriptions are provided here.
+    You can find a music that you like and buy a subscription to it."
+  </p>
+</div>
+
+<div class="container-fluid mt-5" style="background-color: #eeeeee">
+  <div class="container p-5">
+    <div class="row justify-content-center">
+      <div class="col col-lg-4 description" *ngFor="let choice of products?.productEntities">
+        <div class="card text-center mt-5 description-container">
+          <img src={{choice.img}} alt="" class="card-img-top">
+          <div class="card-body" >
+            <h1 class="card-title pricing-card-title" >
+              ${{choice.monthPrise}}
+              <small class="text-muted">/ mo</small>
+            </h1>
+            <h4 class="card-title">{{choice.name}}</h4>
+            <p class="card-text">
+              {{choice.description}}
+            </p>
+            <div class="subButton">
+              <a class="btn btn-outline-primary" id="{{choice.name}}" (click)="payAndSub(choice.monthPrise, template, choice.idProduct, choice.idOrganisation)">Subscribe</a>
+            </div>
+            <ng-template #template>
+              <div class="modal-header">
+                <h4 class="modal-title pull-left">Bill</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <p>You have subscribed to the product "{{choice.name}}"</p>
+                <p>Your account has been charged: ${{choice.monthPrise}}</p>
+
+              </div>
+
+            </ng-template>
+
+            <div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1"
+                 role="dialog" aria-labelledby="dialog-child-name">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 id="dialog-child-name" class="modal-title pull-left">Error</h4>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    You are short of money. Top up your balance!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pagin">
+  <pagination  [totalItems]="products?.countOfElements" itemsPerPage="6"
+               (pageChanged)="pageChanged($event)"></pagination>
+</div>
+
+<app-footer></app-footer>

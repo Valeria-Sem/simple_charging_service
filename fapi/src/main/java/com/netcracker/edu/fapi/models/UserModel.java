@@ -1,6 +1,7 @@
 package com.netcracker.edu.fapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.netcracker.edu.fapi.models.enums.Role;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserModel {
@@ -8,12 +9,12 @@ public class UserModel {
     private int idUser;
     private String login;
     private String password;
-    private String role;
+    private Role role;
 
     public UserModel() {
     }
 
-    public UserModel(int idUser, String login, String password, String role) {
+    public UserModel(int idUser, String login, String password, Role role) {
         this.idUser = idUser;
         this.login = login;
         this.password = password;
@@ -44,11 +45,11 @@ public class UserModel {
         this.password = password;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

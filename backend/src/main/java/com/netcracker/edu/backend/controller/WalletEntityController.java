@@ -39,4 +39,5 @@ public class WalletEntityController {
     public void deleteWallet(@PathVariable(name = "id") Integer id) {
         walletEntityService.deleteWallet(id);
     }
+
 }

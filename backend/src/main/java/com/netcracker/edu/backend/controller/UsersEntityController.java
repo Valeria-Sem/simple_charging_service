@@ -21,6 +21,18 @@ public class UsersEntityController {
         return ResponseEntity.ok(usersEntity);
     }
 
+    @RequestMapping(value = "/login/{login}/{pass}", method = RequestMethod.GET)
+    public ResponseEntity<UsersEntity> getUsersByLoginP(@PathVariable(name = "login") String login,
+                                                        @PathVariable(name = "pass") String pass) {
+        UsersEntity usersEntity = usersEntityService.getUserIdByLoginAndPassword(login, pass);
+        return ResponseEntity.ok(usersEntity);
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public void deleteUser(@PathVariable(name = "id") Integer id) {
+        usersEntityService.delete(id);
+    }
+
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<UsersEntity> getAllUsers(){
         return usersEntityService.getAllUsers();

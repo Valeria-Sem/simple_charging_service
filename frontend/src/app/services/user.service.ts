@@ -1,42 +1,40 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Observable, Subject} from "rxjs";
-import {User} from "../nav/user/user";
+import {Observable, ReplaySubject, Subject} from "rxjs";
+import {User} from "../modules/user";
 import {tap} from "rxjs/operators";
+import {UserInf} from "../modules/userInf";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UserService {
 
-  // public currentUser: User = null;
+  public currentUser: User;
 
-  private subjectUser: Subject<User> = new Subject();
-
-  public currentUser$ = this.subjectUser.asObservable();
+  public currentUser$: ReplaySubject<User> = new ReplaySubject(1);
 
   constructor(private http: HttpClient) {
   }
 
-  saveUser(user: User): Observable<User> {
-    return this.http.post<User>('/api/user', user);
-  }
-
-  getUserByLogin(login: string): Observable<User> {
-    return this.http.get<User>('/api/user/login/' + login).pipe(
-      tap(user => this.subjectUser.next(user))
+  getUserInfo(login: string, password: string): Observable<User> {
+    return this.http.get<User>('/api/registration/login/' + login + '/password/' + password).pipe(
+      tap(user => {
+        this.currentUser$.next(user);
+        this.currentUser = user;
+        localStorage.setItem("user", JSON.stringify(user));
+      })
     );
   }
 
   public setUser(user: User): void {
-    this.subjectUser.next(user);
+    this.currentUser$.next(user);
+    this.currentUser = user;
   }
 
-  // getAllUsers(): Observable<User[]> {
-  //   return this.http.get<User[]>('api/user');
-  // }
-  //
-  // deleteUser(id: string): Observable<void> {
-  //   return this.http.delete<void>('/api/user/' + id);
-  // }
+  deleteUser(idUser: number, idWallet: string): Observable<void> {
+    return this.http.delete<void>('/api/registration/user/delete/' + idUser + "/" + idWallet)
+  }
+
+  saveUser(user: UserInf): Observable<UserInf> {
+    return this.http.post<UserInf>('/api/user', user);
+  }
 }

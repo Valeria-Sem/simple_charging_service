@@ -1,66 +1,29 @@
 package com.netcracker.edu.backend.transferOfObjects;
 
+import com.netcracker.edu.backend.entity.WalletEntity;
 import com.netcracker.edu.backend.entity.enums.UsersRole;
 import com.netcracker.edu.backend.entity.enums.WalletStatus;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-public class CustomerRegistration {
-    private int idUser;
-    private String login;
-    private String password;
-    private UsersRole role;
-
+public class CustomerRegistration extends AbstractRegistrationModel{
     private int idCustomer;
     private String name;
     private String surname;
     private String eMail;
 
-    private int idWallet;
-    private int balance;
-    private WalletStatus walletStatus;
-
     public CustomerRegistration() {
     }
 
-    public CustomerRegistration(int idUser, String login, String password, UsersRole role, int idCustomer, String name, String surname, String eMail,
-                                 int idWallet, int balance, WalletStatus walletStatus) {
-        this.idUser = idUser;
-        this.login = login;
-        this.password = password;
-        this.role = role;
-        this.idWallet = idWallet;
-        this.balance = balance;
-        this.walletStatus = walletStatus;
+    public CustomerRegistration(int idUser, String login, String password,UsersRole role,
+                                int idCustomer, String name, String surname, String eMail,
+                                int idWallet, int balance, WalletStatus walletStatus) {
+        super(idUser, login, password, role, idWallet, balance, walletStatus);
         this.eMail = eMail;
         this.idCustomer = idCustomer;
         this.name = name;
         this.surname = surname;
-    }
-
-    public int getIdWallet() {
-        return idWallet;
-    }
-
-    public void setIdWallet(int idWallet) {
-        this.idWallet = idWallet;
-    }
-
-    public int getBalance() {
-        return balance;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
-
-    public WalletStatus getWalletStatus() {
-        return walletStatus;
-    }
-
-    public void setWalletStatus(WalletStatus walletStatus) {
-        this.walletStatus = walletStatus;
     }
 
     public String getName() {
@@ -94,39 +57,5 @@ public class CustomerRegistration {
     public void setSurname(String surname) {
         this.surname = surname;
     }
-
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public UsersRole getRole() {
-        return role;
-    }
-
-    public void setRole(UsersRole role) {
-        this.role = role;
-    }
-
-
 
 }

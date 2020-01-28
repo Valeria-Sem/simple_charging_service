@@ -1,5 +1,6 @@
 package com.netcracker.edu.fapi.service.impl;
 
+import com.netcracker.edu.fapi.models.OrganisationModel;
 import com.netcracker.edu.fapi.models.WalletModel;
 import com.netcracker.edu.fapi.service.WalletService;
 import org.springframework.beans.factory.annotation.Value;
@@ -37,8 +38,27 @@ public class WalletServiceImp implements WalletService {
     }
 
     @Override
-    public void deleteWallet(Long id) {
+    public WalletModel payment(WalletModel wallet) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete(backendServerUrl + "/api/wallet/delete/" + id);
+        return restTemplate.postForEntity(backendServerUrl + "/api/wallet/payment", wallet, WalletModel.class).getBody();
+    }
+
+    @Override
+    public WalletModel balanceReplenishment(WalletModel wallet) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForEntity(backendServerUrl + "/api/wallet/replenishment", wallet, WalletModel.class).getBody();
+    }
+
+    @Override
+    public OrganisationModel balanceReplenishmentByOrg(int idOrg, int balance) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForEntity(backendServerUrl + "/api/wallet/replenishment/organisation/"+idOrg+"/balance/"+ balance, idOrg, OrganisationModel.class).getBody();
+    }
+
+
+    @Override
+    public void deleteWallet(Long idDelete) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(backendServerUrl + "/api/wallet/delete/" + idDelete);
     }
 }

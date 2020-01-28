@@ -1,0 +1,71 @@
+<div id="customer" *ngIf="isCust">
+<div class="pricing-header px-3 py-3 pt-md-5 p-md-4 mx-auto text-center">
+  <h1 class="display-4">Your subscriptions</h1>
+</div>
+
+<div class="container-fluid mt-5" style="background-color: lavender">
+  <div class="container p-5">
+    <div class="row justify-content-center">
+      <div class="col col-lg-4 description" *ngFor="let choice of custProd">
+        <div class="card text-center mt-5 description-container">
+          <img src={{choice.img}} alt="" class="card-img-top">
+          <div class="card-body" >
+            <h1 class="card-title pricing-card-title" >
+              ${{choice.monthPrise}}
+              <small class="text-muted">/ mo</small>
+            </h1>
+            <h4 class="card-title">{{choice.name}}</h4>
+            <p class="card-text">
+              {{choice.description}}
+            </p>
+            <p class="card-text">
+             Status: {{choice.subscriptionStatus}}
+            </p>
+            <div class="subButton">
+            <button class="btn btn-outline-primary" (click)="unsubscribe(choice.idSubscription)" action="java script:document.location.reload()">Unsubscribe</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="organisation" *ngIf="!isCust">
+<div class="pricing-header px-3 py-3 pt-md-5 p-md-4 mx-auto text-center">
+  <h1 class="display-4">Your products</h1>
+  <button class="btn btn-outline-primary" routerLink="/constructor">Create new product</button>
+</div>
+
+<div class="container-fluid mt-5" style="background-color: lavender">
+  <div class="container p-5">
+    <div class="row justify-content-center">
+      <div class="col col-lg-4 description" *ngFor="let choice of products?.productEntities">
+        <div class="card text-center mt-5 description-container">
+          <img src={{choice.img}} alt="" class="card-img-top">
+          <div class="card-body" >
+            <h1 class="card-title pricing-card-title" >
+              ${{choice.monthPrise}}
+              <small class="text-muted">/ mo</small>
+            </h1>
+            <h4 class="card-title">{{choice.name}}</h4>
+            <p class="card-text">
+              {{choice.description}}
+            </p>
+            <div class="subButton">
+              <button class="btn btn-outline-primary" (click)="deleteProduct(choice.idProduct)" action="java script:document.location.reload()">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="pagin">
+  <pagination  [totalItems]="products?.countOfElements" itemsPerPage="6"
+               (pageChanged)="pageChanged($event)"></pagination>
+</div>
+<!--<app-footer></app-footer>-->

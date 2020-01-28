@@ -1,29 +1,38 @@
-import { ModuleWithProviders } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {ModuleWithProviders} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
-import {AboutComponent} from "./about/about.component";
-import {UserRegComponent} from "./registration/userReg/user.registration.component";
-import {FilmsComponent} from "./categories/films/films.component";
-import {AppsComponent} from "./categories/apps/apps.component";
-import {GamesComponent} from "./categories/games/game.component";
-import {MusicComponent} from "./categories/music/music.component";
-import {SitesComponent} from "./categories/sites/sites.component";
-import {OrganisationRegComponent} from "./registration/organisationReg/org.registration.component";
+import {HomeComponent} from './components/home/home.component';
+import {AboutComponent} from "./components/about/about.component";
+import {UserRegComponent} from "./components/registration/customerReg/customer.registration.component";
+import {FilmsComponent} from "./components/categories/films/films.component";
+import {AppsComponent} from "./components/categories/apps/apps.component";
+import {GamesComponent} from "./components/categories/games/game.component";
+import {MusicComponent} from "./components/categories/music/music.component";
+import {SitesComponent} from "./components/categories/sites/sites.component";
+import {OrganisationRegComponent} from "./components/registration/organisationReg/org.registration.component";
+import {UserComponent} from "./components/profile/user.component";
+import {RoleGuard} from "./services/role-guard.service";
+import {Role} from "./modules/user";
+import {SubComponent} from "./components/subscription/sub.component";
+import {ConstructorComponent} from "./components/constructor/constructor.component";
+import {NotFoundComponent} from "./notFound/notFound.component";
 
 
-
-const appRoutes : Routes = [
-  { path: '', component: HomeComponent }
-  ,{path: 'about', component: AboutComponent}
-  ,{path: 'userReg', component: UserRegComponent}
-  ,{path: 'orgReg', component: OrganisationRegComponent}
-  ,{path: 'films', component: FilmsComponent}
-  ,{path: 'app', component: AppsComponent}
-  ,{path: 'games', component: GamesComponent}
-  ,{path: 'music', component: MusicComponent}
-  ,{path: 'sites', component: SitesComponent}
+const appRoutes: Routes = [
+  {path: '', component: HomeComponent}
+  , {path: 'about', component: AboutComponent}
+  , {path: 'userReg', component: UserRegComponent}
+  , {path: 'orgReg', component: OrganisationRegComponent}
+  , {path: 'films', component: FilmsComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
+  , {path: 'app', component: AppsComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
+  , {path: 'games', component: GamesComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
+  , {path: 'music', component: MusicComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
+  , {path: 'sites', component: SitesComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
+  , {path: 'profile', component: UserComponent}
+  , {path: 'sub', component: SubComponent}
+  , {path: 'constructor', component: ConstructorComponent, canActivate: [RoleGuard], data: {role: Role.ORGANISATION}}
+  , {path: '**', component: NotFoundComponent}
 ];
 
-export const routing : ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
 

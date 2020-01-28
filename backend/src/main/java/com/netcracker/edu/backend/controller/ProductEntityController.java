@@ -1,6 +1,7 @@
 package com.netcracker.edu.backend.controller;
 
 import com.netcracker.edu.backend.entity.ProductEntity;
+import com.netcracker.edu.backend.model.PageProductModel;
 import com.netcracker.edu.backend.service.ProductEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,12 +27,8 @@ public class ProductEntityController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<ProductEntity> getProductById(@PathVariable(name ="id") Integer id) {
-        Optional<ProductEntity> product = productEntityService.getProductById(id);
-        if (product.isPresent()) {
-            return ResponseEntity.ok(product.get());
-        } else {
-            return  ResponseEntity.notFound().build();
-        }
+        ProductEntity products = productEntityService.getProductById(id);
+        return ResponseEntity.ok(products);
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -40,8 +37,18 @@ public class ProductEntityController {
     }
 
     @RequestMapping(value = "/category/{idCategory}", method = RequestMethod.GET)
-    public ResponseEntity<ProductEntity[]> getProductByCategory(@PathVariable(name = "idCategory") int idCategory) {
-        ProductEntity[] products = productEntityService.getProductByCategory(idCategory);
+    public ResponseEntity<PageProductModel> getProductByCategory(@PathVariable(name = "idCategory") int idCategory,
+                                                                 @RequestParam(name = "offset") int offset,
+                                                                 @RequestParam(name = "limit") int limit) {
+        PageProductModel products = productEntityService.getProductByCategory(idCategory, offset, limit);
+        return ResponseEntity.ok(products);
+    }
+
+    @RequestMapping(value = "/organisation/{idOrganisation}", method = RequestMethod.GET)
+    public ResponseEntity<PageProductModel> getProductByOrganisation(@PathVariable(name = "idOrganisation") int idOrganisation,
+                                                                 @RequestParam(name = "offset") int offset,
+                                                                 @RequestParam(name = "limit") int limit) {
+        PageProductModel products = productEntityService.getProductByOrganisation(idOrganisation, offset, limit);
         return ResponseEntity.ok(products);
     }
 

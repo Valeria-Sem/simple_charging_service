@@ -1,5 +1,6 @@
 package com.netcracker.edu.fapi.service.impl;
 
+import com.netcracker.edu.fapi.models.PageProductModel;
 import com.netcracker.edu.fapi.models.ProductModel;
 import com.netcracker.edu.fapi.service.ProductService;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,11 +31,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductModel[] getProductByIdCategory(Long idCategory) {
+    public PageProductModel getProductByCategory(int idCategory, int pageNum, int pageSize) {
         RestTemplate restTemplate = new RestTemplate();
-        ProductModel[] products = restTemplate.getForObject(backendServerUrl + "/api/product/category/" + idCategory, ProductModel[].class);
-        return products;  //restTemplate.getForObject(backendServerUrl + "/api/product/category/" + idCategory, Product.class);
+        PageProductModel products = restTemplate.getForObject(backendServerUrl + "/api/product/category/" + idCategory + "?offset="+ pageNum +"&limit=" + pageSize, PageProductModel.class);
+        return products;
     }
+
+    @Override
+    public PageProductModel getProductByOrganisation(int idOrganisation, int pageNum, int pageSize) {
+        RestTemplate restTemplate = new RestTemplate();
+        PageProductModel products = restTemplate.getForObject(backendServerUrl + "/api/product/organisation/" + idOrganisation + "?offset="+ pageNum +"&limit=" + pageSize, PageProductModel.class);
+        return products;
+    }
+
 
     @Override
     public ProductModel saveProduct(ProductModel product) {
@@ -45,6 +54,6 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProduct(Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete(backendServerUrl + "/api/product/delete" + id);
+        restTemplate.delete(backendServerUrl + "/api/product/delete/" + id);
     }
 }

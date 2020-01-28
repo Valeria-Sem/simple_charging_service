@@ -1,0 +1,53 @@
+<div class="container">
+  <form>
+    <h1 class="h3 mb-3 font-weight-normal">Registration</h1>
+
+
+    <label for="inputName" class="sr-only">Name</label>
+    <input id="inputName" class="form-control" placeholder="Name" #nameField="ngModel" required autofocus
+           [(ngModel)]="name" name="name" minlength="3" maxlength="16">
+    <div [hidden]="nameField.valid || nameField.untouched || !nameField?.value?.trim().length" class="alert alert-danger">
+      Missing Name
+    </div>
+
+    <label for="inputSurname" class="sr-only">Surname</label>
+    <input id="inputSurname" class="form-control" placeholder="Surname" #surnameField="ngModel" required [(ngModel)]="surname"
+           name="surname" minlength="3" maxlength="25">
+    <div [hidden]="surnameField.valid || surnameField.untouched || !surnameField?.value?.trim().length" class="alert alert-danger">
+      Missing Surname
+    </div>
+
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="example@email.com" #emailField="ngModel" required [(ngModel)]="eMail"
+           name="email" pattern="[a-zA-Z_.0-9]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}"minlength="5" maxlength="30">
+    <div [hidden]="emailField.valid || emailField.untouched || !emailField?.value?.trim().length" class="alert alert-danger">
+      Incorrect Email
+    </div>
+
+    <label for="inputLogin" class="sr-only">Login</label>
+    <input type="login" id="inputLogin" class="form-control" placeholder="Login" #loginField="ngModel" required [(ngModel)]="login"
+           name="log" minlength="3" maxlength="16">
+    <div [hidden]="loginField.valid || loginField.untouched || !loginField?.value?.trim().length" class="alert alert-danger">
+      Incorrect Login
+    </div>
+
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" #passwordField="ngModel" required
+           [(ngModel)]="password" name="pas" minlength="6" maxlength="16">
+    <div [hidden]="passwordField.valid || passwordField.untouched || !passwordField?.value?.trim().length" class="alert alert-danger">
+      Missing Password
+    </div>
+
+    <button
+      [disabled]="!nameField.valid || !surnameField.valid || !emailField.valid || !passwordField.valid || !loginField.valid"
+      class="btn btn-lg btn-primary btn-block"
+      type="submit"
+      (click)="saveCustomer(information)"
+      routerLink="/">
+      Save
+    </button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
+  </form>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,122 @@
+
+<div class="container" id="customer" *ngIf="isCust">
+  <form>
+    <div class="container-fluid mt-5" style="background-color: lavender">
+      <div class="container p-5">
+        <div class="row justify-content-center">
+          <div class="col col-lg-4" >
+            <div class="card text-center mt-5">
+              <div class="card-body" >
+                <h1 class="card-title pricing-card-title" >
+                  Customer
+                </h1>
+                <h4 class="card-title">
+                  {{user.name}} {{user.surname}}
+                </h4>
+                <p class="card-text"> email:
+                  {{user.eMail}}
+                </p>
+                <p class="card-text">balance:
+                  {{user.balance}} $
+                </p>
+                <p class="card-text">wallet status:
+                  {{user.walletStatus}}
+                </p>
+                <button class="btn btn-outline-primary" (click)="clickBalance(template)" id="repButton1">Replenish balance</button>
+                <button class="btn btn-outline-primary del" (click)="deleteAcc()">Delete account</button>
+<!--                <button class="btn btn-outline-primary del" routerLink="/custInfo">Change information</button>-->
+                <ng-template #template>
+                  <div class="modal-header">
+                    <h4 class="modal-title pull-left">Replenish balance</h4>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Enter the desired amount.
+                    <label for="inputBalance1" class="sr-only">input new Balance</label>
+                    <input id="inputBalance1" class="form-control" placeholder="new balance" #balanceField="ngModel"
+                           required autofocus [(ngModel)]="newBalance" name="newBalance"
+                           pattern="[0-9]{1,3}" maxlength="3">
+                    <div [hidden]="balanceField.valid || balanceField.untouched" class="alert alert-danger">
+                      Incorrect Balance
+                    </div>
+
+                    <button
+                      [disabled]="!balanceField.valid"
+                      class="btn btn-outline-primary"
+                      (click)="replenishBalance()"
+                      routerLink="/profile">
+                      Add
+                    </button>
+                  </div>
+
+                </ng-template>
+
+                <div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1"
+                     role="dialog" aria-labelledby="dialog-child-name">
+                  <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 id="dialog-child-name" class="modal-title pull-left">Error</h4>
+                        <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        You can't replenish your balance, because you have 5000$ and more!
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container" id="organisation" *ngIf="!isCust">
+  <form>
+    <div class="container-fluid mt-5" style="background-color: lavender">
+      <div class="container p-5">
+        <div class="row justify-content-center">
+          <div class="col col-lg-4" >
+            <div class="card text-center mt-5">
+              <div class="card-body" >
+                <h1 class="card-title pricing-card-title" >
+                  Organisation
+                </h1>
+                <h4 class="card-title">
+                  {{user.name}}
+                </h4>
+                <p class="card-text"> email:
+                  {{user.eMail}}
+                </p>
+                <p class="card-text"> link Of site:
+                  {{user.linkOfSite}}
+                </p>
+                <p class="card-text"> phone:
+                  {{user.phone}}
+                </p>
+                <p class="card-text">balance:
+                  {{user.balance}} $
+                </p>
+                <p class="card-text">wallet status:
+                  {{user.walletStatus}}
+                </p>
+
+                <button class="btn btn-outline-primary" (click)="deleteAcc()">Delete account</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+

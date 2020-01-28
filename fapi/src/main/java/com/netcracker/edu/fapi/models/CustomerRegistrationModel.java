@@ -3,61 +3,23 @@ package com.netcracker.edu.fapi.models;
 import com.netcracker.edu.fapi.models.enums.Role;
 import com.netcracker.edu.fapi.models.enums.WalletStatus;
 
-public class CustomerRegistrationModel {
-    private int idUser;
-    private String login;
-    private String password;
-    private Role role;
-
+public class CustomerRegistrationModel extends AbstractRegModel{
     private int idCustomer;
     private String name;
     private String surname;
     private String eMail;
 
-    private int idWallet;
-    private int balance;
-    private WalletStatus walletStatus;
 
     public CustomerRegistrationModel() {
     }
 
     public CustomerRegistrationModel(int idUser, String login, String password, Role role, int idCustomer, String name, String surname, String eMail,
                                       int idWallet, int balance, WalletStatus walletStatus) {
-        this.idUser = idUser;
-        this.login = login;
-        this.password = password;
-        this.role = role;
-        this.idWallet = idWallet;
-        this.balance = balance;
-        this.walletStatus = walletStatus;
+        super(idUser, login, password, role, idWallet, balance, walletStatus);
         this.eMail = eMail;
         this.idCustomer = idCustomer;
         this.name = name;
         this.surname = surname;
-    }
-
-    public int getIdWallet() {
-        return idWallet;
-    }
-
-    public void setIdWallet(int idWallet) {
-        this.idWallet = idWallet;
-    }
-
-    public int getBalance() {
-        return balance;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
-
-    public WalletStatus getWalletStatus() {
-        return walletStatus;
-    }
-
-    public void setWalletStatus(WalletStatus walletStatus) {
-        this.walletStatus = walletStatus;
     }
 
     public String getName() {
@@ -92,52 +54,4 @@ public class CustomerRegistrationModel {
         this.surname = surname;
     }
 
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    @Override
-    public String toString() {
-        return "CustomerRegistrationModel{" +
-                "idUser=" + idUser +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", role=" + role +
-                ", idCustomer=" + idCustomer +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", eMail='" + eMail + '\'' +
-                ", idWallet=" + idWallet +
-                ", balance=" + balance +
-                ", walletStatus=" + walletStatus +
-                '}';
-    }
 }

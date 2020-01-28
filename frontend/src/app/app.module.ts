@@ -1,30 +1,40 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import {APP_INITIALIZER, NgModule} from "@angular/core";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { TooltipModule } from "ngx-bootstrap/tooltip";
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { routing } from './app.routing';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 import { AppComponent } from "./app.component";
 import {HttpClientModule} from "@angular/common/http";
 import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
-import {RouterModule, Routes} from "@angular/router";
-import { NavComponent } from "./nav/nav.component";
-import {HomeComponent} from "./home/home.component";
-import { CarouselComponent } from "./carousel/carousel.component";
+import {Router, RouterModule, Routes} from "@angular/router";
+import { NavComponent } from "./components/nav/nav.component";
+import {HomeComponent} from "./components/home/home.component";
+import { CarouselComponent } from "./components/carousel/carousel.component";
 import {ButtonsModule, CarouselModule} from "ngx-bootstrap";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {AboutComponent} from "./about/about.component";
-import {User} from "./nav/user/user";
-import {UserRegComponent} from "./registration/userReg/user.registration.component";
-import {OrganisationRegComponent} from "./registration/organisationReg/org.registration.component";
-import {FooterComponent} from "./footer/footer.component";
-import {FilmsComponent} from "./categories/films/films.component";
-import {AppsComponent} from "./categories/apps/apps.component";
-import {GamesComponent} from "./categories/games/game.component";
-import {MusicComponent} from "./categories/music/music.component";
-import {SitesComponent} from "./categories/sites/sites.component";
+import {AboutComponent} from "./components/about/about.component";
+import {User} from "./modules/user";
+import {UserRegComponent} from "./components/registration/customerReg/customer.registration.component";
+import {OrganisationRegComponent} from "./components/registration/organisationReg/org.registration.component";
+import {FooterComponent} from "./components/footer/footer.component";
+import {FilmsComponent} from "./components/categories/films/films.component";
+import {AppsComponent} from "./components/categories/apps/apps.component";
+import {GamesComponent} from "./components/categories/games/game.component";
+import {MusicComponent} from "./components/categories/music/music.component";
+import {SitesComponent} from "./components/categories/sites/sites.component";
+import {UserComponent} from "./components/profile/user.component";
+import {CustomerService} from "./services/customer.sevice";
+import {initApp} from "./services/app.initializer";
+import {UserService} from "./services/user.service";
+import {RoleGuard} from "./services/role-guard.service";
+import {SubComponent} from "./components/subscription/sub.component";
+import {ConstructorComponent} from "./components/constructor/constructor.component";
+import {NotFoundComponent} from "./notFound/notFound.component";
+// import {WalletComponent} from "./wallet/wallet.component";
 
 
 
@@ -49,7 +59,12 @@ import {SitesComponent} from "./categories/sites/sites.component";
     AppsComponent,
     GamesComponent,
     MusicComponent,
-    SitesComponent
+    SitesComponent,
+    UserComponent,
+    SubComponent,
+    ConstructorComponent,
+    NotFoundComponent
+    //WalletComponent
   ],
   imports: [
     BrowserModule,
@@ -64,10 +79,20 @@ import {SitesComponent} from "./categories/sites/sites.component";
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     ReactiveFormsModule,
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    PaginationModule.forRoot()
 
   ],
-  providers: [],
+  providers: [
+    RoleGuard,
+    UserService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initApp,
+      deps: [UserService],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

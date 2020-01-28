@@ -1,0 +1,62 @@
+<div class="container">
+  <form>
+    <h1 class="h3 mb-3 font-weight-normal">Product Constructor</h1>
+
+
+    <label for="inputName" class="sr-only">Name</label>
+    <input id="inputName" class="form-control" placeholder="Name" #nameField="ngModel" required autofocus
+           [(ngModel)]="name" name="name" minlength="3" maxlength="16">
+    <div [hidden]="nameField.valid || nameField.untouched || !nameField?.value?.trim().length" class="alert alert-danger">
+      Missing Name
+    </div>
+
+    <form method="post">
+      <p><select size="1"  class="form-control"
+                 placeholder="Choose category"
+                 #cutField="ngModel" required
+                 [(ngModel)]="idCategory"  name="hero[]"
+      >
+        <option disabled>Choose category</option>
+        <option [value]="choice.idCategory" *ngFor="let choice of categories" >{{choice.name}}</option>
+      </select></p>
+      <div [hidden]="cutField.valid || cutField.untouched" class="alert alert-danger">
+        Missing Category
+      </div>
+    </form>
+
+    <label for="inputDesc" class="sr-only">Description</label>
+    <textarea id="inputDesc" class="form-control" placeholder="description" #descField="ngModel"
+           required [(ngModel)]="description"
+              name="description" minlength="10" maxlength="453"></textarea>
+    <div [hidden]="descField.valid || descField.untouched || !descField?.value?.trim().length" class="alert alert-danger">
+      Missing Description
+    </div>
+
+    <label for="inputPrise" class="sr-only">Month prise</label>
+    <input id="inputPrise" class="form-control" placeholder="Prise" #priseField="ngModel" required [(ngModel)]="monthPrise"
+           name="monthPrise" pattern="[0-9]{1,4}" maxlength="4">
+    <div [hidden]="priseField.valid || priseField.untouched || !priseField?.value?.trim().length" class="alert alert-danger">
+      Missing Prise
+    </div>
+
+    <label for="inputImg" class="sr-only">Linc of img</label>
+    <input id="inputImg" class="form-control" placeholder="http//img/img.com" #imgField="ngModel" required
+           [(ngModel)]="img" name="img">
+    <div [hidden]="imgField.valid || imgField.untouched || !priseField?.value?.trim().length" class="alert alert-danger">
+      Missing Password
+    </div>
+
+    <button
+      [disabled]="!nameField.valid || !cutField.valid || !descField.valid || !priseField.valid || !imgField.valid "
+      class="btn btn-lg btn-primary btn-block"
+      type="submit"
+      (click)="createProd(information)"
+      routerLink="/sub">
+      Save
+    </button>
+
+    <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
+  </form>
+</div>
+
+<app-footer></app-footer>

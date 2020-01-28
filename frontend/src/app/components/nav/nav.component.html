@@ -1,0 +1,162 @@
+<div *ngIf="loaded">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <a class="navbar-brand" routerLink="/">
+      <img src="assets\logo.png" wight="30" height="50" alt="logo">
+    </a>
+    <button class="navbar-toggler" tupe="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
+            <a id="basic-link" dropdownToggle (click)="false" class="nav-link"
+               [class.disabled]="!(user$ | async) || ((user$ | async) && (user$ | async).role === 'ORGANISATION')"
+            >Categories</a>
+            <ul id="basic-link-dropdown" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="basic-link" (click)="onCategoriesClickHandler($event)">
+              <li *ngFor="let choice of categories">
+                  <a class="dropdown-item" routerLink="/{{choice.name | lowercase}}">{{choice.name}} ({{countOfElements}})</a>
+              </li>
+            </ul>
+          </span>
+        </li>
+
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/about">About us</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+
+        <button *ngIf="!(user$ | async)"
+                class="btn btn-outline-primary my-2 my-sn-0"
+                (click)="openModal(template)">
+          Log in
+        </button>
+        <strong [style.color]="'#ffffff'"
+                *ngIf="user$| async as user">
+          <div class="btn-group" dropdown>
+            <button dropdownToggle type="button"
+                    class="btn btn-outline-primary dropdown-toggle"
+                    aria-controls="dropdown-basic">
+              {{user.name}}
+              <span class="caret"></span>
+            </button>
+
+            <ul id="dropdown-animated"
+                *dropdownMenu class="dropdown-menu"
+                role="menu"
+                aria-labelledby="button-animated">
+              <li role="menuitem"><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+              <li role="menuitem"><a class="dropdown-item" routerLink="/sub">Subscription</a></li>
+
+            </ul>
+          </div>
+          <button class="btn btn-outline-primary" (click)="logout()">Log out</button>
+        </strong>
+
+        <ng-template #template>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title pull-left"
+                  style="margin: auto; padding-left: 20px">
+                Authorization
+              </h4>
+              <button type="button"
+                      class="close pull-right"
+                      aria-label="Close"
+                      (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+                <form [formGroup]="loginForm">
+                  <div class="form-froup m-3">
+                    <label>Login*</label>
+                    <input autofocus
+                           name="form-control"
+                           placeholder="Login"
+                           class="p-2"
+                           formControlName="userLogin"
+                           #login required minlength="3" maxlength="16">
+                  </div>
+                  <div class="form-froup m-3">
+                    <label>Password*</label>
+                    <input type="Password"
+                           name="form-control"
+                           placeholder="Password"
+                           class="p-2"
+                           formControlName="userPassword"
+                           #password required minlength="6" maxlength="16">
+                    <small id="passwordHelp"
+                           class="form-text text-muted">
+                      Password must be from 6 to 16 characters
+                    </small>
+                  </div>
+                  <a routerLink="/">
+                    <button
+                      [disabled]="!loginForm.valid || !login?.value?.trim().length || !password?.value?.trim().length"
+                      class="btn btn-outline-primary my-2 my-sn-0"
+                      style="margin-right: 10px; margin-left: 80px;"
+                      (click)="getUserInfo(login.value, password.value)">
+                      Login
+                    </button>
+                  </a>
+                </form>
+                <!--                //todo style and cursor pointer, and hide modal-->
+                <span class="link"
+                      style="margin-left: 40px"
+                      (click)="openModal2(templateNested)">
+                  Register a new profile
+                </span>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template #templateNested>
+          <div class="modal-content" style="margin: auto;">
+            <div class="modal-header">
+              <h4 class="modal-title pull-left" style="margin: auto; padding-left: 70px">Registration</h4>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="margin: auto;">
+              <div class="container-fluid" style="margin: auto;">
+                <form>
+                  <div class="form-froup m-3">
+                    <p>You are Organisation or Customer ?</p>
+                  </div>
+                  <div class="form-froup m-3">
+                    <form [formGroup]="myForm" class="form-inline">
+                      <div class="form-group">
+                        <div class="btn-group" btnRadioGroup formControlName="radio">
+                          <label btnRadio="A" class="btn btn-primary"
+                                 tabindex="0" role="button" routerLink="/orgReg" (click)="closeModal2(templateNested)">Organisation</label>
+                          <label btnRadio="B" class="btn btn-primary"
+                                 tabindex="0" role="button" routerLink="/userReg" (click)="closeModal2(templateNested)">Customer</label>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </form>
+    </div>
+  </nav>
+</div>
+
+
+
