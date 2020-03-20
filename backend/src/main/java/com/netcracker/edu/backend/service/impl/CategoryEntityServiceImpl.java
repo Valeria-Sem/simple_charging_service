@@ -37,4 +37,5 @@ public class CategoryEntityServiceImpl implements CategoryEntityService {
     public void deleteCategory(Integer id) {
         repository.deleteById(id);
     }
+
 }

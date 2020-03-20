@@ -72,10 +72,4 @@ public class UsersEntity {
         return Objects.hash(idUsers, login, password, role);
     }
 
-//    public enum UsersRole {
-//        CUSTOMER,
-//        ORGANISATION,
-//        ADMIN
-//    }
-
 }
